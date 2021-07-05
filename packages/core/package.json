@@ -1,0 +1,14 @@
+{
+	"name": "@vdtn359/swagger-core",
+	"version": "1.0.0",
+	"description": "Swagger core package",
+	"main": "dist/index.js",
+	"type": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "ttsc -b tsconfig.build.json"
+	},
+	"license": "ISC"
+}

@@ -1,0 +1,12 @@
+{
+  "0 error JSONError": {
+    "fileName": "/Users/tuan.nguyen/IdeaProjects/openapi-mocks/packages/core/package.json",
+    "code": "ERR_PNPM_JSON_PARSE",
+    "err": {
+      "name": "JSONError",
+      "message": "Unexpected end of JSON input while parsing empty string in /Users/tuan.nguyen/IdeaProjects/openapi-mocks/packages/core/package.json",
+      "code": "ERR_PNPM_JSON_PARSE",
+      "stack": "JSONError: Unexpected end of JSON input while parsing empty string in /Users/tuan.nguyen/IdeaProjects/openapi-mocks/packages/core/package.json\n    at Object.parseJson [as default] (/Users/tuan.nguyen/.nvm/versions/node/v12.22.1/lib/node_modules/pnpm/dist/pnpm.cjs:3084:27)\n    at Object.readJsonFile (/Users/tuan.nguyen/.nvm/versions/node/v12.22.1/lib/node_modules/pnpm/dist/pnpm.cjs:39648:37)\n    at async Object.readExactProjectManifest (/Users/tuan.nguyen/.nvm/versions/node/v12.22.1/lib/node_modules/pnpm/dist/pnpm.cjs:39781:34)\n    at async /Users/tuan.nguyen/.nvm/versions/node/v12.22.1/lib/node_modules/pnpm/dist/pnpm.cjs:45228:16"
+    }
+  }
+}
