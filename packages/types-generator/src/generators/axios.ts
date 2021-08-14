@@ -73,9 +73,10 @@ const generateOperations = async (
 						hasQueries: !!operationSchema.queries,
 						hasRequestBody: !!operationSchema.requestBody,
 						hasResponse: successResponses.length > 0,
-						requestBodyType: await toTsType(
-							operationSchema.requestBody
-						),
+						requestBodyType: operationSchema.requestBody
+							? await toTsType(operationSchema.requestBody.schema)
+							: '',
+						isForm: operationSchema.requestBody?.type === 'form',
 						responseType: successResponses.length
 							? await toTsTypes(successResponses)
 							: '',

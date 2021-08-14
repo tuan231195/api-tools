@@ -2,6 +2,18 @@
 import { AxiosInstance, AxiosResponse } from 'axios'
 
 export const operationWithAxiosResponse = (axios: AxiosInstance, request: Request): Promise<AxiosResponse<Response>> => {
+  {{#if hasRequestBody}}
+	  {{#if isForm}}
+		  const requestBody = new FormData();
+		  for (const [key, value] of Object.entries(request.body)) {
+		  	requestBody.append(key, value);
+		  }
+	  {{else}}
+		  const requestBody = request.body;
+	  {{/if}}
+  {{/if}}
+
+
   return axios.request({
     url: `{{ url }}`,
     method: '{{ uppercase httpMethod }}',
@@ -12,7 +24,7 @@ export const operationWithAxiosResponse = (axios: AxiosInstance, request: Reques
     params: request.query,
     {{/if}}
     {{#if hasRequestBody}}
-    data: request.body,
+    data: requestBody,
     {{/if}}
   })
 }

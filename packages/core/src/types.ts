@@ -13,15 +13,29 @@ export type Schema = Omit<MixSchema, 'content'> & {
 	content: JsonSchema;
 };
 
+export const supportedMediaTypes = [
+	'application/json',
+	'application/x-www-form-urlencoded',
+	'multipart/form-data',
+] as const;
+
+type SUPPORT_MEDIA_TYPE = typeof supportedMediaTypes[number];
+
 export type ParsedSchemaOperation = {
 	params: Schema | null;
 	queries: Schema | null;
 	headers: Schema | null;
-	requestBody: Schema | null;
-	responseBody: ParsedSchemaBody;
+	requestBody: ParsedSchemaRequestBody | null;
+	responseBody: ParsedSchemaResponseBody;
 };
 
-export type ParsedSchemaBody = {
+export type ParsedSchemaRequestBody = {
+	type: 'json' | 'form';
+	contentType: SUPPORT_MEDIA_TYPE;
+	schema: Schema;
+};
+
+export type ParsedSchemaResponseBody = {
 	statuses: Record<number, Schema>;
 	all: Schema | null;
 	success: Schema | null;

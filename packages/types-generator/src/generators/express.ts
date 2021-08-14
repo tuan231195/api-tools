@@ -48,9 +48,9 @@ const generateHandlers = async (
 						hasQueries: !!operationSchema.queries,
 						hasRequestBody: !!operationSchema.requestBody,
 						hasResponse: !!operationSchema.responseBody.all,
-						requestBodyType: await toTsType(
-							operationSchema.requestBody
-						),
+						requestBodyType: operationSchema.requestBody
+							? await toTsType(operationSchema.requestBody.schema)
+							: '',
 						allResponses: await toTsTypes(
 							[
 								...allStatuses.map(([, schema]) => schema),

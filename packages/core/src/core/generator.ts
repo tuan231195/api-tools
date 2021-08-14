@@ -11,7 +11,7 @@ export const generate = async (
 				parsedSchema.headers,
 				parsedSchema.queries,
 				parsedSchema.params,
-				parsedSchema.requestBody,
+				parsedSchema.requestBody?.schema,
 				...Object.values(parsedSchema.responseBody.statuses),
 		  ].filter(Boolean) as Schema[]);
 	return dtsGenerator({ contents, config });

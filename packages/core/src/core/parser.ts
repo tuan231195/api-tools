@@ -1,6 +1,6 @@
 import SwaggerParser from '@apidevtools/swagger-parser';
 import { parseSchema } from 'dtsgenerator';
-import { omitBy, startCase } from 'lodash';
+import { omit, omitBy, startCase } from 'lodash';
 import { OpenAPI } from 'openapi-types';
 import { HTTP_METHODS, JSON_SCHEMA_7 } from 'src/constants';
 import logger from 'src/logger';
@@ -8,10 +8,12 @@ import {
 	JsonSchema,
 	Parameter,
 	ParsedSchema,
-	ParsedSchemaBody,
 	ParsedSchemaOperation,
+	ParsedSchemaRequestBody,
+	ParsedSchemaResponseBody,
 	Schema,
 	SchemaObject,
+	supportedMediaTypes,
 } from 'src/types';
 
 export async function validate(uri: string): Promise<OpenAPI.Document> {
@@ -82,8 +84,8 @@ const generateApiPathSchema = async (
 
 const generateRequestBodySchema = (
 	schema: OpenAPI.Operation
-): Schema | null => {
-	let requestBody = getJsonRequestBody(schema);
+): ParsedSchemaRequestBody | null => {
+	let requestBody = getRequestBodySchema(schema);
 	if (requestBody) {
 		return requestBody;
 	}
@@ -93,7 +95,7 @@ const generateRequestBodySchema = (
 
 const generateResponseBodySchema = (
 	schemaOperation: OpenAPI.Operation
-): ParsedSchemaBody => {
+): ParsedSchemaResponseBody => {
 	if (!schemaOperation.responses) {
 		return {
 			statuses: {},
@@ -137,7 +139,7 @@ const generateResponseBodySchema = (
 
 export const getAllStatusSchema = (
 	schemaOperation: OpenAPI.Operation
-): ParsedSchemaBody['statuses'] => {
+): ParsedSchemaResponseBody['statuses'] => {
 	return Object.entries(schemaOperation.responses || []).reduce(
 		(agg, [status, response]) => {
 			const statusCode =
@@ -158,49 +160,77 @@ export const getAllStatusSchema = (
 				[statusCode]: schema,
 			};
 		},
-		{} as ParsedSchemaBody['statuses']
+		{} as ParsedSchemaResponseBody['statuses']
 	);
 };
 
-const getJsonRequestBody = (
+const getRequestBodySchema = (
 	schemaOperation: OpenAPI.Operation
-): Schema | null => {
+): ParsedSchemaRequestBody | null => {
 	const content = (schemaOperation as any).requestBody?.content;
-	const requestBody = content && content['application/json'];
-	if (!requestBody) {
+	const requestContentType = supportedMediaTypes.find(
+		(supportedType) => content && content[supportedType]
+	);
+	const requestBody = content && content[requestContentType || ''];
+	if (!(requestBody && requestContentType)) {
 		return null;
 	}
-	return toSchema({
-		...requestBody.schema,
-		$id: 'RequestBody',
-		example: requestBody.example ?? null,
-	});
+	return {
+		type: requestContentType === 'application/json' ? 'json' : 'form',
+		contentType: requestContentType,
+		schema: toSchema({
+			...requestBody.schema,
+			$id: 'RequestBody',
+			example: requestBody.example ?? null,
+		}),
+	};
 };
 
-const getBodyParameter = (schemaOperation: OpenAPI.Operation) => {
+const getBodyParameter = (
+	schemaOperation: OpenAPI.Operation
+): ParsedSchemaRequestBody | null => {
 	const parameterGroup = getParameterGroup(
 		(schemaOperation.parameters || []) as Parameter[]
 	);
 
-	const bodyParameter = parameterGroup['body'];
-	if (!(bodyParameter && bodyParameter.length)) {
+	let schema: Schema | null = null;
+	let requestType: ParsedSchemaRequestBody['type'] | null = null;
+	let requestContentType: ParsedSchemaRequestBody['contentType'] | null =
+		null;
+	if (parameterGroup['body'] && parameterGroup['body'].length > 0) {
+		requestType = 'json';
+		requestContentType = 'application/json';
+		const bodyParameter = parameterGroup['body'][0];
+		schema = toSchema({
+			...bodyParameter.schema,
+			$id: 'RequestBody',
+			example: bodyParameter.example ?? null,
+		});
+	} else if (parameterGroup['formData']) {
+		requestType = 'form';
+		requestContentType =
+			'consumes' in schemaOperation &&
+			(schemaOperation.consumes || []).includes('multipart/form-data')
+				? 'multipart/form-data'
+				: 'application/x-www-form-urlencoded';
+		const bodyParameters = parameterGroup['formData'];
+		schema = parseParameters('RequestBody', bodyParameters);
+	}
+
+	if (!(schema && requestType && requestContentType)) {
 		return null;
 	}
 
-	const requestBody = bodyParameter[0];
-	return toSchema({
-		...requestBody.schema,
-		$id: 'RequestBody',
-		example: requestBody.example ?? null,
-	});
+	return {
+		type: requestType,
+		contentType: requestContentType,
+		schema,
+	};
 };
 
 const getParameterGroup = (parameters: Parameter[]) => {
 	const parameterGroup: Record<string, Parameter[]> = {};
 	for (const parameter of parameters) {
-		if (!('schema' in parameter)) {
-			continue;
-		}
 		const schemaType = parameter.in;
 		(parameterGroup[schemaType] = parameterGroup[schemaType] || []).push(
 			parameter
@@ -213,31 +243,41 @@ const generateParametersSchema = (parameters: Parameter[]) => {
 	const parameterGroup = getParameterGroup(parameters);
 	// we don't want body parameters
 	delete parameterGroup['body'];
+	delete parameterGroup['formData'];
 
 	return Object.entries(parameterGroup).reduce((agg, [group, parameters]) => {
-		const parameterProperties = parameters.reduce((agg, parameter) => {
-			return {
-				...agg,
-				[parameter.name]: {
-					...parameter.schema,
-				},
-			};
-		}, {} as Record<string, SchemaObject>);
 		const id = startCase(group);
-		const requiredProps = parameters
-			.filter((parameter) => parameter.required)
-			.map((parameter) => parameter.name);
 		return {
 			...agg,
-			[group]: toSchema({
-				type: 'object',
-				$id: id,
-				properties: parameterProperties as any,
-				additionalProperties: false,
-				required: requiredProps,
-			}),
+			[group]: parseParameters(id, parameters),
 		};
 	}, {} as Record<string, Schema>);
+};
+
+const parseParameters = (id: string, parameters: Parameter[]) => {
+	const parameterProperties = parameters.reduce((agg, parameter) => {
+		const parameterSchema =
+			'schema' in parameter
+				? parameter.schema
+				: omit(parameter, ['collectionFormat', 'in', 'name']);
+
+		return {
+			...agg,
+			[parameter.name]: parameterSchema,
+		};
+	}, {} as Record<string, SchemaObject>);
+
+	const requiredProps = parameters
+		.filter((parameter) => parameter.required)
+		.map((parameter) => parameter.name);
+
+	return toSchema({
+		type: 'object',
+		$id: id,
+		properties: parameterProperties as any,
+		additionalProperties: false,
+		required: requiredProps,
+	});
 };
 
 const nullSchema = (id: string) => {
