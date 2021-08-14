@@ -4,3 +4,4 @@
 dist
 *.iml
 packages/types-generator/out
+packages/faker/out

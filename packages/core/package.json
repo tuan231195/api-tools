@@ -8,7 +8,7 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "ttsc -b tsconfig.build.json"
+		"build": "rm -rf dist && ttsc -b tsconfig.build.json"
 	},
 	"license": "ISC",
 	"dependencies": {

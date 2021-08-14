@@ -69,6 +69,37 @@ importers:
       '@types/debug': 4.1.7
       '@types/lodash': 4.14.172
 
+  packages/faker:
+    specifiers:
+      '@types/debug': ^4.1.7
+      '@types/fs-extra': ^9.0.12
+      '@types/json-schema-faker': ^0.5.1
+      '@types/lodash': ^4.14.172
+      '@types/uuid': ^8.3.1
+      '@vdtn359/api-tools-core': workspace:*
+      debug: ^4.3.2
+      fs-extra: ^10.0.0
+      json-schema-faker: ^0.5.0-rcv.38
+      lodash: ^4.17.21
+      prettier: ^2.3.2
+      uuid: ^8.3.2
+      yargs: ^17.1.1
+    dependencies:
+      '@vdtn359/api-tools-core': link:../core
+      debug: 4.3.2
+      fs-extra: 10.0.0
+      json-schema-faker: 0.5.0-rcv.38
+      lodash: 4.17.21
+      prettier: 2.3.2
+      uuid: 8.3.2
+      yargs: 17.1.1
+    devDependencies:
+      '@types/debug': 4.1.7
+      '@types/fs-extra': 9.0.12
+      '@types/json-schema-faker': 0.5.1
+      '@types/lodash': 4.14.172
+      '@types/uuid': 8.3.1
+
   packages/types-generator:
     specifiers:
       '@types/debug': ^4.1.7
@@ -1032,6 +1063,12 @@ packages:
       pretty-format: 27.0.6
     dev: true
 
+  /@types/json-schema-faker/0.5.1:
+    resolution: {integrity: sha1-ZVjZcEq4sIyYKEanvbc6QVdq6OE=}
+    dependencies:
+      '@types/json-schema': 7.0.7
+    dev: true
+
   /@types/json-schema/7.0.7:
     resolution: {integrity: sha1-mKmTUWyFnrDVxMjwmDF6nqaNua0=}
 
@@ -1065,6 +1102,10 @@ packages:
 
   /@types/stack-utils/2.0.1:
     resolution: {integrity: sha1-IPGClPeX8iCbX2XI47XI6CYdEnw=}
+    dev: true
+
+  /@types/uuid/8.3.1:
+    resolution: {integrity: sha1-GjKWnPjwNks9jIr5zDVVt4Bd8U8=}
     dev: true
 
   /@types/yargs-parser/20.2.1:
@@ -1334,7 +1375,6 @@ packages:
     resolution: {integrity: sha1-vNZ5HqWuCXJeF+WtmIE0zUCz2RE=}
     dependencies:
       sprintf-js: 1.0.3
-    dev: true
 
   /argparse/2.0.1:
     resolution: {integrity: sha1-JG9Q88p4oyQPbJl+ipvR6sSeSzg=}
@@ -2197,7 +2237,6 @@ packages:
     resolution: {integrity: sha1-E7BM2z5sXRnfkatph6hpVhmwqnE=}
     engines: {node: '>=4'}
     hasBin: true
-    dev: true
 
   /esquery/1.4.0:
     resolution: {integrity: sha1-IUj/w4uC6McFff7UhCWz5h8PJKU=}
@@ -2397,6 +2436,10 @@ packages:
       combined-stream: 1.0.8
       mime-types: 2.1.31
     dev: true
+
+  /format-util/1.0.5:
+    resolution: {integrity: sha1-H/tFDIoD57zP/kBkMYCRjMKX0nE=}
+    dev: false
 
   /fs-extra/10.0.0:
     resolution: {integrity: sha1-n/YbZV3eU/s0qC34S7IUzoAuF8E=}
@@ -3433,7 +3476,6 @@ packages:
     dependencies:
       argparse: 1.0.10
       esprima: 4.0.1
-    dev: true
 
   /js-yaml/4.1.0:
     resolution: {integrity: sha1-wftl+PUBeQHN0slRhkuhhFihBgI=}
@@ -3498,6 +3540,22 @@ packages:
     resolution: {integrity: sha1-fEeAWpQxmSjgV3dAXcEuH3pO4C0=}
     dev: true
 
+  /json-schema-faker/0.5.0-rcv.38:
+    resolution: {integrity: sha1-bdc57FokMaWS3roN7554HajbRs4=}
+    hasBin: true
+    dependencies:
+      json-schema-ref-parser: 6.1.0
+      jsonpath-plus: 5.1.0
+    dev: false
+
+  /json-schema-ref-parser/6.1.0:
+    resolution: {integrity: sha1-MK80rqtb7gQx2oBdrA6yG1dL9j0=}
+    dependencies:
+      call-me-maybe: 1.0.1
+      js-yaml: 3.14.1
+      ono: 4.0.11
+    dev: false
+
   /json-schema-traverse/0.4.1:
     resolution: {integrity: sha1-afaofZUTq4u4/mO9sJecRI5oRmA=}
     dev: true
@@ -3535,6 +3593,11 @@ packages:
     resolution: {integrity: sha1-P02uSpH6wxX3EGL4UhzCOfE2YoA=}
     engines: {'0': node >= 0.2.0}
     dev: true
+
+  /jsonpath-plus/5.1.0:
+    resolution: {integrity: sha1-L8Sy5GGVBibJhSVCWjo1GLha9sM=}
+    engines: {node: '>=10.0.0'}
+    dev: false
 
   /kind-of/6.0.3:
     resolution: {integrity: sha1-B8BQNKbDSfoG4k+jWqdttFgM5N0=}
@@ -3993,6 +4056,12 @@ packages:
       mimic-fn: 2.1.0
     dev: true
 
+  /ono/4.0.11:
+    resolution: {integrity: sha1-x/Qgmz45bopE70O5ztx/XXkdIh0=}
+    dependencies:
+      format-util: 1.0.5
+    dev: false
+
   /openapi-types/9.0.3:
     resolution: {integrity: sha1-Tx/PlWFlaS9xCseCO4mmt9NrD7s=}
     dev: false
@@ -4197,7 +4266,6 @@ packages:
     resolution: {integrity: sha1-7ygKBewlNxLkhiM9tcbyNEHnNC0=}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: true
 
   /pretty-format/27.0.6:
     resolution: {integrity: sha1-q3cMR7LG+JOiGu/Fe3XaY+9JoR8=}
@@ -4573,7 +4641,6 @@ packages:
 
   /sprintf-js/1.0.3:
     resolution: {integrity: sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=}
-    dev: true
 
   /stack-utils/2.0.3:
     resolution: {integrity: sha1-zV8DASb/EWt4zLPAJ/4wJxO2Enc=}
@@ -5080,6 +5147,11 @@ packages:
   /util-deprecate/1.0.2:
     resolution: {integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=}
     dev: true
+
+  /uuid/8.3.2:
+    resolution: {integrity: sha1-gNW1ztJxu5r2xEXyGhoExgbO++I=}
+    hasBin: true
+    dev: false
 
   /v8-compile-cache/2.3.0:
     resolution: {integrity: sha1-LeGWGMZtwkfc+2+ZM4A12CRaLO4=}

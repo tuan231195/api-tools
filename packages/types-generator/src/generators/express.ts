@@ -2,6 +2,7 @@ import {
 	OpenAPI,
 	parse,
 	ParsedSchema,
+	promiseAll,
 	Schema,
 	validate,
 } from '@vdtn359/api-tools-core';
@@ -42,29 +43,33 @@ const generateHandlers = async (
 					const allStatuses = Object.entries(
 						operationSchema.responseBody.statuses
 					);
-					const templateContent = handlerTemplate({
-						hasHeaders: !!operationSchema.headers,
-						hasParams: !!operationSchema.params,
-						hasQueries: !!operationSchema.queries,
-						hasRequestBody: !!operationSchema.requestBody,
-						hasResponse: !!operationSchema.responseBody.all,
-						requestBodyType: operationSchema.requestBody
-							? await toTsType(operationSchema.requestBody.schema)
-							: '',
-						allResponses: await toTsTypes(
-							[
-								...allStatuses.map(([, schema]) => schema),
-								operationSchema.responseBody.all,
-							].filter(Boolean) as Schema[]
-						),
-						responseTypes: allStatuses.map(([status, schema]) => ({
-							statusCode: status,
-							name: schema.content.$id,
-						})),
-						paramsType: await toTsType(operationSchema.params),
-						queriesType: await toTsType(operationSchema.queries),
-						headersType: await toTsType(operationSchema.headers),
-					});
+					const templateContent = handlerTemplate(
+						await promiseAll({
+							hasHeaders: !!operationSchema.headers,
+							hasParams: !!operationSchema.params,
+							hasQueries: !!operationSchema.queries,
+							hasRequestBody: !!operationSchema.requestBody,
+							hasResponse: !!operationSchema.responseBody.all,
+							requestBodyType: operationSchema.requestBody
+								? toTsType(operationSchema.requestBody.schema)
+								: '',
+							allResponses: toTsTypes(
+								[
+									...allStatuses.map(([, schema]) => schema),
+									operationSchema.responseBody.all,
+								].filter(Boolean) as Schema[]
+							),
+							responseTypes: allStatuses.map(
+								([status, schema]) => ({
+									statusCode: status,
+									name: schema.content.$id,
+								})
+							),
+							paramsType: toTsType(operationSchema.params),
+							queriesType: toTsType(operationSchema.queries),
+							headersType: toTsType(operationSchema.headers),
+						})
+					);
 					await fs.writeFile(writeFile, prettify(templateContent));
 				} catch (e) {
 					console.error(

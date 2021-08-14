@@ -17,5 +17,6 @@ module.exports = {
 		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/ban-types': 'off',
+		'no-console': [2, { allow: ['warn', 'error'] }],
 	},
 };

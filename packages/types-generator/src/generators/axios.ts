@@ -2,6 +2,7 @@ import {
 	parse,
 	ParsedSchema,
 	ParsedSchemaOperation,
+	promiseAll,
 	Schema,
 	validate,
 } from '@vdtn359/api-tools-core';
@@ -65,25 +66,28 @@ const generateOperations = async (
 					const successResponses =
 						getSuccessResponseSchema(operationSchema);
 
-					const templateContent = operationTemplate({
-						url: createUrl(operation.path),
-						httpMethod: operation.method,
-						hasHeaders: !!operationSchema.headers,
-						hasParams: !!operationSchema.params,
-						hasQueries: !!operationSchema.queries,
-						hasRequestBody: !!operationSchema.requestBody,
-						hasResponse: successResponses.length > 0,
-						requestBodyType: operationSchema.requestBody
-							? await toTsType(operationSchema.requestBody.schema)
-							: '',
-						isForm: operationSchema.requestBody?.type === 'form',
-						responseType: successResponses.length
-							? await toTsTypes(successResponses)
-							: '',
-						paramsType: await toTsType(operationSchema.params),
-						queriesType: await toTsType(operationSchema.queries),
-						headersType: await toTsType(operationSchema.headers),
-					});
+					const templateContent = operationTemplate(
+						promiseAll({
+							url: createUrl(operation.path),
+							httpMethod: operation.method,
+							hasHeaders: !!operationSchema.headers,
+							hasParams: !!operationSchema.params,
+							hasQueries: !!operationSchema.queries,
+							hasRequestBody: !!operationSchema.requestBody,
+							hasResponse: successResponses.length > 0,
+							requestBodyType: operationSchema.requestBody
+								? toTsType(operationSchema.requestBody.schema)
+								: '',
+							isForm:
+								operationSchema.requestBody?.type === 'form',
+							responseType: successResponses.length
+								? toTsTypes(successResponses)
+								: '',
+							paramsType: toTsType(operationSchema.params),
+							queriesType: toTsType(operationSchema.queries),
+							headersType: toTsType(operationSchema.headers),
+						})
+					);
 					await fs.writeFile(writeFile, prettify(templateContent));
 				} catch (e) {
 					console.error(
