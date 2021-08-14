@@ -9,7 +9,7 @@
 	"scripts": {
 		"commit": "git-cz",
 		"dev": "ttsc -b packages -w",
-		"build": "ttsc -b packages",
+		"build": "pnpm recursive run build",
 		"prepare": "husky install",
 		"postinstall": "link-parent-bin",
 		"test": "jest",

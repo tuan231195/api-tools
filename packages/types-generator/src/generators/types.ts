@@ -11,14 +11,21 @@ export const generateTypes = async (uri: string, outDir: string) => {
 	await Promise.all(
 		Object.entries(parsedSchema).map(
 			async ([operationId, { schema: operationSchema }]) => {
-				const writeFile = path.resolve(
-					outDir,
-					`${kebabCase(operationId)}.ts`
-				);
-				logger(`Write ${operationId} to file ${writeFile}`);
+				try {
+					const writeFile = path.resolve(
+						outDir,
+						`${kebabCase(operationId)}.ts`
+					);
+					logger(`Write ${operationId} to file ${writeFile}`);
 
-				const content = await toTsTypes(operationSchema);
-				await fs.writeFile(writeFile, prettify(content));
+					const content = await toTsTypes(operationSchema);
+					await fs.writeFile(writeFile, prettify(content));
+				} catch (e) {
+					console.error(
+						`Failed to generate types for ${operationId}`,
+						e
+					);
+				}
 			}
 		)
 	);

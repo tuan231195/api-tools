@@ -116,14 +116,17 @@ const generateResponseBodySchema = (
 		})
 		.map(([, schema]) => schema);
 
-	const successSchema: Schema = toSchema({
-		$id: 'ResponseOk',
-		oneOf: successResponses.map((response) => {
-			return {
-				$ref: response.content.$id,
-			};
-		}),
-	});
+	let successSchema: Schema | null = null;
+	if (successResponses.length > 0) {
+		successSchema = toSchema({
+			$id: 'ResponseOk',
+			oneOf: successResponses.map((response) => {
+				return {
+					$ref: response.content.$id,
+				};
+			}),
+		});
+	}
 
 	return {
 		all: allSchema,
@@ -137,7 +140,8 @@ export const getAllStatusSchema = (
 ): ParsedSchemaBody['statuses'] => {
 	return Object.entries(schemaOperation.responses || []).reduce(
 		(agg, [status, response]) => {
-			const statusCode = parseInt(status, 10);
+			const statusCode =
+				status === 'default' ? 200 : parseInt(status, 10);
 			const id = `Response${statusCode}`;
 			const jsonBody =
 				response.content && response.content['application/json'];

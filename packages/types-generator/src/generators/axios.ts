@@ -55,32 +55,41 @@ const generateOperations = async (
 	await Promise.all(
 		Object.entries(parsedSchema).map(
 			async ([operationId, { schema: operationSchema, operation }]) => {
-				const writeFile = path.resolve(
-					outDir,
-					`${kebabCase(operationId)}.ts`
-				);
-				logger(`Write ${operationId} to file ${writeFile}`);
+				try {
+					const writeFile = path.resolve(
+						outDir,
+						`${kebabCase(operationId)}.ts`
+					);
+					logger(`Write ${operationId} to file ${writeFile}`);
 
-				const successResponses =
-					getSuccessResponseSchema(operationSchema);
+					const successResponses =
+						getSuccessResponseSchema(operationSchema);
 
-				const templateContent = operationTemplate({
-					url: createUrl(operation.path),
-					httpMethod: operation.method,
-					hasHeaders: !!operationSchema.headers,
-					hasParams: !!operationSchema.params,
-					hasQueries: !!operationSchema.queries,
-					hasRequestBody: !!operationSchema.requestBody,
-					hasResponse: successResponses.length > 0,
-					requestBodyType: await toTsType(
-						operationSchema.requestBody
-					),
-					responseType: await toTsTypes(successResponses),
-					paramsType: await toTsType(operationSchema.params),
-					queriesType: await toTsType(operationSchema.queries),
-					headersType: await toTsType(operationSchema.headers),
-				});
-				await fs.writeFile(writeFile, prettify(templateContent));
+					const templateContent = operationTemplate({
+						url: createUrl(operation.path),
+						httpMethod: operation.method,
+						hasHeaders: !!operationSchema.headers,
+						hasParams: !!operationSchema.params,
+						hasQueries: !!operationSchema.queries,
+						hasRequestBody: !!operationSchema.requestBody,
+						hasResponse: successResponses.length > 0,
+						requestBodyType: await toTsType(
+							operationSchema.requestBody
+						),
+						responseType: successResponses.length
+							? await toTsTypes(successResponses)
+							: '',
+						paramsType: await toTsType(operationSchema.params),
+						queriesType: await toTsType(operationSchema.queries),
+						headersType: await toTsType(operationSchema.headers),
+					});
+					await fs.writeFile(writeFile, prettify(templateContent));
+				} catch (e) {
+					console.error(
+						`Failed to generate types for ${operationId}`,
+						e
+					);
+				}
 			}
 		)
 	);

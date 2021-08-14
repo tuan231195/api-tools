@@ -32,39 +32,46 @@ const generateHandlers = async (
 	await Promise.all(
 		Object.entries(parsedSchema).map(
 			async ([operationId, { schema: operationSchema }]) => {
-				const writeFile = path.resolve(
-					outDir,
-					`${kebabCase(operationId)}.ts`
-				);
-				logger(`Write ${operationId} to file ${writeFile}`);
+				try {
+					const writeFile = path.resolve(
+						outDir,
+						`${kebabCase(operationId)}.ts`
+					);
+					logger(`Write ${operationId} to file ${writeFile}`);
 
-				const allStatuses = Object.entries(
-					operationSchema.responseBody.statuses
-				);
-				const templateContent = handlerTemplate({
-					hasHeaders: !!operationSchema.headers,
-					hasParams: !!operationSchema.params,
-					hasQueries: !!operationSchema.queries,
-					hasRequestBody: !!operationSchema.requestBody,
-					hasResponse: !!operationSchema.responseBody.all,
-					requestBodyType: await toTsType(
-						operationSchema.requestBody
-					),
-					allResponses: await toTsTypes(
-						[
-							...allStatuses.map(([, schema]) => schema),
-							operationSchema.responseBody.all,
-						].filter(Boolean) as Schema[]
-					),
-					responseTypes: allStatuses.map(([status, schema]) => ({
-						statusCode: status,
-						name: schema.content.$id,
-					})),
-					paramsType: await toTsType(operationSchema.params),
-					queriesType: await toTsType(operationSchema.queries),
-					headersType: await toTsType(operationSchema.headers),
-				});
-				await fs.writeFile(writeFile, prettify(templateContent));
+					const allStatuses = Object.entries(
+						operationSchema.responseBody.statuses
+					);
+					const templateContent = handlerTemplate({
+						hasHeaders: !!operationSchema.headers,
+						hasParams: !!operationSchema.params,
+						hasQueries: !!operationSchema.queries,
+						hasRequestBody: !!operationSchema.requestBody,
+						hasResponse: !!operationSchema.responseBody.all,
+						requestBodyType: await toTsType(
+							operationSchema.requestBody
+						),
+						allResponses: await toTsTypes(
+							[
+								...allStatuses.map(([, schema]) => schema),
+								operationSchema.responseBody.all,
+							].filter(Boolean) as Schema[]
+						),
+						responseTypes: allStatuses.map(([status, schema]) => ({
+							statusCode: status,
+							name: schema.content.$id,
+						})),
+						paramsType: await toTsType(operationSchema.params),
+						queriesType: await toTsType(operationSchema.queries),
+						headersType: await toTsType(operationSchema.headers),
+					});
+					await fs.writeFile(writeFile, prettify(templateContent));
+				} catch (e) {
+					console.error(
+						`Failed to generate types for ${operationId}`,
+						e
+					);
+				}
 			}
 		)
 	);

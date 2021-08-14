@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { AxiosInstance, AxiosResponse } from 'axios'
 
-export const operationWithAxiosResponse = (axios: AxiosInstance, request: Request): Promise<AxiosResponse<{{#if hasResponse}}Response{{else}}void{{/if}}>> => {
+export const operationWithAxiosResponse = (axios: AxiosInstance, request: Request): Promise<AxiosResponse<Response>> => {
   return axios.request({
     url: `{{ url }}`,
     method: '{{ uppercase httpMethod }}',
@@ -17,7 +17,7 @@ export const operationWithAxiosResponse = (axios: AxiosInstance, request: Reques
   })
 }
 
-export const operation = async (axios: AxiosInstance, request: Request): Promise<{{#if hasResponse}}Response{{else}}void{{/if}}> => {
+export const operation = async (axios: AxiosInstance, request: Request): Promise<Response> => {
   {{#if hasResponse}}
   return (await operationWithAxiosResponse(axios, request)).data
   {{else}}
@@ -58,4 +58,6 @@ export type Request = {
 
 {{#if hasResponse }}
 {{ responseType }}
+{{else}}
+export type Response = void;
 {{/if}}
