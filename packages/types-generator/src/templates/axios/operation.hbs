@@ -1,0 +1,61 @@
+/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios'
+
+export const operationWithAxiosResponse = (axios: AxiosInstance, request: Request): Promise<AxiosResponse<{{#if hasResponse}}Response{{else}}void{{/if}}>> => {
+  return axios.request({
+    url: `{{ url }}`,
+    method: '{{ uppercase httpMethod }}',
+    {{#if hasHeaders}}
+    headers: request.headers,
+    {{/if}}
+    {{#if hasQueries}}
+    params: request.query,
+    {{/if}}
+    {{#if hasRequestBody}}
+    data: request.body,
+    {{/if}}
+  })
+}
+
+export const operation = async (axios: AxiosInstance, request: Request): Promise<{{#if hasResponse}}Response{{else}}void{{/if}}> => {
+  {{#if hasResponse}}
+  return (await operationWithAxiosResponse(axios, request)).data
+  {{else}}
+  await operationWithAxiosResponse(axios, request)
+  {{/if}}
+}
+
+{{#if hasHeaders }}
+{{ headersType }}
+{{/if}}
+
+{{#if hasQueries }}
+{{ queriesType }}
+{{/if}}
+
+{{#if hasParams }}
+{{ paramsType }}
+{{/if}}
+
+{{#if hasRequestBody }}
+{{ requestBodyType }}
+{{/if}}
+
+export type Request = {
+	{{#if hasParams }}
+	path: Path
+	{{/if}}
+	{{#if hasQueries }}
+	query: Query
+	{{/if}}
+	{{#if hasHeaders }}
+	headers: Header
+	{{/if}}
+	{{#if hasRequestBody }}
+	body: RequestBody
+	{{/if}}
+}
+
+{{#if hasResponse }}
+{{ responseType }}
+{{/if}}

@@ -1,9 +1,9 @@
 {
 	"compilerOptions": {
+		"incremental": true,
 		"moduleResolution": "node",
 		"target": "es6",
 		"declaration": true,
-		"outDir": "dist",
 		"module": "CommonJS",
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,

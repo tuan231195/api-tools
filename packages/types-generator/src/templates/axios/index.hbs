@@ -1,0 +1,64 @@
+/* eslint-disable */
+import { AxiosInstance } from 'axios'
+{{#each operations }}
+import * as {{ capitalize this.operationId }} from './{{ kebabCase this.operationId }}'
+{{/each}}
+
+{{#each operations }}
+type {{ capitalize this.operationId }}Request = {{ capitalize this.operationId }}.Request
+{{#if this.hasResponse}}type {{ capitalize this.operationId }}Response = {{ capitalize this.operationId }}.Response{{/if}}
+{{/each}}
+
+const operations = {
+  {{#each operations }}
+  {{ this.operationId }}: {{ capitalize this.operationId }}.operation,
+  {{/each }}
+}
+
+const operationsWithAxiosResponse = {
+  {{#each operations }}
+  {{ this.operationId }}: {{ capitalize this.operationId }}.operationWithAxiosResponse,
+  {{/each }}
+}
+
+export type OmitFirstArgs<T> = { 
+  [K in keyof T]: T[K] extends 
+    ((firstArg: any, ...rest: infer Args) => (infer R)) ? 
+      (...args: Args) => R : 
+      never 
+}
+
+export type ApiClient = OmitFirstArgs<typeof operations>
+
+export const createClient = (axios: AxiosInstance): ApiClient => {
+
+  const apiClient = {}
+  for (let [name, operation] of Object.entries(operations)) {
+    // @ts-ignore
+    apiClient[name] = (...args: any[]) => operation(axios, ...args)
+  }
+
+  return apiClient as ApiClient
+
+}
+
+export type ApiClientWithAxiosResponse = OmitFirstArgs<typeof operationsWithAxiosResponse>
+
+export const createClientWithAxiosResponse = (axios: AxiosInstance): ApiClientWithAxiosResponse => {
+
+  const apiClient = {}
+  for (let [name, operation] of Object.entries(operationsWithAxiosResponse)) {
+    // @ts-ignore
+    apiClient[name] = (...args: any[]) => operation(axios, ...args)
+  }
+
+  return apiClient as ApiClientWithAxiosResponse
+
+}
+
+export {
+{{#each operations }}
+  {{ capitalize this.operationId }}Request,
+  {{~#if this.hasResponse}} {{ capitalize this.operationId }}Response,{{/if}}
+{{/each}}
+}

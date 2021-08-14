@@ -1,0 +1,49 @@
+/* eslint-disable */
+import * as express from 'express-serve-static-core'
+
+{{#if hasHeaders }}
+{{ headersType }}
+{{/if}}
+
+{{#if hasParams }}
+{{ paramsType }}
+{{/if}}
+
+{{#if hasQueries }}
+{{ queriesType }}
+{{/if}}
+
+{{#if hasRequestBody }}
+{{ requestBodyType }}
+{{/if}}
+
+{{#if hasResponse }}
+{{allResponses}}
+{{else}}
+type Response = {}
+{{/if}}
+
+
+{{#if hasResponse }}
+type StatusCodes = {{#each responseTypes}}{{this.statusCode}}{{#unless @last}} | {{/unless}}{{/each}}
+type ExpressResponse = Omit<express.Response<Response, {}, StatusCodes>, 'status'> & {
+  status: <StatusCode extends StatusCodes>(code: StatusCode) =>
+  {{#each responseTypes}}
+  {{#unless @last}}
+    StatusCode extends {{this.statusCode}} ? express.Response<{{this.name}}, {}, {{this.statusCode}}> :
+  {{/unless}}
+  {{#if @last}}
+    express.Response<{{this.name}}, {}, {{this.statusCode}}>
+  {{/if}}
+  {{/each}}
+}
+{{else}}
+type ExpressResponse = express.Response<Response, {}, number>
+{{/if}}
+
+
+export type Handler = (
+  req: express.Request<{{#if hasParams }}Path{{else}}{}{{/if}}, Response, {{#if hasRequestBody }}RequestBody{{else}}{}{{/if}}, {{#if hasQueries }}Query{{else}}{}{{/if}}>,
+  res: ExpressResponse,
+  next: express.NextFunction,
+) => Promise<any>

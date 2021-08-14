@@ -1,0 +1,15 @@
+{
+	"files": [],
+	"compilerOptions": {
+		"preserveWatchOutput": true,
+		"incremental": true
+	},
+	"references": [
+		{
+			"path": "./core/tsconfig.build.json"
+		},
+		{
+			"path": "./types-generator/tsconfig.build.json"
+		}
+	]
+}

@@ -1,7 +1,7 @@
 {
-	"name": "@vdtn359/api-tools-core",
+	"name": "@vdtn359/api-tools-types-generator",
 	"version": "1.0.0",
-	"description": "API core package",
+	"description": "Generate typescript for swagger files",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"files": [
@@ -12,14 +12,15 @@
 	},
 	"license": "ISC",
 	"dependencies": {
-		"@apidevtools/swagger-parser": "^10.0.2",
 		"debug": "^4.3.2",
-		"dtsgenerator": "^3.12.1",
-		"openapi-types": "^9.0.3",
-		"lodash": "^4.17.21"
+		"@vdtn359/api-tools-core": "workspace:*",
+		"lodash": "^4.17.21",
+		"fs-extra": "^10.0.0",
+		"handlebars": "^4.7.7"
 	},
 	"devDependencies": {
 		"@types/debug": "^4.1.7",
+		"@types/fs-extra": "^9.0.12",
 		"@types/lodash": "^4.14.172"
 	}
 }
