@@ -1,6 +1,12 @@
 import { OpenAPI } from 'openapi-types';
 import { HTTP_METHODS } from 'src/constants';
-import { HttpMethod, Operation } from 'src/types';
+import {
+	GetOperationArgs,
+	HttpMethod,
+	Operation,
+	ParsedDocument,
+	ParsedOperationSchemaWithInfo,
+} from 'src/types';
 
 export const getByOperationId = (
 	document: OpenAPI.Document,
@@ -48,4 +54,39 @@ export const getByMethodAndPath = (
 		path,
 		operation: operationSchemaComponent,
 	};
+};
+
+export const getOperation = (
+	parsedDocument: ParsedDocument,
+	args: GetOperationArgs
+): ParsedOperationSchemaWithInfo => {
+	let operationSchema: ParsedOperationSchemaWithInfo;
+	let operationId: string;
+
+	if ('operationId' in args) {
+		operationId = args.operationId;
+		operationSchema = parsedDocument.schema[operationId];
+		if (!operationSchema) {
+			throw new Error(`Operation ${operationId} not found`);
+		}
+	} else {
+		const operation = getByMethodAndPath(
+			parsedDocument.document,
+			args.methodName,
+			args.path
+		);
+		if (!operation) {
+			throw new Error(
+				`Operation ${args.methodName.toUpperCase()} ${
+					args.path
+				} not found`
+			);
+		}
+		operationId = operation.operationId;
+		operationSchema = parsedDocument.schema[operation.operationId];
+	}
+	if (!operationSchema) {
+		throw new Error(`Operation ${operationId} not found`);
+	}
+	return operationSchema;
 };

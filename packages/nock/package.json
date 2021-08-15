@@ -1,0 +1,21 @@
+{
+	"name": "@vdtn359/api-tools-nock",
+	"version": "1.0.0",
+	"description": "mock api with nock",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "rm -rf dist && ttsc -b tsconfig.build.json"
+	},
+	"license": "ISC",
+	"dependencies": {
+		"@vdtn359/api-tools-core": "workspace:*",
+		"@vdtn359/api-tools-faker": "workspace:*",
+		"lodash": "^4.17.21",
+		"path-to-regexp": "^6.2.0",
+		"nock": "^13.1.1"
+	}
+}

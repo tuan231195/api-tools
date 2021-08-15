@@ -55,4 +55,18 @@ export type ParsedOperationSchemaWithInfo = {
 	schema: ParsedOperationSchema;
 };
 
+export type GetOperationArgs =
+	| {
+			operationId: string;
+	  }
+	| {
+			methodName: HttpMethod;
+			path: string;
+	  };
+
 export type ParsedSchema = Record<string, ParsedOperationSchemaWithInfo>;
+
+export type ParsedDocument = {
+	document: OpenAPI.Document;
+	schema: ParsedSchema;
+};

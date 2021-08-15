@@ -1,10 +1,8 @@
 import {
-	OpenAPI,
 	parse,
 	ParsedSchema,
 	promiseAll,
 	Schema,
-	validate,
 } from '@vdtn359/api-tools-core';
 import fs from 'fs-extra';
 import path from 'path';
@@ -18,18 +16,13 @@ const handlerTemplate = compileTemplate(
 );
 
 export const generateExpressTypes = async (uri: string, outDir: string) => {
-	const document = await validate(uri);
-	const parsedSchema = await parse(document);
+	const { schema: parsedSchema } = await parse(uri);
 	await prepare(outDir);
 
-	await generateHandlers(document, parsedSchema, outDir);
+	await generateHandlers(parsedSchema, outDir);
 };
 
-const generateHandlers = async (
-	document: OpenAPI.Document,
-	parsedSchema: ParsedSchema,
-	outDir: string
-) => {
+const generateHandlers = async (parsedSchema: ParsedSchema, outDir: string) => {
 	await Promise.all(
 		Object.entries(parsedSchema).map(
 			async ([operationId, { schema: operationSchema }]) => {

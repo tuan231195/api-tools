@@ -1,12 +1,18 @@
 import { MergeWithCustomizer } from 'lodash';
-import { HttpMethod } from '@vdtn359/api-tools-core';
+import {
+	GetOperationArgs,
+	HttpMethod,
+	ParsedOperationSchema,
+	ParsedOperationSchemaWithInfo,
+} from '@vdtn359/api-tools-core';
 
 export type FakeOperation = {
 	headers: any;
 	params: any;
 	queries: any;
-	responseBody: any;
 	requestBody: any;
+	defaultResponse: any;
+	responseByStatuses: Record<number, any>;
 };
 
 export type OverrideOptions = {
@@ -15,12 +21,11 @@ export type OverrideOptions = {
 };
 
 export type OperationOverrideOptions = OverrideOptions &
-	(
-		| {
-				operationId: string;
-		  }
-		| {
-				methodName: HttpMethod;
-				path: string;
-		  }
-	);
+	GetOperationArgs & {
+		status?: number;
+	};
+
+export type OperationSchemaOverrideOptions = OverrideOptions & {
+	status?: number;
+	schema: ParsedOperationSchema;
+};

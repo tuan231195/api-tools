@@ -4,7 +4,6 @@ import {
 	ParsedOperationSchema,
 	promiseAll,
 	Schema,
-	validate,
 } from '@vdtn359/api-tools-core';
 import fs from 'fs-extra';
 import path from 'path';
@@ -22,8 +21,7 @@ const indexTemplate = compileTemplate(
 );
 
 export const generateAxiosTypes = async (uri: string, outDir: string) => {
-	const document = await validate(uri);
-	const parsedSchema = await parse(document);
+	const { schema: parsedSchema } = await parse(uri);
 	await prepare(outDir);
 
 	await generateOperations(parsedSchema, outDir);

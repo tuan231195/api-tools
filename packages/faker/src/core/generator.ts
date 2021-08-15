@@ -1,4 +1,12 @@
-import { kebabCase, omitBy } from 'lodash';
+import {
+	fromPairs,
+	kebabCase,
+	mapKeys,
+	mapValues,
+	mergeWith,
+	omit,
+	omitBy,
+} from 'lodash';
 import {
 	parse,
 	ParsedOperationSchema,
@@ -10,7 +18,7 @@ import logger from 'src/logger';
 import fs from 'fs-extra';
 import os from 'os';
 import { generate } from 'src/core/jsf';
-import { FakeOperation } from 'src/core/types';
+import { FakeOperation, OperationSchemaOverrideOptions } from 'src/core/types';
 
 export const fakeOperation = async (
 	operationSchema: ParsedOperationSchema
@@ -34,18 +42,50 @@ export const fakeOperation = async (
 		requestBody: operationSchema.requestBody
 			? generate(operationSchema.requestBody.schema.content)
 			: null,
-		responseBody: defaultResponse
+		defaultResponse: defaultResponse
 			? generate(defaultResponse[1].content)
 			: null,
+		responseByStatuses: promiseAll(
+			mapValues(operationSchema.responseBody.statuses, (schema) =>
+				generate(schema.content)
+			)
+		),
 	});
 };
 
+export const getResponseByStatus = async (
+	schema: ParsedOperationSchema,
+	status?: number
+) => {
+	const fakeData = await fakeOperation(schema);
+	const responseBody = status
+		? fakeData.responseByStatuses[status]
+		: fakeData.defaultResponse;
+	if (!responseBody) {
+		throw new Error('Could not find response for the operation');
+	}
+	return responseBody;
+};
+
+export const fakeOperationResponse = async ({
+	schema,
+	overrides,
+	mergeOptions,
+	status,
+}: OperationSchemaOverrideOptions) => {
+	const responseBody = getResponseByStatus(schema, status);
+	if (typeof overrides === 'function') {
+		return overrides(responseBody);
+	}
+	return mergeWith(responseBody, overrides, mergeOptions);
+};
+
 export const writeFake = async (uri: string, outDir: string) => {
-	const parsedSchema = await parse(uri);
+	const parsedDocument = await parse(uri);
 	await prepare(outDir);
 
 	for (const [operationId, { schema: operationSchema }] of Object.entries(
-		parsedSchema
+		parsedDocument.schema
 	)) {
 		try {
 			const writeFile = path.resolve(
@@ -54,8 +94,15 @@ export const writeFake = async (uri: string, outDir: string) => {
 			);
 			logger(`Write ${operationId} to file ${writeFile}`);
 
+			const fakeData = await fakeOperation(operationSchema);
 			const exampleObject = omitBy(
-				await fakeOperation(operationSchema),
+				{
+					...omit(fakeData, 'responseByStatuses'),
+					...mapKeys(
+						fakeData.responseByStatuses,
+						(value, key) => `response${key}`
+					),
+				},
 				(value) => value == null
 			);
 

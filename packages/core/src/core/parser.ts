@@ -14,6 +14,7 @@ import {
 	Schema,
 	SchemaObject,
 	supportedMediaTypes,
+	ParsedDocument,
 } from 'src/types';
 
 export async function validate(uri: string): Promise<OpenAPI.Document> {
@@ -22,13 +23,13 @@ export async function validate(uri: string): Promise<OpenAPI.Document> {
 
 export const parse = async (
 	uri: string | OpenAPI.Document
-): Promise<ParsedSchema> => {
-	const schema = typeof uri === 'string' ? await validate(uri) : uri;
+): Promise<ParsedDocument> => {
+	const document = typeof uri === 'string' ? await validate(uri) : uri;
 	const result: ParsedSchema = {};
 
 	await Promise.all(
-		Object.keys(schema.paths).map(async (pathName) => {
-			const schemaPathComponent = schema.paths[pathName] || {};
+		Object.keys(document.paths).map(async (pathName) => {
+			const schemaPathComponent = document.paths[pathName] || {};
 			for (const methodName of HTTP_METHODS) {
 				const operationSchemaComponent =
 					schemaPathComponent[methodName];
@@ -58,7 +59,10 @@ export const parse = async (
 		})
 	);
 
-	return result;
+	return {
+		document,
+		schema: result,
+	};
 };
 
 const generateApiPathSchema = async (

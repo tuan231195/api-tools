@@ -104,6 +104,20 @@ importers:
       '@types/lodash': 4.14.172
       '@types/uuid': 8.3.1
 
+  packages/nock:
+    specifiers:
+      '@vdtn359/api-tools-core': workspace:*
+      '@vdtn359/api-tools-faker': workspace:*
+      lodash: ^4.17.21
+      nock: ^13.1.1
+      path-to-regexp: ^6.2.0
+    dependencies:
+      '@vdtn359/api-tools-core': link:../core
+      '@vdtn359/api-tools-faker': link:../faker
+      lodash: 4.17.21
+      nock: 13.1.1
+      path-to-regexp: 6.2.0
+
   packages/types-generator:
     specifiers:
       '@types/debug': ^4.1.7
@@ -3580,6 +3594,10 @@ packages:
     resolution: {integrity: sha1-nbe1lJatPzz+8wp1FC0tkwrXJlE=}
     dev: true
 
+  /json-stringify-safe/5.0.1:
+    resolution: {integrity: sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=}
+    dev: false
+
   /json5/2.2.0:
     resolution: {integrity: sha1-Lf7+cgxrpSXZ69kJlQ8FFTFsiaM=}
     engines: {node: '>=6'}
@@ -3742,6 +3760,10 @@ packages:
   /lodash.merge/4.6.2:
     resolution: {integrity: sha1-VYqlO0O2YeGSWgr9+japoQhf5Xo=}
     dev: true
+
+  /lodash.set/4.3.2:
+    resolution: {integrity: sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=}
+    dev: false
 
   /lodash.truncate/4.4.2:
     resolution: {integrity: sha1-WjUNoLERO4N+z//VgSy+WNbq4ZM=}
@@ -3948,6 +3970,18 @@ packages:
   /nice-try/1.0.5:
     resolution: {integrity: sha1-ozeKdpbOfSI+iPybdkvX7xCJ42Y=}
     dev: true
+
+  /nock/13.1.1:
+    resolution: {integrity: sha1-PIMBKdRWCVf1m29ICkHduvnPV68=}
+    engines: {node: '>= 10.13'}
+    dependencies:
+      debug: 4.3.2
+      json-stringify-safe: 5.0.1
+      lodash.set: 4.3.2
+      propagate: 2.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /node-fetch/2.6.1:
     resolution: {integrity: sha1-BFvTI2Mfdu0uK1VXM5RBa2OaAFI=}
@@ -4209,6 +4243,10 @@ packages:
     resolution: {integrity: sha1-+8EUtgykKzDZ2vWFjkvWi77bZzU=}
     dev: true
 
+  /path-to-regexp/6.2.0:
+    resolution: {integrity: sha1-97OAMzYQTDRoia3s5hRmkjBkXzg=}
+    dev: false
+
   /path-type/3.0.0:
     resolution: {integrity: sha1-zvMdyOCho7sNEFwM2Xzzv0f0428=}
     engines: {node: '>=4'}
@@ -4305,6 +4343,11 @@ packages:
       kleur: 3.0.3
       sisteransi: 1.0.5
     dev: true
+
+  /propagate/2.0.1:
+    resolution: {integrity: sha1-QM3tqxgIXHkjNOZPCsFyVtOPmkU=}
+    engines: {node: '>= 8'}
+    dev: false
 
   /psl/1.8.0:
     resolution: {integrity: sha1-kyb4vPsBOtzABf3/BWrM4CDlHCQ=}

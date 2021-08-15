@@ -13,6 +13,9 @@
 		},
 		{
 			"path": "./faker/tsconfig.build.json"
+		},
+		{
+			"path": "./nock/tsconfig.build.json"
 		}
 	]
 }
