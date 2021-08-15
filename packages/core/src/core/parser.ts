@@ -8,9 +8,9 @@ import {
 	JsonSchema,
 	Parameter,
 	ParsedSchema,
-	ParsedSchemaOperation,
-	ParsedSchemaRequestBody,
-	ParsedSchemaResponseBody,
+	ParsedOperationSchema,
+	ParsedRequestBodySchema,
+	ParsedResponseBodySchema,
 	Schema,
 	SchemaObject,
 	supportedMediaTypes,
@@ -30,26 +30,26 @@ export const parse = async (
 		Object.keys(schema.paths).map(async (pathName) => {
 			const schemaPathComponent = schema.paths[pathName] || {};
 			for (const methodName of HTTP_METHODS) {
-				const schemaOperationComponent =
+				const operationSchemaComponent =
 					schemaPathComponent[methodName];
-				if (!schemaOperationComponent) {
+				if (!operationSchemaComponent) {
 					continue;
 				}
-				if (!schemaOperationComponent.operationId) {
+				if (!operationSchemaComponent.operationId) {
 					logger(
 						`Skip ${methodName.toUpperCase()} ${pathName}. Operation does not have operationId`
 					);
 					continue;
 				}
 				const defaultParameters = schemaPathComponent['parameters'];
-				result[schemaOperationComponent.operationId] = {
+				result[operationSchemaComponent.operationId] = {
 					schema: await generateApiPathSchema(
-						schemaOperationComponent,
+						operationSchemaComponent,
 						defaultParameters
 					),
-					operation: {
-						operationId: schemaOperationComponent.operationId,
-						operation: schemaOperationComponent,
+					info: {
+						operationId: operationSchemaComponent.operationId,
+						operation: operationSchemaComponent,
 						path: pathName,
 						method: methodName,
 					},
@@ -64,7 +64,7 @@ export const parse = async (
 const generateApiPathSchema = async (
 	schema: OpenAPI.Operation,
 	defaultParameters: OpenAPI.Parameters = []
-): Promise<ParsedSchemaOperation> => {
+): Promise<ParsedOperationSchema> => {
 	logger(`Processing ${schema.operationId}`);
 
 	const operationParameters = schema.parameters ?? defaultParameters;
@@ -84,7 +84,7 @@ const generateApiPathSchema = async (
 
 const generateRequestBodySchema = (
 	schema: OpenAPI.Operation
-): ParsedSchemaRequestBody | null => {
+): ParsedRequestBodySchema | null => {
 	let requestBody = getRequestBodySchema(schema);
 	if (requestBody) {
 		return requestBody;
@@ -94,16 +94,16 @@ const generateRequestBodySchema = (
 };
 
 const generateResponseBodySchema = (
-	schemaOperation: OpenAPI.Operation
-): ParsedSchemaResponseBody => {
-	if (!schemaOperation.responses) {
+	operationSchema: OpenAPI.Operation
+): ParsedResponseBodySchema => {
+	if (!operationSchema.responses) {
 		return {
 			statuses: {},
 			all: null,
 			success: null,
 		};
 	}
-	const allStatusSchema = getAllStatusSchema(schemaOperation);
+	const allStatusSchema = getAllStatusSchema(operationSchema);
 	const allSchema: Schema = toSchema({
 		$id: 'Response',
 		oneOf: Object.values(allStatusSchema).map((response) => ({
@@ -138,9 +138,9 @@ const generateResponseBodySchema = (
 };
 
 export const getAllStatusSchema = (
-	schemaOperation: OpenAPI.Operation
-): ParsedSchemaResponseBody['statuses'] => {
-	return Object.entries(schemaOperation.responses || []).reduce(
+	operationSchema: OpenAPI.Operation
+): ParsedResponseBodySchema['statuses'] => {
+	return Object.entries(operationSchema.responses || []).reduce(
 		(agg, [status, response]) => {
 			const statusCode =
 				status === 'default' ? 200 : parseInt(status, 10);
@@ -160,14 +160,14 @@ export const getAllStatusSchema = (
 				[statusCode]: schema,
 			};
 		},
-		{} as ParsedSchemaResponseBody['statuses']
+		{} as ParsedResponseBodySchema['statuses']
 	);
 };
 
 const getRequestBodySchema = (
-	schemaOperation: OpenAPI.Operation
-): ParsedSchemaRequestBody | null => {
-	const content = (schemaOperation as any).requestBody?.content;
+	operationSchema: OpenAPI.Operation
+): ParsedRequestBodySchema | null => {
+	const content = (operationSchema as any).requestBody?.content;
 	const requestContentType = supportedMediaTypes.find(
 		(supportedType) => content && content[supportedType]
 	);
@@ -187,15 +187,15 @@ const getRequestBodySchema = (
 };
 
 const getBodyParameter = (
-	schemaOperation: OpenAPI.Operation
-): ParsedSchemaRequestBody | null => {
+	operationSchema: OpenAPI.Operation
+): ParsedRequestBodySchema | null => {
 	const parameterGroup = getParameterGroup(
-		(schemaOperation.parameters || []) as Parameter[]
+		(operationSchema.parameters || []) as Parameter[]
 	);
 
 	let schema: Schema | null = null;
-	let requestType: ParsedSchemaRequestBody['type'] | null = null;
-	let requestContentType: ParsedSchemaRequestBody['contentType'] | null =
+	let requestType: ParsedRequestBodySchema['type'] | null = null;
+	let requestContentType: ParsedRequestBodySchema['contentType'] | null =
 		null;
 	if (parameterGroup['body'] && parameterGroup['body'].length > 0) {
 		requestType = 'json';
@@ -209,8 +209,8 @@ const getBodyParameter = (
 	} else if (parameterGroup['formData']) {
 		requestType = 'form';
 		requestContentType =
-			'consumes' in schemaOperation &&
-			(schemaOperation.consumes || []).includes('multipart/form-data')
+			'consumes' in operationSchema &&
+			(operationSchema.consumes || []).includes('multipart/form-data')
 				? 'multipart/form-data'
 				: 'application/x-www-form-urlencoded';
 		const bodyParameters = parameterGroup['formData'];

@@ -2,7 +2,7 @@ import prettier from 'prettier';
 import fs from 'fs-extra';
 import {
 	generate,
-	ParsedSchemaOperation,
+	ParsedOperationSchema,
 	Schema,
 } from '@vdtn359/api-tools-core';
 import os from 'os';
@@ -28,7 +28,7 @@ export const toTsType = async (schema: Schema | null) => {
 	return toTsTypes([schema]);
 };
 
-export const toTsTypes = async (schema: ParsedSchemaOperation | Schema[]) => {
+export const toTsTypes = async (schema: ParsedOperationSchema | Schema[]) => {
 	return (await generate(schema))
 		.replace(/^declare interface/gm, 'export interface')
 		.replace(/^declare type/gm, 'export type')

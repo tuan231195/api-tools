@@ -9,20 +9,20 @@ export const getByOperationId = (
 	for (const pathName of Object.keys(document.paths)) {
 		const schemaPathComponent = document.paths[pathName] || {};
 		for (const methodName of HTTP_METHODS) {
-			const schemaOperationComponent = schemaPathComponent[methodName];
+			const operationSchemaComponent = schemaPathComponent[methodName];
 			if (
 				!(
-					schemaOperationComponent &&
-					schemaOperationComponent.operationId !== operationId
+					operationSchemaComponent &&
+					operationSchemaComponent.operationId !== operationId
 				)
 			) {
 				continue;
 			}
 			return {
-				operationId: schemaOperationComponent.operationId!,
+				operationId: operationSchemaComponent.operationId!,
 				method: methodName,
 				path: pathName,
-				operation: schemaOperationComponent,
+				operation: operationSchemaComponent,
 			};
 		}
 	}
@@ -38,14 +38,14 @@ export const getByMethodAndPath = (
 	if (!schemaPathComponent) {
 		return null;
 	}
-	const schemaOperationComponent = schemaPathComponent[method];
-	if (!schemaOperationComponent) {
+	const operationSchemaComponent = schemaPathComponent[method];
+	if (!operationSchemaComponent) {
 		return null;
 	}
 	return {
-		operationId: schemaOperationComponent.operationId!,
+		operationId: operationSchemaComponent.operationId!,
 		method,
 		path,
-		operation: schemaOperationComponent,
+		operation: operationSchemaComponent,
 	};
 };

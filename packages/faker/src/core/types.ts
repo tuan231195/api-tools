@@ -14,11 +14,13 @@ export type OverrideOptions = {
 	mergeOptions?: MergeWithCustomizer;
 };
 
-export type OperationIdOverrideOptions = OverrideOptions & {
-	operationId: string;
-};
-
-export type MethodPathOverrideOptions = OverrideOptions & {
-	methodName: HttpMethod;
-	path: string;
-};
+export type OperationOverrideOptions = OverrideOptions &
+	(
+		| {
+				operationId: string;
+		  }
+		| {
+				methodName: HttpMethod;
+				path: string;
+		  }
+	);

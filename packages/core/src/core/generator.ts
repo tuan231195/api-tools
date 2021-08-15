@@ -1,8 +1,8 @@
-import { ParsedSchemaOperation, Schema } from 'src/types';
+import { ParsedOperationSchema, Schema } from 'src/types';
 import dtsGenerator, { Options } from 'dtsgenerator';
 
 export const generate = async (
-	parsedSchema: ParsedSchemaOperation | Schema[],
+	parsedSchema: ParsedOperationSchema | Schema[],
 	config: Options['config'] = {}
 ) => {
 	const contents = Array.isArray(parsedSchema)

@@ -21,21 +21,21 @@ export const supportedMediaTypes = [
 
 type SUPPORT_MEDIA_TYPE = typeof supportedMediaTypes[number];
 
-export type ParsedSchemaOperation = {
+export type ParsedOperationSchema = {
 	params: Schema | null;
 	queries: Schema | null;
 	headers: Schema | null;
-	requestBody: ParsedSchemaRequestBody | null;
-	responseBody: ParsedSchemaResponseBody;
+	requestBody: ParsedRequestBodySchema | null;
+	responseBody: ParsedResponseBodySchema;
 };
 
-export type ParsedSchemaRequestBody = {
+export type ParsedRequestBodySchema = {
 	type: 'json' | 'form';
 	contentType: SUPPORT_MEDIA_TYPE;
 	schema: Schema;
 };
 
-export type ParsedSchemaResponseBody = {
+export type ParsedResponseBodySchema = {
 	statuses: Record<number, Schema>;
 	all: Schema | null;
 	success: Schema | null;
@@ -50,10 +50,9 @@ export type Operation = {
 	operation: OpenAPI.Operation;
 };
 
-export type ParsedSchema = Record<
-	string,
-	{
-		schema: ParsedSchemaOperation;
-		operation: Operation;
-	}
->;
+export type ParsedOperationSchemaWithInfo = {
+	info: Operation;
+	schema: ParsedOperationSchema;
+};
+
+export type ParsedSchema = Record<string, ParsedOperationSchemaWithInfo>;

@@ -1,7 +1,7 @@
 import { kebabCase, omitBy } from 'lodash';
 import {
 	parse,
-	ParsedSchemaOperation,
+	ParsedOperationSchema,
 	promiseAll,
 } from '@vdtn359/api-tools-core';
 import path from 'path';
@@ -12,27 +12,27 @@ import os from 'os';
 import { generate } from 'src/core/jsf';
 import { FakeOperation } from 'src/core/types';
 
-export const generateFakerOperation = async (
-	schemaOperation: ParsedSchemaOperation
+export const fakeOperation = async (
+	operationSchema: ParsedOperationSchema
 ): Promise<FakeOperation> => {
 	const defaultResponse = Object.entries(
-		schemaOperation.responseBody.statuses
+		operationSchema.responseBody.statuses
 	).find(([key]) => {
 		const statusCode = parseInt(key, 10);
 		return statusCode >= 200 && statusCode < 300;
 	});
 	return promiseAll({
-		headers: schemaOperation.headers
-			? generate(schemaOperation.headers.content)
+		headers: operationSchema.headers
+			? generate(operationSchema.headers.content)
 			: null,
-		queries: schemaOperation.queries
-			? generate(schemaOperation.queries.content)
+		queries: operationSchema.queries
+			? generate(operationSchema.queries.content)
 			: null,
-		params: schemaOperation.params
-			? generate(schemaOperation.params.content)
+		params: operationSchema.params
+			? generate(operationSchema.params.content)
 			: null,
-		requestBody: schemaOperation.requestBody
-			? generate(schemaOperation.requestBody.schema.content)
+		requestBody: operationSchema.requestBody
+			? generate(operationSchema.requestBody.schema.content)
 			: null,
 		responseBody: defaultResponse
 			? generate(defaultResponse[1].content)
@@ -44,7 +44,7 @@ export const writeFake = async (uri: string, outDir: string) => {
 	const parsedSchema = await parse(uri);
 	await prepare(outDir);
 
-	for (const [operationId, { schema: schemaOperation }] of Object.entries(
+	for (const [operationId, { schema: operationSchema }] of Object.entries(
 		parsedSchema
 	)) {
 		try {
@@ -55,7 +55,7 @@ export const writeFake = async (uri: string, outDir: string) => {
 			logger(`Write ${operationId} to file ${writeFile}`);
 
 			const exampleObject = omitBy(
-				await generateFakerOperation(schemaOperation),
+				await fakeOperation(operationSchema),
 				(value) => value == null
 			);
 

@@ -1,7 +1,7 @@
 import {
 	parse,
 	ParsedSchema,
-	ParsedSchemaOperation,
+	ParsedOperationSchema,
 	promiseAll,
 	Schema,
 	validate,
@@ -55,7 +55,7 @@ const generateOperations = async (
 ) => {
 	await Promise.all(
 		Object.entries(parsedSchema).map(
-			async ([operationId, { schema: operationSchema, operation }]) => {
+			async ([operationId, { schema: operationSchema, info }]) => {
 				try {
 					const writeFile = path.resolve(
 						outDir,
@@ -68,8 +68,8 @@ const generateOperations = async (
 
 					const templateContent = operationTemplate(
 						promiseAll({
-							url: createUrl(operation.path),
-							httpMethod: operation.method,
+							url: createUrl(info.path),
+							httpMethod: info.method,
 							hasHeaders: !!operationSchema.headers,
 							hasParams: !!operationSchema.params,
 							hasQueries: !!operationSchema.queries,
@@ -100,7 +100,7 @@ const generateOperations = async (
 	);
 };
 
-const getSuccessResponseSchema = (schema: ParsedSchemaOperation) => {
+const getSuccessResponseSchema = (schema: ParsedOperationSchema) => {
 	const successResponses: Schema[] = Object.entries(
 		schema.responseBody.statuses
 	)
