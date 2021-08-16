@@ -1,0 +1,2368 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateAxiosTypes /v2/petstore.json 1`] = `
+Object {
+  "add-pet.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/pet\`,
+		method: 'POST',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	await operationWithAxiosResponse(axios, request);
+};
+
+export interface RequestBody {
+	id?: number; // int64
+	category?: {
+		id?: number; // int64
+		name?: string;
+	};
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Request = {
+	body: RequestBody;
+};
+
+export type Response = void;
+",
+  "create-user.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/user\`,
+		method: 'POST',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface RequestBody {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}
+
+export type Request = {
+	body: RequestBody;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "create-users-with-array-input.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/user/createWithArray\`,
+		method: 'POST',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export type RequestBody = {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}[];
+
+export type Request = {
+	body: RequestBody;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "create-users-with-list-input.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/user/createWithList\`,
+		method: 'POST',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export type RequestBody = {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}[];
+
+export type Request = {
+	body: RequestBody;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "delete-order.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/store/order/\${encodeURIComponent(
+			request.path['orderId'] as any
+		)}\`,
+		method: 'DELETE',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	await operationWithAxiosResponse(axios, request);
+};
+
+export interface Path {
+	/**
+	 * ID of the order that needs to be deleted
+	 */
+	orderId: number; // int64
+}
+
+export type Request = {
+	path: Path;
+};
+
+export type Response = void;
+",
+  "delete-pet.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/pet/\${encodeURIComponent(request.path['petId'] as any)}\`,
+		method: 'DELETE',
+		headers: request.headers,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	await operationWithAxiosResponse(axios, request);
+};
+
+export interface Header {
+	api_key?: string;
+}
+
+export interface Path {
+	/**
+	 * Pet id to delete
+	 */
+	petId: number; // int64
+}
+
+export type Request = {
+	path: Path;
+	headers: Header;
+};
+
+export type Response = void;
+",
+  "delete-user.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/user/\${encodeURIComponent(request.path['username'] as any)}\`,
+		method: 'DELETE',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	await operationWithAxiosResponse(axios, request);
+};
+
+export interface Path {
+	/**
+	 * The name that needs to be deleted
+	 */
+	username: string;
+}
+
+export type Request = {
+	path: Path;
+};
+
+export type Response = void;
+",
+  "find-pets-by-status.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/pet/findByStatus\`,
+		method: 'GET',
+		params: request.query,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Query {
+	/**
+	 * Status values that need to be considered for filter
+	 */
+	status: ('available' | 'pending' | 'sold')[];
+}
+
+export type Request = {
+	query: Query;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "find-pets-by-tags.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/pet/findByTags\`,
+		method: 'GET',
+		params: request.query,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Query {
+	/**
+	 * Tags to filter by
+	 */
+	tags: string[];
+}
+
+export type Request = {
+	query: Query;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "get-inventory.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/store/inventory\`,
+		method: 'GET',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export type Request = {};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "get-order-by-id.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/store/order/\${encodeURIComponent(
+			request.path['orderId'] as any
+		)}\`,
+		method: 'GET',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Path {
+	/**
+	 * ID of pet that needs to be fetched
+	 */
+	orderId: number; // int64
+}
+
+export type Request = {
+	path: Path;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "get-pet-by-id.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/pet/\${encodeURIComponent(request.path['petId'] as any)}\`,
+		method: 'GET',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Path {
+	/**
+	 * ID of pet to return
+	 */
+	petId: number; // int64
+}
+
+export type Request = {
+	path: Path;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "get-user-by-name.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/user/\${encodeURIComponent(request.path['username'] as any)}\`,
+		method: 'GET',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Path {
+	/**
+	 * The name that needs to be fetched. Use user1 for testing.
+	 */
+	username: string;
+}
+
+export type Request = {
+	path: Path;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "index.ts": "/* eslint-disable */
+import { AxiosInstance } from 'axios';
+import * as UploadFile from './upload-file';
+import * as AddPet from './add-pet';
+import * as FindPetsByStatus from './find-pets-by-status';
+import * as FindPetsByTags from './find-pets-by-tags';
+import * as GetPetById from './get-pet-by-id';
+import * as GetInventory from './get-inventory';
+import * as PlaceOrder from './place-order';
+import * as GetOrderById from './get-order-by-id';
+import * as CreateUsersWithListInput from './create-users-with-list-input';
+import * as GetUserByName from './get-user-by-name';
+import * as LoginUser from './login-user';
+import * as LogoutUser from './logout-user';
+import * as CreateUsersWithArrayInput from './create-users-with-array-input';
+import * as CreateUser from './create-user';
+import * as UpdatePet from './update-pet';
+import * as UpdatePetWithForm from './update-pet-with-form';
+import * as DeleteOrder from './delete-order';
+import * as UpdateUser from './update-user';
+import * as DeletePet from './delete-pet';
+import * as DeleteUser from './delete-user';
+
+type UploadFileRequest = UploadFile.Request;
+type UploadFileResponse = UploadFile.Response;
+type AddPetRequest = AddPet.Request;
+
+type FindPetsByStatusRequest = FindPetsByStatus.Request;
+type FindPetsByStatusResponse = FindPetsByStatus.Response;
+type FindPetsByTagsRequest = FindPetsByTags.Request;
+type FindPetsByTagsResponse = FindPetsByTags.Response;
+type GetPetByIdRequest = GetPetById.Request;
+type GetPetByIdResponse = GetPetById.Response;
+type GetInventoryRequest = GetInventory.Request;
+type GetInventoryResponse = GetInventory.Response;
+type PlaceOrderRequest = PlaceOrder.Request;
+type PlaceOrderResponse = PlaceOrder.Response;
+type GetOrderByIdRequest = GetOrderById.Request;
+type GetOrderByIdResponse = GetOrderById.Response;
+type CreateUsersWithListInputRequest = CreateUsersWithListInput.Request;
+type CreateUsersWithListInputResponse = CreateUsersWithListInput.Response;
+type GetUserByNameRequest = GetUserByName.Request;
+type GetUserByNameResponse = GetUserByName.Response;
+type LoginUserRequest = LoginUser.Request;
+type LoginUserResponse = LoginUser.Response;
+type LogoutUserRequest = LogoutUser.Request;
+type LogoutUserResponse = LogoutUser.Response;
+type CreateUsersWithArrayInputRequest = CreateUsersWithArrayInput.Request;
+type CreateUsersWithArrayInputResponse = CreateUsersWithArrayInput.Response;
+type CreateUserRequest = CreateUser.Request;
+type CreateUserResponse = CreateUser.Response;
+type UpdatePetRequest = UpdatePet.Request;
+
+type UpdatePetWithFormRequest = UpdatePetWithForm.Request;
+
+type DeleteOrderRequest = DeleteOrder.Request;
+
+type UpdateUserRequest = UpdateUser.Request;
+
+type DeletePetRequest = DeletePet.Request;
+
+type DeleteUserRequest = DeleteUser.Request;
+
+const operations = {
+	uploadFile: UploadFile.operation,
+	addPet: AddPet.operation,
+	findPetsByStatus: FindPetsByStatus.operation,
+	findPetsByTags: FindPetsByTags.operation,
+	getPetById: GetPetById.operation,
+	getInventory: GetInventory.operation,
+	placeOrder: PlaceOrder.operation,
+	getOrderById: GetOrderById.operation,
+	createUsersWithListInput: CreateUsersWithListInput.operation,
+	getUserByName: GetUserByName.operation,
+	loginUser: LoginUser.operation,
+	logoutUser: LogoutUser.operation,
+	createUsersWithArrayInput: CreateUsersWithArrayInput.operation,
+	createUser: CreateUser.operation,
+	updatePet: UpdatePet.operation,
+	updatePetWithForm: UpdatePetWithForm.operation,
+	deleteOrder: DeleteOrder.operation,
+	updateUser: UpdateUser.operation,
+	deletePet: DeletePet.operation,
+	deleteUser: DeleteUser.operation,
+};
+
+const operationsWithAxiosResponse = {
+	uploadFile: UploadFile.operationWithAxiosResponse,
+	addPet: AddPet.operationWithAxiosResponse,
+	findPetsByStatus: FindPetsByStatus.operationWithAxiosResponse,
+	findPetsByTags: FindPetsByTags.operationWithAxiosResponse,
+	getPetById: GetPetById.operationWithAxiosResponse,
+	getInventory: GetInventory.operationWithAxiosResponse,
+	placeOrder: PlaceOrder.operationWithAxiosResponse,
+	getOrderById: GetOrderById.operationWithAxiosResponse,
+	createUsersWithListInput:
+		CreateUsersWithListInput.operationWithAxiosResponse,
+	getUserByName: GetUserByName.operationWithAxiosResponse,
+	loginUser: LoginUser.operationWithAxiosResponse,
+	logoutUser: LogoutUser.operationWithAxiosResponse,
+	createUsersWithArrayInput:
+		CreateUsersWithArrayInput.operationWithAxiosResponse,
+	createUser: CreateUser.operationWithAxiosResponse,
+	updatePet: UpdatePet.operationWithAxiosResponse,
+	updatePetWithForm: UpdatePetWithForm.operationWithAxiosResponse,
+	deleteOrder: DeleteOrder.operationWithAxiosResponse,
+	updateUser: UpdateUser.operationWithAxiosResponse,
+	deletePet: DeletePet.operationWithAxiosResponse,
+	deleteUser: DeleteUser.operationWithAxiosResponse,
+};
+
+export type OmitFirstArgs<T> = {
+	[K in keyof T]: T[K] extends (firstArg: any, ...rest: infer Args) => infer R
+		? (...args: Args) => R
+		: never;
+};
+
+export type ApiClient = OmitFirstArgs<typeof operations>;
+
+export const createClient = (axios: AxiosInstance): ApiClient => {
+	const apiClient = {};
+	for (let [name, operation] of Object.entries(operations)) {
+		// @ts-ignore
+		apiClient[name] = (...args: any[]) => operation(axios, ...args);
+	}
+
+	return apiClient as ApiClient;
+};
+
+export type ApiClientWithAxiosResponse = OmitFirstArgs<
+	typeof operationsWithAxiosResponse
+>;
+
+export const createClientWithAxiosResponse = (
+	axios: AxiosInstance
+): ApiClientWithAxiosResponse => {
+	const apiClient = {};
+	for (let [name, operation] of Object.entries(operationsWithAxiosResponse)) {
+		// @ts-ignore
+		apiClient[name] = (...args: any[]) => operation(axios, ...args);
+	}
+
+	return apiClient as ApiClientWithAxiosResponse;
+};
+
+export {
+	UploadFileRequest,
+	UploadFileResponse,
+	AddPetRequest,
+	FindPetsByStatusRequest,
+	FindPetsByStatusResponse,
+	FindPetsByTagsRequest,
+	FindPetsByTagsResponse,
+	GetPetByIdRequest,
+	GetPetByIdResponse,
+	GetInventoryRequest,
+	GetInventoryResponse,
+	PlaceOrderRequest,
+	PlaceOrderResponse,
+	GetOrderByIdRequest,
+	GetOrderByIdResponse,
+	CreateUsersWithListInputRequest,
+	CreateUsersWithListInputResponse,
+	GetUserByNameRequest,
+	GetUserByNameResponse,
+	LoginUserRequest,
+	LoginUserResponse,
+	LogoutUserRequest,
+	LogoutUserResponse,
+	CreateUsersWithArrayInputRequest,
+	CreateUsersWithArrayInputResponse,
+	CreateUserRequest,
+	CreateUserResponse,
+	UpdatePetRequest,
+	UpdatePetWithFormRequest,
+	DeleteOrderRequest,
+	UpdateUserRequest,
+	DeletePetRequest,
+	DeleteUserRequest,
+};
+",
+  "login-user.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/user/login\`,
+		method: 'GET',
+		params: request.query,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Query {
+	/**
+	 * The user name for login
+	 */
+	username: string;
+	/**
+	 * The password for login in clear text
+	 */
+	password: string;
+}
+
+export type Request = {
+	query: Query;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "logout-user.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/user/logout\`,
+		method: 'GET',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export type Request = {};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "place-order.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/store/order\`,
+		method: 'POST',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface RequestBody {
+	id?: number; // int64
+	petId?: number; // int64
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
+
+export type Request = {
+	body: RequestBody;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "update-pet-with-form.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = new FormData();
+	for (const [key, value] of Object.entries(request.body)) {
+		requestBody.append(key, value);
+	}
+
+	return axios.request({
+		url: \`/pet/\${encodeURIComponent(request.path['petId'] as any)}\`,
+		method: 'POST',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	await operationWithAxiosResponse(axios, request);
+};
+
+export interface Path {
+	/**
+	 * ID of pet that needs to be updated
+	 */
+	petId: number; // int64
+}
+
+export interface RequestBody {
+	/**
+	 * Updated name of the pet
+	 */
+	name?: string;
+	/**
+	 * Updated status of the pet
+	 */
+	status?: string;
+}
+
+export type Request = {
+	path: Path;
+	body: RequestBody;
+};
+
+export type Response = void;
+",
+  "update-pet.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/pet\`,
+		method: 'PUT',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	await operationWithAxiosResponse(axios, request);
+};
+
+export interface RequestBody {
+	id?: number; // int64
+	category?: {
+		id?: number; // int64
+		name?: string;
+	};
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Request = {
+	body: RequestBody;
+};
+
+export type Response = void;
+",
+  "update-user.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/user/\${encodeURIComponent(request.path['username'] as any)}\`,
+		method: 'PUT',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	await operationWithAxiosResponse(axios, request);
+};
+
+export interface Path {
+	/**
+	 * name that need to be updated
+	 */
+	username: string;
+}
+
+export interface RequestBody {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}
+
+export type Request = {
+	path: Path;
+	body: RequestBody;
+};
+
+export type Response = void;
+",
+  "upload-file.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = new FormData();
+	for (const [key, value] of Object.entries(request.body)) {
+		requestBody.append(key, value);
+	}
+
+	return axios.request({
+		url: \`/pet/\${encodeURIComponent(
+			request.path['petId'] as any
+		)}/uploadImage\`,
+		method: 'POST',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Path {
+	/**
+	 * ID of pet to update
+	 */
+	petId: number; // int64
+}
+
+export interface RequestBody {
+	/**
+	 * Additional data to pass to server
+	 */
+	additionalMetadata?: string;
+	/**
+	 * file to upload
+	 */
+	file?: unknown;
+}
+
+export type Request = {
+	path: Path;
+	body: RequestBody;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+}
+`;
+
+exports[`generateAxiosTypes /v3/petstore.json 1`] = `
+Object {
+  "add-pet.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/pet\`,
+		method: 'POST',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Request = {
+	body: RequestBody;
+};
+
+export type Response = Response200;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+",
+  "create-user.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/user\`,
+		method: 'POST',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}
+
+export type Request = {
+	body: RequestBody;
+};
+
+export type Response = Response200;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}
+",
+  "create-users-with-array-input.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/user/createWithArray\`,
+		method: 'POST',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export type RequestBody = {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}[];
+
+export type Request = {
+	body: RequestBody;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "create-users-with-list-input.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/user/createWithList\`,
+		method: 'POST',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export type RequestBody = {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}[];
+
+export type Request = {
+	body: RequestBody;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "delete-order.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/store/order/\${encodeURIComponent(
+			request.path['orderId'] as any
+		)}\`,
+		method: 'DELETE',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	await operationWithAxiosResponse(axios, request);
+};
+
+export interface Path {
+	orderId: number; // int64
+}
+
+export type Request = {
+	path: Path;
+};
+
+export type Response = void;
+",
+  "delete-pet.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/pet/\${encodeURIComponent(request.path['petId'] as any)}\`,
+		method: 'DELETE',
+		headers: request.headers,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	await operationWithAxiosResponse(axios, request);
+};
+
+export interface Header {
+	api_key?: string;
+}
+
+export interface Path {
+	petId: number; // int64
+}
+
+export type Request = {
+	path: Path;
+	headers: Header;
+};
+
+export type Response = void;
+",
+  "delete-user.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/user/\${encodeURIComponent(request.path['username'] as any)}\`,
+		method: 'DELETE',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	await operationWithAxiosResponse(axios, request);
+};
+
+export interface Path {
+	username: string;
+}
+
+export type Request = {
+	path: Path;
+};
+
+export type Response = void;
+",
+  "find-pets-by-status.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/pet/findByStatus\`,
+		method: 'GET',
+		params: request.query,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Query {
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Request = {
+	query: Query;
+};
+
+export type Response = Response200;
+
+export type Response200 = {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}[];
+",
+  "find-pets-by-tags.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/pet/findByTags\`,
+		method: 'GET',
+		params: request.query,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Query {
+	tags?: string[];
+}
+
+export type Request = {
+	query: Query;
+};
+
+export type Response = Response200;
+
+export type Response200 = {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}[];
+",
+  "get-inventory.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/store/inventory\`,
+		method: 'GET',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export type Request = {};
+
+export type Response = Response200;
+
+export interface Response200 {
+	[name: string]: number; // int32
+}
+",
+  "get-order-by-id.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/store/order/\${encodeURIComponent(
+			request.path['orderId'] as any
+		)}\`,
+		method: 'GET',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Path {
+	orderId: number; // int64
+}
+
+export type Request = {
+	path: Path;
+};
+
+export type Response = Response200;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * 198772
+	 */
+	petId?: number; // int64
+	/**
+	 * example:
+	 * 7
+	 */
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 * example:
+	 * approved
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
+",
+  "get-pet-by-id.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/pet/\${encodeURIComponent(request.path['petId'] as any)}\`,
+		method: 'GET',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Path {
+	petId: number; // int64
+}
+
+export type Request = {
+	path: Path;
+};
+
+export type Response = Response200;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+",
+  "get-user-by-name.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/user/\${encodeURIComponent(request.path['username'] as any)}\`,
+		method: 'GET',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Path {
+	username: string;
+}
+
+export type Request = {
+	path: Path;
+};
+
+export type Response = Response200;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}
+",
+  "index.ts": "/* eslint-disable */
+import { AxiosInstance } from 'axios';
+import * as AddPet from './add-pet';
+import * as FindPetsByStatus from './find-pets-by-status';
+import * as FindPetsByTags from './find-pets-by-tags';
+import * as GetPetById from './get-pet-by-id';
+import * as UploadFile from './upload-file';
+import * as GetInventory from './get-inventory';
+import * as PlaceOrder from './place-order';
+import * as GetOrderById from './get-order-by-id';
+import * as CreateUser from './create-user';
+import * as CreateUsersWithListInput from './create-users-with-list-input';
+import * as LoginUser from './login-user';
+import * as LogoutUser from './logout-user';
+import * as GetUserByName from './get-user-by-name';
+import * as UpdatePet from './update-pet';
+import * as UpdatePetWithForm from './update-pet-with-form';
+import * as DeleteOrder from './delete-order';
+import * as UpdateUser from './update-user';
+import * as DeletePet from './delete-pet';
+import * as DeleteUser from './delete-user';
+
+type AddPetRequest = AddPet.Request;
+type AddPetResponse = AddPet.Response;
+type FindPetsByStatusRequest = FindPetsByStatus.Request;
+type FindPetsByStatusResponse = FindPetsByStatus.Response;
+type FindPetsByTagsRequest = FindPetsByTags.Request;
+type FindPetsByTagsResponse = FindPetsByTags.Response;
+type GetPetByIdRequest = GetPetById.Request;
+type GetPetByIdResponse = GetPetById.Response;
+type UploadFileRequest = UploadFile.Request;
+type UploadFileResponse = UploadFile.Response;
+type GetInventoryRequest = GetInventory.Request;
+type GetInventoryResponse = GetInventory.Response;
+type PlaceOrderRequest = PlaceOrder.Request;
+type PlaceOrderResponse = PlaceOrder.Response;
+type GetOrderByIdRequest = GetOrderById.Request;
+type GetOrderByIdResponse = GetOrderById.Response;
+type CreateUserRequest = CreateUser.Request;
+type CreateUserResponse = CreateUser.Response;
+type CreateUsersWithListInputRequest = CreateUsersWithListInput.Request;
+type CreateUsersWithListInputResponse = CreateUsersWithListInput.Response;
+type LoginUserRequest = LoginUser.Request;
+type LoginUserResponse = LoginUser.Response;
+type LogoutUserRequest = LogoutUser.Request;
+type LogoutUserResponse = LogoutUser.Response;
+type GetUserByNameRequest = GetUserByName.Request;
+type GetUserByNameResponse = GetUserByName.Response;
+type UpdatePetRequest = UpdatePet.Request;
+type UpdatePetResponse = UpdatePet.Response;
+type UpdatePetWithFormRequest = UpdatePetWithForm.Request;
+
+type DeleteOrderRequest = DeleteOrder.Request;
+
+type UpdateUserRequest = UpdateUser.Request;
+type UpdateUserResponse = UpdateUser.Response;
+type DeletePetRequest = DeletePet.Request;
+
+type DeleteUserRequest = DeleteUser.Request;
+
+const operations = {
+	addPet: AddPet.operation,
+	findPetsByStatus: FindPetsByStatus.operation,
+	findPetsByTags: FindPetsByTags.operation,
+	getPetById: GetPetById.operation,
+	uploadFile: UploadFile.operation,
+	getInventory: GetInventory.operation,
+	placeOrder: PlaceOrder.operation,
+	getOrderById: GetOrderById.operation,
+	createUser: CreateUser.operation,
+	createUsersWithListInput: CreateUsersWithListInput.operation,
+	loginUser: LoginUser.operation,
+	logoutUser: LogoutUser.operation,
+	getUserByName: GetUserByName.operation,
+	updatePet: UpdatePet.operation,
+	updatePetWithForm: UpdatePetWithForm.operation,
+	deleteOrder: DeleteOrder.operation,
+	updateUser: UpdateUser.operation,
+	deletePet: DeletePet.operation,
+	deleteUser: DeleteUser.operation,
+};
+
+const operationsWithAxiosResponse = {
+	addPet: AddPet.operationWithAxiosResponse,
+	findPetsByStatus: FindPetsByStatus.operationWithAxiosResponse,
+	findPetsByTags: FindPetsByTags.operationWithAxiosResponse,
+	getPetById: GetPetById.operationWithAxiosResponse,
+	uploadFile: UploadFile.operationWithAxiosResponse,
+	getInventory: GetInventory.operationWithAxiosResponse,
+	placeOrder: PlaceOrder.operationWithAxiosResponse,
+	getOrderById: GetOrderById.operationWithAxiosResponse,
+	createUser: CreateUser.operationWithAxiosResponse,
+	createUsersWithListInput:
+		CreateUsersWithListInput.operationWithAxiosResponse,
+	loginUser: LoginUser.operationWithAxiosResponse,
+	logoutUser: LogoutUser.operationWithAxiosResponse,
+	getUserByName: GetUserByName.operationWithAxiosResponse,
+	updatePet: UpdatePet.operationWithAxiosResponse,
+	updatePetWithForm: UpdatePetWithForm.operationWithAxiosResponse,
+	deleteOrder: DeleteOrder.operationWithAxiosResponse,
+	updateUser: UpdateUser.operationWithAxiosResponse,
+	deletePet: DeletePet.operationWithAxiosResponse,
+	deleteUser: DeleteUser.operationWithAxiosResponse,
+};
+
+export type OmitFirstArgs<T> = {
+	[K in keyof T]: T[K] extends (firstArg: any, ...rest: infer Args) => infer R
+		? (...args: Args) => R
+		: never;
+};
+
+export type ApiClient = OmitFirstArgs<typeof operations>;
+
+export const createClient = (axios: AxiosInstance): ApiClient => {
+	const apiClient = {};
+	for (let [name, operation] of Object.entries(operations)) {
+		// @ts-ignore
+		apiClient[name] = (...args: any[]) => operation(axios, ...args);
+	}
+
+	return apiClient as ApiClient;
+};
+
+export type ApiClientWithAxiosResponse = OmitFirstArgs<
+	typeof operationsWithAxiosResponse
+>;
+
+export const createClientWithAxiosResponse = (
+	axios: AxiosInstance
+): ApiClientWithAxiosResponse => {
+	const apiClient = {};
+	for (let [name, operation] of Object.entries(operationsWithAxiosResponse)) {
+		// @ts-ignore
+		apiClient[name] = (...args: any[]) => operation(axios, ...args);
+	}
+
+	return apiClient as ApiClientWithAxiosResponse;
+};
+
+export {
+	AddPetRequest,
+	AddPetResponse,
+	FindPetsByStatusRequest,
+	FindPetsByStatusResponse,
+	FindPetsByTagsRequest,
+	FindPetsByTagsResponse,
+	GetPetByIdRequest,
+	GetPetByIdResponse,
+	UploadFileRequest,
+	UploadFileResponse,
+	GetInventoryRequest,
+	GetInventoryResponse,
+	PlaceOrderRequest,
+	PlaceOrderResponse,
+	GetOrderByIdRequest,
+	GetOrderByIdResponse,
+	CreateUserRequest,
+	CreateUserResponse,
+	CreateUsersWithListInputRequest,
+	CreateUsersWithListInputResponse,
+	LoginUserRequest,
+	LoginUserResponse,
+	LogoutUserRequest,
+	LogoutUserResponse,
+	GetUserByNameRequest,
+	GetUserByNameResponse,
+	UpdatePetRequest,
+	UpdatePetResponse,
+	UpdatePetWithFormRequest,
+	DeleteOrderRequest,
+	UpdateUserRequest,
+	UpdateUserResponse,
+	DeletePetRequest,
+	DeleteUserRequest,
+};
+",
+  "login-user.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/user/login\`,
+		method: 'GET',
+		params: request.query,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Query {
+	username?: string;
+	password?: string;
+}
+
+export type Request = {
+	query: Query;
+};
+
+export type Response = Response200;
+
+export type Response200 = string;
+",
+  "logout-user.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/user/logout\`,
+		method: 'GET',
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export type Request = {};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "place-order.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/store/order\`,
+		method: 'POST',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * 198772
+	 */
+	petId?: number; // int64
+	/**
+	 * example:
+	 * 7
+	 */
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 * example:
+	 * approved
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
+
+export type Request = {
+	body: RequestBody;
+};
+
+export type Response = Response200;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * 198772
+	 */
+	petId?: number; // int64
+	/**
+	 * example:
+	 * 7
+	 */
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 * example:
+	 * approved
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
+",
+  "update-pet-with-form.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/pet/\${encodeURIComponent(request.path['petId'] as any)}\`,
+		method: 'POST',
+		params: request.query,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	await operationWithAxiosResponse(axios, request);
+};
+
+export interface Query {
+	name?: string;
+	status?: string;
+}
+
+export interface Path {
+	petId: number; // int64
+}
+
+export type Request = {
+	path: Path;
+	query: Query;
+};
+
+export type Response = void;
+",
+  "update-pet.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/pet\`,
+		method: 'PUT',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Request = {
+	body: RequestBody;
+};
+
+export type Response = Response200;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+",
+  "update-user.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	const requestBody = request.body;
+
+	return axios.request({
+		url: \`/user/\${encodeURIComponent(request.path['username'] as any)}\`,
+		method: 'PUT',
+		data: requestBody,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Path {
+	username: string;
+}
+
+export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}
+
+export type Request = {
+	path: Path;
+	body: RequestBody;
+};
+
+export type Response = Response200;
+
+export type Response200 = void;
+",
+  "upload-file.ts": "/* eslint-disable */
+import { AxiosInstance, AxiosResponse } from 'axios';
+
+export const operationWithAxiosResponse = (
+	axios: AxiosInstance,
+	request: Request
+): Promise<AxiosResponse<Response>> => {
+	return axios.request({
+		url: \`/pet/\${encodeURIComponent(
+			request.path['petId'] as any
+		)}/uploadImage\`,
+		method: 'POST',
+		params: request.query,
+	});
+};
+
+export const operation = async (
+	axios: AxiosInstance,
+	request: Request
+): Promise<Response> => {
+	return (await operationWithAxiosResponse(axios, request)).data;
+};
+
+export interface Query {
+	additionalMetadata?: string;
+}
+
+export interface Path {
+	petId: number; // int64
+}
+
+export type Request = {
+	path: Path;
+	query: Query;
+};
+
+export type Response = Response200;
+
+export interface Response200 {
+	code?: number; // int32
+	type?: string;
+	message?: string;
+}
+",
+}
+`;

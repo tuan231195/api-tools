@@ -1,7 +1,7 @@
 import {
 	parse,
-	ParsedSchema,
 	ParsedOperationSchema,
+	ParsedSchema,
 	promiseAll,
 	Schema,
 } from '@vdtn359/api-tools-core';
@@ -12,14 +12,6 @@ import { kebabCase } from 'lodash';
 import { compileTemplate } from 'src/templates';
 import { prepare, prettify, toTsType, toTsTypes } from 'src/generators/utils';
 
-const operationTemplate = compileTemplate(
-	path.resolve(__dirname, '..', 'templates', 'axios', 'operation.hbs')
-);
-
-const indexTemplate = compileTemplate(
-	path.resolve(__dirname, '..', 'templates', 'axios', 'index.hbs')
-);
-
 export const generateAxiosTypes = async (uri: string, outDir: string) => {
 	const { schema: parsedSchema } = await parse(uri);
 	await prepare(outDir);
@@ -29,6 +21,9 @@ export const generateAxiosTypes = async (uri: string, outDir: string) => {
 };
 
 const generateIndex = async (parsedSchema: ParsedSchema, outDir: string) => {
+	const indexTemplate = compileTemplate(
+		path.resolve(__dirname, '..', 'templates', 'axios', 'index.hbs')
+	);
 	const operations = Object.entries(parsedSchema).map(
 		([operationId, { schema: operationSchema }]) => {
 			const successResponses = getSuccessResponseSchema(operationSchema);
@@ -51,6 +46,9 @@ const generateOperations = async (
 	parsedSchema: ParsedSchema,
 	outDir: string
 ) => {
+	const operationTemplate = compileTemplate(
+		path.resolve(__dirname, '..', 'templates', 'axios', 'operation.hbs')
+	);
 	await Promise.all(
 		Object.entries(parsedSchema).map(
 			async ([operationId, { schema: operationSchema, info }]) => {
@@ -65,7 +63,7 @@ const generateOperations = async (
 						getSuccessResponseSchema(operationSchema);
 
 					const templateContent = operationTemplate(
-						promiseAll({
+						await promiseAll({
 							url: createUrl(info.path),
 							httpMethod: info.method,
 							hasHeaders: !!operationSchema.headers,

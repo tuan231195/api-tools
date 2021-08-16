@@ -1,12 +1,4 @@
-import {
-	fromPairs,
-	kebabCase,
-	mapKeys,
-	mapValues,
-	mergeWith,
-	omit,
-	omitBy,
-} from 'lodash';
+import { kebabCase, mapKeys, mapValues, mergeWith, omit, omitBy } from 'lodash';
 import {
 	parse,
 	ParsedOperationSchema,

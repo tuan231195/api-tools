@@ -1,0 +1,981 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateTypescriptTypes /v2/petstore.json 1`] = `
+Object {
+  "add-pet.ts": "export interface RequestBody {
+	id?: number; // int64
+	category?: {
+		id?: number; // int64
+		name?: string;
+	};
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response405 = void;
+",
+  "create-user.ts": "export interface RequestBody {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}
+
+export type Response200 = void;
+",
+  "create-users-with-array-input.ts": "export type RequestBody = {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}[];
+
+export type Response200 = void;
+",
+  "create-users-with-list-input.ts": "export type RequestBody = {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}[];
+
+export type Response200 = void;
+",
+  "delete-order.ts": "export interface Path {
+	/**
+	 * ID of the order that needs to be deleted
+	 */
+	orderId: number; // int64
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+",
+  "delete-pet.ts": "export interface Header {
+	api_key?: string;
+}
+
+export interface Path {
+	/**
+	 * Pet id to delete
+	 */
+	petId: number; // int64
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+",
+  "delete-user.ts": "export interface Path {
+	/**
+	 * The name that needs to be deleted
+	 */
+	username: string;
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+",
+  "find-pets-by-status.ts": "export interface Query {
+	/**
+	 * Status values that need to be considered for filter
+	 */
+	status: ('available' | 'pending' | 'sold')[];
+}
+
+export type Response200 = void;
+
+export type Response400 = void;
+",
+  "find-pets-by-tags.ts": "export interface Query {
+	/**
+	 * Tags to filter by
+	 */
+	tags: string[];
+}
+
+export type Response200 = void;
+
+export type Response400 = void;
+",
+  "get-inventory.ts": "export type Response200 = void;
+",
+  "get-order-by-id.ts": "export interface Path {
+	/**
+	 * ID of pet that needs to be fetched
+	 */
+	orderId: number; // int64
+}
+
+export type Response200 = void;
+
+export type Response400 = void;
+
+export type Response404 = void;
+",
+  "get-pet-by-id.ts": "export interface Path {
+	/**
+	 * ID of pet to return
+	 */
+	petId: number; // int64
+}
+
+export type Response200 = void;
+
+export type Response400 = void;
+
+export type Response404 = void;
+",
+  "get-user-by-name.ts": "export interface Path {
+	/**
+	 * The name that needs to be fetched. Use user1 for testing.
+	 */
+	username: string;
+}
+
+export type Response200 = void;
+
+export type Response400 = void;
+
+export type Response404 = void;
+",
+  "login-user.ts": "export interface Query {
+	/**
+	 * The user name for login
+	 */
+	username: string;
+	/**
+	 * The password for login in clear text
+	 */
+	password: string;
+}
+
+export type Response200 = void;
+
+export type Response400 = void;
+",
+  "logout-user.ts": "export type Response200 = void;
+",
+  "place-order.ts": "export interface RequestBody {
+	id?: number; // int64
+	petId?: number; // int64
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
+
+export type Response200 = void;
+
+export type Response400 = void;
+",
+  "update-pet-with-form.ts": "export interface Path {
+	/**
+	 * ID of pet that needs to be updated
+	 */
+	petId: number; // int64
+}
+
+export interface RequestBody {
+	/**
+	 * Updated name of the pet
+	 */
+	name?: string;
+	/**
+	 * Updated status of the pet
+	 */
+	status?: string;
+}
+
+export type Response405 = void;
+",
+  "update-pet.ts": "export interface RequestBody {
+	id?: number; // int64
+	category?: {
+		id?: number; // int64
+		name?: string;
+	};
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+export type Response405 = void;
+",
+  "update-user.ts": "export interface Path {
+	/**
+	 * name that need to be updated
+	 */
+	username: string;
+}
+
+export interface RequestBody {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+",
+  "upload-file.ts": "export interface Path {
+	/**
+	 * ID of pet to update
+	 */
+	petId: number; // int64
+}
+
+export interface RequestBody {
+	/**
+	 * Additional data to pass to server
+	 */
+	additionalMetadata?: string;
+	/**
+	 * file to upload
+	 */
+	file?: unknown;
+}
+
+export type Response200 = void;
+",
+}
+`;
+
+exports[`generateTypescriptTypes /v3/petstore.json 1`] = `
+Object {
+  "add-pet.ts": "export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response405 = void;
+",
+  "create-user.ts": "export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}
+",
+  "create-users-with-array-input.ts": "export type RequestBody = {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}[];
+
+export type Response200 = void;
+",
+  "create-users-with-list-input.ts": "export type RequestBody = {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}[];
+
+export type Response200 = void;
+",
+  "delete-order.ts": "export interface Path {
+	orderId: number; // int64
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+",
+  "delete-pet.ts": "export interface Header {
+	api_key?: string;
+}
+
+export interface Path {
+	petId: number; // int64
+}
+
+export type Response400 = void;
+",
+  "delete-user.ts": "export interface Path {
+	username: string;
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+",
+  "find-pets-by-status.ts": "export interface Query {
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response200 = {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}[];
+
+export type Response400 = void;
+",
+  "find-pets-by-tags.ts": "export interface Query {
+	tags?: string[];
+}
+
+export type Response200 = {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}[];
+
+export type Response400 = void;
+",
+  "get-inventory.ts": "export interface Response200 {
+	[name: string]: number; // int32
+}
+",
+  "get-order-by-id.ts": "export interface Path {
+	orderId: number; // int64
+}
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * 198772
+	 */
+	petId?: number; // int64
+	/**
+	 * example:
+	 * 7
+	 */
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 * example:
+	 * approved
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+",
+  "get-pet-by-id.ts": "export interface Path {
+	petId: number; // int64
+}
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+",
+  "get-user-by-name.ts": "export interface Path {
+	username: string;
+}
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+",
+  "login-user.ts": "export interface Query {
+	username?: string;
+	password?: string;
+}
+
+export type Response200 = string;
+
+export type Response400 = void;
+",
+  "logout-user.ts": "export type Response200 = void;
+",
+  "place-order.ts": "export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * 198772
+	 */
+	petId?: number; // int64
+	/**
+	 * example:
+	 * 7
+	 */
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 * example:
+	 * approved
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * 198772
+	 */
+	petId?: number; // int64
+	/**
+	 * example:
+	 * 7
+	 */
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 * example:
+	 * approved
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
+
+export type Response405 = void;
+",
+  "update-pet-with-form.ts": "export interface Path {
+	petId: number; // int64
+}
+
+export interface Query {
+	name?: string;
+	status?: string;
+}
+
+export type Response405 = void;
+",
+  "update-pet.ts": "export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+export type Response405 = void;
+",
+  "update-user.ts": "export interface Path {
+	username: string;
+}
+
+export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}
+
+export type Response200 = void;
+",
+  "upload-file.ts": "export interface Path {
+	petId: number; // int64
+}
+
+export interface Query {
+	additionalMetadata?: string;
+}
+
+export interface Response200 {
+	code?: number; // int32
+	type?: string;
+	message?: string;
+}
+",
+}
+`;

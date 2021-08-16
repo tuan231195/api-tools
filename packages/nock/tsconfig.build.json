@@ -9,5 +9,8 @@
 		{
 			"path": "../faker/tsconfig.build.json"
 		}
-	]
+	],
+	"compilerOptions": {
+		"rootDir": "./src"
+	}
 }

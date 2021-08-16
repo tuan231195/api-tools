@@ -8,4 +8,10 @@ yargs
 	.command(require('./cli/express').default)
 	.command(require('./cli/typescript').default)
 	.strict(true)
-	.showHelpOnFail(false).argv;
+	.showHelpOnFail(false);
+
+if (require.main === module) {
+	yargs.argv;
+}
+
+export default yargs;

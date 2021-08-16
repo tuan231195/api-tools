@@ -1,0 +1,1885 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateExpressTypes /v2/petstore.json 1`] = `
+Object {
+  "add-pet.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface RequestBody {
+	id?: number; // int64
+	category?: {
+		id?: number; // int64
+		name?: string;
+	};
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response = Response405;
+
+export type Response405 = void;
+
+type StatusCodes = 405;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response405, {}, 405>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "create-user.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface RequestBody {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}
+
+export type Response = Response200;
+
+export type Response200 = void;
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "create-users-with-array-input.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export type RequestBody = {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}[];
+
+export type Response = Response200;
+
+export type Response200 = void;
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "create-users-with-list-input.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export type RequestBody = {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}[];
+
+export type Response = Response200;
+
+export type Response200 = void;
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "delete-order.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	/**
+	 * ID of the order that needs to be deleted
+	 */
+	orderId: number; // int64
+}
+
+export type Response = Response400 | Response404;
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+type StatusCodes = 400 | 404;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: express.Response<Response404, {}, 404>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "delete-pet.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Header {
+	api_key?: string;
+}
+
+export interface Path {
+	/**
+	 * Pet id to delete
+	 */
+	petId: number; // int64
+}
+
+export type Response = Response400 | Response404;
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+type StatusCodes = 400 | 404;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: express.Response<Response404, {}, 404>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "delete-user.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	/**
+	 * The name that needs to be deleted
+	 */
+	username: string;
+}
+
+export type Response = Response400 | Response404;
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+type StatusCodes = 400 | 404;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: express.Response<Response404, {}, 404>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "find-pets-by-status.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Query {
+	/**
+	 * Status values that need to be considered for filter
+	 */
+	status: ('available' | 'pending' | 'sold')[];
+}
+
+export type Response = Response200 | Response400;
+
+export type Response200 = void;
+
+export type Response400 = void;
+
+type StatusCodes = 200 | 400;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: express.Response<Response400, {}, 400>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, {}, Query>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "find-pets-by-tags.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Query {
+	/**
+	 * Tags to filter by
+	 */
+	tags: string[];
+}
+
+export type Response = Response200 | Response400;
+
+export type Response200 = void;
+
+export type Response400 = void;
+
+type StatusCodes = 200 | 400;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: express.Response<Response400, {}, 400>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, {}, Query>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "get-inventory.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export type Response = Response200;
+
+export type Response200 = void;
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "get-order-by-id.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	/**
+	 * ID of pet that needs to be fetched
+	 */
+	orderId: number; // int64
+}
+
+export type Response = Response200 | Response400 | Response404;
+
+export type Response200 = void;
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+type StatusCodes = 200 | 400 | 404;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: express.Response<Response404, {}, 404>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "get-pet-by-id.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	/**
+	 * ID of pet to return
+	 */
+	petId: number; // int64
+}
+
+export type Response = Response200 | Response400 | Response404;
+
+export type Response200 = void;
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+type StatusCodes = 200 | 400 | 404;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: express.Response<Response404, {}, 404>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "get-user-by-name.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	/**
+	 * The name that needs to be fetched. Use user1 for testing.
+	 */
+	username: string;
+}
+
+export type Response = Response200 | Response400 | Response404;
+
+export type Response200 = void;
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+type StatusCodes = 200 | 400 | 404;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: express.Response<Response404, {}, 404>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "login-user.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Query {
+	/**
+	 * The user name for login
+	 */
+	username: string;
+	/**
+	 * The password for login in clear text
+	 */
+	password: string;
+}
+
+export type Response = Response200 | Response400;
+
+export type Response200 = void;
+
+export type Response400 = void;
+
+type StatusCodes = 200 | 400;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: express.Response<Response400, {}, 400>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, {}, Query>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "logout-user.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export type Response = Response200;
+
+export type Response200 = void;
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "place-order.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface RequestBody {
+	id?: number; // int64
+	petId?: number; // int64
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
+
+export type Response = Response200 | Response400;
+
+export type Response200 = void;
+
+export type Response400 = void;
+
+type StatusCodes = 200 | 400;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: express.Response<Response400, {}, 400>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "update-pet-with-form.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	/**
+	 * ID of pet that needs to be updated
+	 */
+	petId: number; // int64
+}
+
+export interface RequestBody {
+	/**
+	 * Updated name of the pet
+	 */
+	name?: string;
+	/**
+	 * Updated status of the pet
+	 */
+	status?: string;
+}
+
+export type Response = Response405;
+
+export type Response405 = void;
+
+type StatusCodes = 405;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response405, {}, 405>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "update-pet.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface RequestBody {
+	id?: number; // int64
+	category?: {
+		id?: number; // int64
+		name?: string;
+	};
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response = Response400 | Response404 | Response405;
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+export type Response405 = void;
+
+type StatusCodes = 400 | 404 | 405;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: StatusCode extends 404
+		? express.Response<Response404, {}, 404>
+		: express.Response<Response405, {}, 405>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "update-user.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	/**
+	 * name that need to be updated
+	 */
+	username: string;
+}
+
+export interface RequestBody {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}
+
+export type Response = Response400 | Response404;
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+type StatusCodes = 400 | 404;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: express.Response<Response404, {}, 404>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "upload-file.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	/**
+	 * ID of pet to update
+	 */
+	petId: number; // int64
+}
+
+export interface RequestBody {
+	/**
+	 * Additional data to pass to server
+	 */
+	additionalMetadata?: string;
+	/**
+	 * file to upload
+	 */
+	file?: unknown;
+}
+
+export type Response = Response200;
+
+export type Response200 = void;
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+}
+`;
+
+exports[`generateExpressTypes /v3/petstore.json 1`] = `
+Object {
+  "add-pet.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response = Response200 | Response405;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response405 = void;
+
+type StatusCodes = 200 | 405;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: express.Response<Response405, {}, 405>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "create-user.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}
+
+export type Response = Response200;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "create-users-with-array-input.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export type RequestBody = {
+	id?: number; // int64
+	username?: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	password?: string;
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: number; // int32
+}[];
+
+export type Response = Response200;
+
+export type Response200 = void;
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "create-users-with-list-input.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export type RequestBody = {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}[];
+
+export type Response = Response200;
+
+export type Response200 = void;
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "delete-order.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	orderId: number; // int64
+}
+
+export type Response = Response400 | Response404;
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+type StatusCodes = 400 | 404;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: express.Response<Response404, {}, 404>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "delete-pet.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Header {
+	api_key?: string;
+}
+
+export interface Path {
+	petId: number; // int64
+}
+
+export type Response = Response400;
+
+export type Response400 = void;
+
+type StatusCodes = 400;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response400, {}, 400>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "delete-user.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	username: string;
+}
+
+export type Response = Response400 | Response404;
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+type StatusCodes = 400 | 404;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: express.Response<Response404, {}, 404>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "find-pets-by-status.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Query {
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response = Response200 | Response400;
+
+export type Response200 = {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}[];
+
+export type Response400 = void;
+
+type StatusCodes = 200 | 400;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: express.Response<Response400, {}, 400>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, {}, Query>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "find-pets-by-tags.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Query {
+	tags?: string[];
+}
+
+export type Response = Response200 | Response400;
+
+export type Response200 = {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}[];
+
+export type Response400 = void;
+
+type StatusCodes = 200 | 400;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: express.Response<Response400, {}, 400>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, {}, Query>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "get-inventory.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export type Response = Response200;
+
+export interface Response200 {
+	[name: string]: number; // int32
+}
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "get-order-by-id.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	orderId: number; // int64
+}
+
+export type Response = Response200 | Response400 | Response404;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * 198772
+	 */
+	petId?: number; // int64
+	/**
+	 * example:
+	 * 7
+	 */
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 * example:
+	 * approved
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+type StatusCodes = 200 | 400 | 404;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: express.Response<Response404, {}, 404>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "get-pet-by-id.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	petId: number; // int64
+}
+
+export type Response = Response200 | Response400 | Response404;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+type StatusCodes = 200 | 400 | 404;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: express.Response<Response404, {}, 404>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "get-user-by-name.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	username: string;
+}
+
+export type Response = Response200 | Response400 | Response404;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+type StatusCodes = 200 | 400 | 404;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: express.Response<Response404, {}, 404>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "login-user.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Query {
+	username?: string;
+	password?: string;
+}
+
+export type Response = Response200 | Response400;
+
+export type Response200 = string;
+
+export type Response400 = void;
+
+type StatusCodes = 200 | 400;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: express.Response<Response400, {}, 400>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, {}, Query>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "logout-user.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export type Response = Response200;
+
+export type Response200 = void;
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, {}, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "place-order.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * 198772
+	 */
+	petId?: number; // int64
+	/**
+	 * example:
+	 * 7
+	 */
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 * example:
+	 * approved
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
+
+export type Response = Response200 | Response405;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * 198772
+	 */
+	petId?: number; // int64
+	/**
+	 * example:
+	 * 7
+	 */
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 * example:
+	 * approved
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
+
+export type Response405 = void;
+
+type StatusCodes = 200 | 405;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: express.Response<Response405, {}, 405>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "update-pet-with-form.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	petId: number; // int64
+}
+
+export interface Query {
+	name?: string;
+	status?: string;
+}
+
+export type Response = Response405;
+
+export type Response405 = void;
+
+type StatusCodes = 405;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response405, {}, 405>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, Query>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "update-pet.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response = Response200 | Response400 | Response404 | Response405;
+
+export interface Response200 {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		/**
+		 * example:
+		 * 1
+		 */
+		id?: number; // int64
+		/**
+		 * example:
+		 * Dogs
+		 */
+		name?: string;
+	};
+	photoUrls: string[];
+	tags?: {
+		id?: number; // int64
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
+
+export type Response400 = void;
+
+export type Response404 = void;
+
+export type Response405 = void;
+
+type StatusCodes = 200 | 400 | 404 | 405;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => StatusCode extends 200
+		? express.Response<Response200, {}, 200>
+		: StatusCode extends 400
+		? express.Response<Response400, {}, 400>
+		: StatusCode extends 404
+		? express.Response<Response404, {}, 404>
+		: express.Response<Response405, {}, 405>;
+};
+
+export type Handler = (
+	req: express.Request<{}, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "update-user.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	username: string;
+}
+
+export interface RequestBody {
+	/**
+	 * example:
+	 * 10
+	 */
+	id?: number; // int64
+	/**
+	 * example:
+	 * theUser
+	 */
+	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 * example:
+	 * 1
+	 */
+	userStatus?: number; // int32
+}
+
+export type Response = Response200;
+
+export type Response200 = void;
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, RequestBody, {}>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+  "upload-file.ts": "/* eslint-disable */
+import * as express from 'express-serve-static-core';
+
+export interface Path {
+	petId: number; // int64
+}
+
+export interface Query {
+	additionalMetadata?: string;
+}
+
+export type Response = Response200;
+
+export interface Response200 {
+	code?: number; // int32
+	type?: string;
+	message?: string;
+}
+
+type StatusCodes = 200;
+type ExpressResponse = Omit<
+	express.Response<Response, {}, StatusCodes>,
+	'status'
+> & {
+	status: <StatusCode extends StatusCodes>(
+		code: StatusCode
+	) => express.Response<Response200, {}, 200>;
+};
+
+export type Handler = (
+	req: express.Request<Path, Response, {}, Query>,
+	res: ExpressResponse,
+	next: express.NextFunction
+) => Promise<any>;
+",
+}
+`;
