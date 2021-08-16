@@ -1,7 +1,7 @@
 import { OpenAPI, OpenAPIV2, OpenAPIV3 } from 'openapi-types';
 import { Schema as MixSchema } from 'dtsgenerator';
 import { HTTP_METHODS } from 'src/constants';
-import type { JsonSchemaDraft07 } from 'dtsgenerator/src/core/jsonSchemaDraft07';
+import type { JsonSchemaDraft07 } from 'dtsgenerator/dist/core/jsonSchemaDraft07';
 
 export type SchemaObject = OpenAPIV2.SchemaObject | OpenAPIV3.SchemaObject;
 

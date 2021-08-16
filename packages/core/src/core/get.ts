@@ -17,10 +17,8 @@ export const getByOperationId = (
 		for (const methodName of HTTP_METHODS) {
 			const operationSchemaComponent = schemaPathComponent[methodName];
 			if (
-				!(
-					operationSchemaComponent &&
-					operationSchemaComponent.operationId !== operationId
-				)
+				!operationSchemaComponent ||
+				operationSchemaComponent.operationId !== operationId
 			) {
 				continue;
 			}
