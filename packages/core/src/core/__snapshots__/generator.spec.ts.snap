@@ -3,19 +3,19 @@
 exports[`generate /v2/petstore.json 1`] = `
 Object {
   "addPet": "declare interface RequestBody {
-    id?: number; // int64
-    category?: {
-        id?: number; // int64
-        name?: string;
-    };
+    id?: string; // uuid
     /**
      * example:
      * doggie
      */
     name: string;
-    photoUrls: string[];
+    category?: {
+        id?: string; // uuid
+        name?: string;
+    };
+    photoUrls: string /* uri */[];
     tags?: {
-        id?: number; // int64
+        id?: string; // uuid
         name?: string;
     }[];
     /**
@@ -26,47 +26,119 @@ Object {
 declare type Response405 = void;
 ",
   "createUser": "declare interface RequestBody {
-    id?: number; // int64
+    id?: string; // uuid
+    /**
+     * example:
+     * theUser
+     */
     username?: string;
+    /**
+     * example:
+     * John
+     */
     firstName?: string;
+    /**
+     * example:
+     * James
+     */
     lastName?: string;
+    /**
+     * example:
+     * john@email.com
+     */
     email?: string;
+    /**
+     * example:
+     * 12345
+     */
     password?: string;
+    /**
+     * example:
+     * 12345
+     */
     phone?: string;
     /**
      * User Status
      */
-    userStatus?: number; // int32
+    userStatus?: boolean;
 }
 declare type Response200 = void;
 ",
   "createUsersWithArrayInput": "declare type RequestBody = {
-    id?: number; // int64
+    id?: string; // uuid
+    /**
+     * example:
+     * theUser
+     */
     username?: string;
+    /**
+     * example:
+     * John
+     */
     firstName?: string;
+    /**
+     * example:
+     * James
+     */
     lastName?: string;
+    /**
+     * example:
+     * john@email.com
+     */
     email?: string;
+    /**
+     * example:
+     * 12345
+     */
     password?: string;
+    /**
+     * example:
+     * 12345
+     */
     phone?: string;
     /**
      * User Status
      */
-    userStatus?: number; // int32
+    userStatus?: boolean;
 }[];
 declare type Response200 = void;
 ",
   "createUsersWithListInput": "declare type RequestBody = {
-    id?: number; // int64
+    id?: string; // uuid
+    /**
+     * example:
+     * theUser
+     */
     username?: string;
+    /**
+     * example:
+     * John
+     */
     firstName?: string;
+    /**
+     * example:
+     * James
+     */
     lastName?: string;
+    /**
+     * example:
+     * john@email.com
+     */
     email?: string;
+    /**
+     * example:
+     * 12345
+     */
     password?: string;
+    /**
+     * example:
+     * 12345
+     */
     phone?: string;
     /**
      * User Status
      */
-    userStatus?: number; // int32
+    userStatus?: boolean;
 }[];
 declare type Response200 = void;
 ",
@@ -166,12 +238,14 @@ declare type Response400 = void;
   "logoutUser": "declare type Response200 = void;
 ",
   "placeOrder": "declare interface RequestBody {
-    id?: number; // int64
-    petId?: number; // int64
+    id?: string; // uuid
+    petId?: string; // uuid
     quantity?: number; // int32
     shipDate?: string; // date-time
     /**
      * Order Status
+     * example:
+     * approved
      */
     status?: \\"placed\\" | \\"approved\\" | \\"delivered\\";
     complete?: boolean;
@@ -180,19 +254,19 @@ declare type Response200 = void;
 declare type Response400 = void;
 ",
   "updatePet": "declare interface RequestBody {
-    id?: number; // int64
-    category?: {
-        id?: number; // int64
-        name?: string;
-    };
+    id?: string; // uuid
     /**
      * example:
      * doggie
      */
     name: string;
-    photoUrls: string[];
+    category?: {
+        id?: string; // uuid
+        name?: string;
+    };
+    photoUrls: string /* uri */[];
     tags?: {
-        id?: number; // int64
+        id?: string; // uuid
         name?: string;
     }[];
     /**
@@ -229,17 +303,41 @@ declare type Response405 = void;
     username: string;
 }
 declare interface RequestBody {
-    id?: number; // int64
+    id?: string; // uuid
+    /**
+     * example:
+     * theUser
+     */
     username?: string;
+    /**
+     * example:
+     * John
+     */
     firstName?: string;
+    /**
+     * example:
+     * James
+     */
     lastName?: string;
+    /**
+     * example:
+     * john@email.com
+     */
     email?: string;
+    /**
+     * example:
+     * 12345
+     */
     password?: string;
+    /**
+     * example:
+     * 12345
+     */
     phone?: string;
     /**
      * User Status
      */
-    userStatus?: number; // int32
+    userStatus?: boolean;
 }
 declare type Response400 = void;
 declare type Response404 = void;
@@ -272,27 +370,19 @@ Object {
      * example:
      * 10
      */
-    id?: number; // int64
+    id?: string; // uuid
     /**
      * example:
      * doggie
      */
     name: string;
     category?: {
-        /**
-         * example:
-         * 1
-         */
-        id?: number; // int64
-        /**
-         * example:
-         * Dogs
-         */
+        id?: string; // uuid
         name?: string;
     };
-    photoUrls: string[];
+    photoUrls: string /* uri */[];
     tags?: {
-        id?: number; // int64
+        id?: string; // uuid
         name?: string;
     }[];
     /**
@@ -305,27 +395,19 @@ declare interface Response200 {
      * example:
      * 10
      */
-    id?: number; // int64
+    id?: string; // uuid
     /**
      * example:
      * doggie
      */
     name: string;
     category?: {
-        /**
-         * example:
-         * 1
-         */
-        id?: number; // int64
-        /**
-         * example:
-         * Dogs
-         */
+        id?: string; // uuid
         name?: string;
     };
-    photoUrls: string[];
+    photoUrls: string /* uri */[];
     tags?: {
-        id?: number; // int64
+        id?: string; // uuid
         name?: string;
     }[];
     /**
@@ -336,11 +418,7 @@ declare interface Response200 {
 declare type Response405 = void;
 ",
   "createUser": "declare interface RequestBody {
-    /**
-     * example:
-     * 10
-     */
-    id?: number; // int64
+    id?: string; // uuid
     /**
      * example:
      * theUser
@@ -373,17 +451,11 @@ declare type Response405 = void;
     phone?: string;
     /**
      * User Status
-     * example:
-     * 1
      */
-    userStatus?: number; // int32
+    userStatus?: boolean;
 }
 declare interface Response200 {
-    /**
-     * example:
-     * 10
-     */
-    id?: number; // int64
+    id?: string; // uuid
     /**
      * example:
      * theUser
@@ -416,18 +488,12 @@ declare interface Response200 {
     phone?: string;
     /**
      * User Status
-     * example:
-     * 1
      */
-    userStatus?: number; // int32
+    userStatus?: boolean;
 }
 ",
   "createUsersWithListInput": "declare type RequestBody = {
-    /**
-     * example:
-     * 10
-     */
-    id?: number; // int64
+    id?: string; // uuid
     /**
      * example:
      * theUser
@@ -460,10 +526,8 @@ declare interface Response200 {
     phone?: string;
     /**
      * User Status
-     * example:
-     * 1
      */
-    userStatus?: number; // int32
+    userStatus?: boolean;
 }[];
 declare type Response200 = void;
 ",
@@ -495,27 +559,19 @@ declare type Response200 = {
      * example:
      * 10
      */
-    id?: number; // int64
+    id?: string; // uuid
     /**
      * example:
      * doggie
      */
     name: string;
     category?: {
-        /**
-         * example:
-         * 1
-         */
-        id?: number; // int64
-        /**
-         * example:
-         * Dogs
-         */
+        id?: string; // uuid
         name?: string;
     };
-    photoUrls: string[];
+    photoUrls: string /* uri */[];
     tags?: {
-        id?: number; // int64
+        id?: string; // uuid
         name?: string;
     }[];
     /**
@@ -533,27 +589,19 @@ declare type Response200 = {
      * example:
      * 10
      */
-    id?: number; // int64
+    id?: string; // uuid
     /**
      * example:
      * doggie
      */
     name: string;
     category?: {
-        /**
-         * example:
-         * 1
-         */
-        id?: number; // int64
-        /**
-         * example:
-         * Dogs
-         */
+        id?: string; // uuid
         name?: string;
     };
-    photoUrls: string[];
+    photoUrls: string /* uri */[];
     tags?: {
-        id?: number; // int64
+        id?: string; // uuid
         name?: string;
     }[];
     /**
@@ -571,20 +619,8 @@ declare type Response400 = void;
     orderId: number; // int64
 }
 declare interface Response200 {
-    /**
-     * example:
-     * 10
-     */
-    id?: number; // int64
-    /**
-     * example:
-     * 198772
-     */
-    petId?: number; // int64
-    /**
-     * example:
-     * 7
-     */
+    id?: string; // uuid
+    petId?: string; // uuid
     quantity?: number; // int32
     shipDate?: string; // date-time
     /**
@@ -606,27 +642,19 @@ declare interface Response200 {
      * example:
      * 10
      */
-    id?: number; // int64
+    id?: string; // uuid
     /**
      * example:
      * doggie
      */
     name: string;
     category?: {
-        /**
-         * example:
-         * 1
-         */
-        id?: number; // int64
-        /**
-         * example:
-         * Dogs
-         */
+        id?: string; // uuid
         name?: string;
     };
-    photoUrls: string[];
+    photoUrls: string /* uri */[];
     tags?: {
-        id?: number; // int64
+        id?: string; // uuid
         name?: string;
     }[];
     /**
@@ -641,11 +669,7 @@ declare type Response404 = void;
     username: string;
 }
 declare interface Response200 {
-    /**
-     * example:
-     * 10
-     */
-    id?: number; // int64
+    id?: string; // uuid
     /**
      * example:
      * theUser
@@ -678,10 +702,8 @@ declare interface Response200 {
     phone?: string;
     /**
      * User Status
-     * example:
-     * 1
      */
-    userStatus?: number; // int32
+    userStatus?: boolean;
 }
 declare type Response400 = void;
 declare type Response404 = void;
@@ -696,20 +718,8 @@ declare type Response400 = void;
   "logoutUser": "declare type Response200 = void;
 ",
   "placeOrder": "declare interface RequestBody {
-    /**
-     * example:
-     * 10
-     */
-    id?: number; // int64
-    /**
-     * example:
-     * 198772
-     */
-    petId?: number; // int64
-    /**
-     * example:
-     * 7
-     */
+    id?: string; // uuid
+    petId?: string; // uuid
     quantity?: number; // int32
     shipDate?: string; // date-time
     /**
@@ -721,20 +731,8 @@ declare type Response400 = void;
     complete?: boolean;
 }
 declare interface Response200 {
-    /**
-     * example:
-     * 10
-     */
-    id?: number; // int64
-    /**
-     * example:
-     * 198772
-     */
-    petId?: number; // int64
-    /**
-     * example:
-     * 7
-     */
+    id?: string; // uuid
+    petId?: string; // uuid
     quantity?: number; // int32
     shipDate?: string; // date-time
     /**
@@ -752,27 +750,19 @@ declare type Response405 = void;
      * example:
      * 10
      */
-    id?: number; // int64
+    id?: string; // uuid
     /**
      * example:
      * doggie
      */
     name: string;
     category?: {
-        /**
-         * example:
-         * 1
-         */
-        id?: number; // int64
-        /**
-         * example:
-         * Dogs
-         */
+        id?: string; // uuid
         name?: string;
     };
-    photoUrls: string[];
+    photoUrls: string /* uri */[];
     tags?: {
-        id?: number; // int64
+        id?: string; // uuid
         name?: string;
     }[];
     /**
@@ -785,27 +775,19 @@ declare interface Response200 {
      * example:
      * 10
      */
-    id?: number; // int64
+    id?: string; // uuid
     /**
      * example:
      * doggie
      */
     name: string;
     category?: {
-        /**
-         * example:
-         * 1
-         */
-        id?: number; // int64
-        /**
-         * example:
-         * Dogs
-         */
+        id?: string; // uuid
         name?: string;
     };
-    photoUrls: string[];
+    photoUrls: string /* uri */[];
     tags?: {
-        id?: number; // int64
+        id?: string; // uuid
         name?: string;
     }[];
     /**
@@ -830,11 +812,7 @@ declare type Response405 = void;
     username: string;
 }
 declare interface RequestBody {
-    /**
-     * example:
-     * 10
-     */
-    id?: number; // int64
+    id?: string; // uuid
     /**
      * example:
      * theUser
@@ -867,10 +845,8 @@ declare interface RequestBody {
     phone?: string;
     /**
      * User Status
-     * example:
-     * 1
      */
-    userStatus?: number; // int32
+    userStatus?: boolean;
 }
 declare type Response200 = void;
 ",

@@ -65,9 +65,9 @@ export const fakeOperationResponse = async ({
 	mergeOptions,
 	status,
 }: OperationSchemaOverrideOptions) => {
-	const responseBody = getResponseByStatus(schema, status);
+	const responseBody = await getResponseByStatus(schema, status);
 	if (typeof overrides === 'function') {
-		return overrides(responseBody);
+		return overrides(schema, responseBody);
 	}
 	return mergeWith(responseBody, overrides, mergeOptions);
 };
@@ -106,7 +106,7 @@ export const writeFake = async (uri: string, outDir: string) => {
 
 			await fs.writeFile(writeFile, prettify(output));
 		} catch (e) {
-			console.error(`Failed to generate fake data for ${operationId}`);
+			console.error(`Failed to generate fake data for ${operationId}`, e);
 		}
 	}
 };

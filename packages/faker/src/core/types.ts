@@ -1,9 +1,7 @@
 import { MergeWithCustomizer } from 'lodash';
 import {
 	GetOperationArgs,
-	HttpMethod,
 	ParsedOperationSchema,
-	ParsedOperationSchemaWithInfo,
 } from '@vdtn359/api-tools-core';
 
 export type FakeOperation = {
@@ -16,7 +14,7 @@ export type FakeOperation = {
 };
 
 export type OverrideOptions = {
-	overrides?: any | ((fakeData: any) => any);
+	overrides?: any | ((schema: ParsedOperationSchema, fakeData: any) => any);
 	mergeOptions?: MergeWithCustomizer;
 };
 

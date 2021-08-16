@@ -2,7 +2,7 @@ import path from 'path';
 import { parse, validate } from './parser';
 import { getByMethodAndPath, getByOperationId, getOperation } from './get';
 
-const testDir = path.resolve(__dirname, '..', '..', 'test');
+const testDir = path.resolve(__dirname, '..', '..', '..', '..', 'test');
 
 describe('getByOperationId', () => {
 	it.each([

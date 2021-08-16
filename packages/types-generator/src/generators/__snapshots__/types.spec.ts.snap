@@ -3,19 +3,19 @@
 exports[`generateTypescriptTypes /v2/petstore.json 1`] = `
 Object {
   "add-pet.ts": "export interface RequestBody {
-	id?: number; // int64
-	category?: {
-		id?: number; // int64
-		name?: string;
-	};
+	id?: string; // uuid
 	/**
 	 * example:
 	 * doggie
 	 */
 	name: string;
-	photoUrls: string[];
+	category?: {
+		id?: string; // uuid
+		name?: string;
+	};
+	photoUrls: string /* uri */[];
 	tags?: {
-		id?: number; // int64
+		id?: string; // uuid
 		name?: string;
 	}[];
 	/**
@@ -27,49 +27,121 @@ Object {
 export type Response405 = void;
 ",
   "create-user.ts": "export interface RequestBody {
-	id?: number; // int64
+	id?: string; // uuid
+	/**
+	 * example:
+	 * theUser
+	 */
 	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
 	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
 	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
 	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
 	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
 	phone?: string;
 	/**
 	 * User Status
 	 */
-	userStatus?: number; // int32
+	userStatus?: boolean;
 }
 
 export type Response200 = void;
 ",
   "create-users-with-array-input.ts": "export type RequestBody = {
-	id?: number; // int64
+	id?: string; // uuid
+	/**
+	 * example:
+	 * theUser
+	 */
 	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
 	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
 	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
 	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
 	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
 	phone?: string;
 	/**
 	 * User Status
 	 */
-	userStatus?: number; // int32
+	userStatus?: boolean;
 }[];
 
 export type Response200 = void;
 ",
   "create-users-with-list-input.ts": "export type RequestBody = {
-	id?: number; // int64
+	id?: string; // uuid
+	/**
+	 * example:
+	 * theUser
+	 */
 	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
 	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
 	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
 	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
 	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
 	phone?: string;
 	/**
 	 * User Status
 	 */
-	userStatus?: number; // int32
+	userStatus?: boolean;
 }[];
 
 export type Response200 = void;
@@ -192,12 +264,14 @@ export type Response400 = void;
   "logout-user.ts": "export type Response200 = void;
 ",
   "place-order.ts": "export interface RequestBody {
-	id?: number; // int64
-	petId?: number; // int64
+	id?: string; // uuid
+	petId?: string; // uuid
 	quantity?: number; // int32
 	shipDate?: string; // date-time
 	/**
 	 * Order Status
+	 * example:
+	 * approved
 	 */
 	status?: 'placed' | 'approved' | 'delivered';
 	complete?: boolean;
@@ -228,19 +302,19 @@ export interface RequestBody {
 export type Response405 = void;
 ",
   "update-pet.ts": "export interface RequestBody {
-	id?: number; // int64
-	category?: {
-		id?: number; // int64
-		name?: string;
-	};
+	id?: string; // uuid
 	/**
 	 * example:
 	 * doggie
 	 */
 	name: string;
-	photoUrls: string[];
+	category?: {
+		id?: string; // uuid
+		name?: string;
+	};
+	photoUrls: string /* uri */[];
 	tags?: {
-		id?: number; // int64
+		id?: string; // uuid
 		name?: string;
 	}[];
 	/**
@@ -263,17 +337,41 @@ export type Response405 = void;
 }
 
 export interface RequestBody {
-	id?: number; // int64
+	id?: string; // uuid
+	/**
+	 * example:
+	 * theUser
+	 */
 	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
 	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
 	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
 	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
 	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
 	phone?: string;
 	/**
 	 * User Status
 	 */
-	userStatus?: number; // int32
+	userStatus?: boolean;
 }
 
 export type Response400 = void;
@@ -310,27 +408,19 @@ Object {
 	 * example:
 	 * 10
 	 */
-	id?: number; // int64
+	id?: string; // uuid
 	/**
 	 * example:
 	 * doggie
 	 */
 	name: string;
 	category?: {
-		/**
-		 * example:
-		 * 1
-		 */
-		id?: number; // int64
-		/**
-		 * example:
-		 * Dogs
-		 */
+		id?: string; // uuid
 		name?: string;
 	};
-	photoUrls: string[];
+	photoUrls: string /* uri */[];
 	tags?: {
-		id?: number; // int64
+		id?: string; // uuid
 		name?: string;
 	}[];
 	/**
@@ -344,27 +434,19 @@ export interface Response200 {
 	 * example:
 	 * 10
 	 */
-	id?: number; // int64
+	id?: string; // uuid
 	/**
 	 * example:
 	 * doggie
 	 */
 	name: string;
 	category?: {
-		/**
-		 * example:
-		 * 1
-		 */
-		id?: number; // int64
-		/**
-		 * example:
-		 * Dogs
-		 */
+		id?: string; // uuid
 		name?: string;
 	};
-	photoUrls: string[];
+	photoUrls: string /* uri */[];
 	tags?: {
-		id?: number; // int64
+		id?: string; // uuid
 		name?: string;
 	}[];
 	/**
@@ -376,11 +458,7 @@ export interface Response200 {
 export type Response405 = void;
 ",
   "create-user.ts": "export interface RequestBody {
-	/**
-	 * example:
-	 * 10
-	 */
-	id?: number; // int64
+	id?: string; // uuid
 	/**
 	 * example:
 	 * theUser
@@ -413,18 +491,12 @@ export type Response405 = void;
 	phone?: string;
 	/**
 	 * User Status
-	 * example:
-	 * 1
 	 */
-	userStatus?: number; // int32
+	userStatus?: boolean;
 }
 
 export interface Response200 {
-	/**
-	 * example:
-	 * 10
-	 */
-	id?: number; // int64
+	id?: string; // uuid
 	/**
 	 * example:
 	 * theUser
@@ -457,34 +529,52 @@ export interface Response200 {
 	phone?: string;
 	/**
 	 * User Status
-	 * example:
-	 * 1
 	 */
-	userStatus?: number; // int32
+	userStatus?: boolean;
 }
 ",
   "create-users-with-array-input.ts": "export type RequestBody = {
-	id?: number; // int64
+	id?: string; // uuid
+	/**
+	 * example:
+	 * theUser
+	 */
 	username?: string;
+	/**
+	 * example:
+	 * John
+	 */
 	firstName?: string;
+	/**
+	 * example:
+	 * James
+	 */
 	lastName?: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
 	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
 	password?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
 	phone?: string;
 	/**
 	 * User Status
 	 */
-	userStatus?: number; // int32
+	userStatus?: boolean;
 }[];
 
 export type Response200 = void;
 ",
   "create-users-with-list-input.ts": "export type RequestBody = {
-	/**
-	 * example:
-	 * 10
-	 */
-	id?: number; // int64
+	id?: string; // uuid
 	/**
 	 * example:
 	 * theUser
@@ -517,10 +607,8 @@ export type Response200 = void;
 	phone?: string;
 	/**
 	 * User Status
-	 * example:
-	 * 1
 	 */
-	userStatus?: number; // int32
+	userStatus?: boolean;
 }[];
 
 export type Response200 = void;
@@ -560,27 +648,19 @@ export type Response200 = {
 	 * example:
 	 * 10
 	 */
-	id?: number; // int64
+	id?: string; // uuid
 	/**
 	 * example:
 	 * doggie
 	 */
 	name: string;
 	category?: {
-		/**
-		 * example:
-		 * 1
-		 */
-		id?: number; // int64
-		/**
-		 * example:
-		 * Dogs
-		 */
+		id?: string; // uuid
 		name?: string;
 	};
-	photoUrls: string[];
+	photoUrls: string /* uri */[];
 	tags?: {
-		id?: number; // int64
+		id?: string; // uuid
 		name?: string;
 	}[];
 	/**
@@ -600,27 +680,19 @@ export type Response200 = {
 	 * example:
 	 * 10
 	 */
-	id?: number; // int64
+	id?: string; // uuid
 	/**
 	 * example:
 	 * doggie
 	 */
 	name: string;
 	category?: {
-		/**
-		 * example:
-		 * 1
-		 */
-		id?: number; // int64
-		/**
-		 * example:
-		 * Dogs
-		 */
+		id?: string; // uuid
 		name?: string;
 	};
-	photoUrls: string[];
+	photoUrls: string /* uri */[];
 	tags?: {
-		id?: number; // int64
+		id?: string; // uuid
 		name?: string;
 	}[];
 	/**
@@ -640,20 +712,8 @@ export type Response400 = void;
 }
 
 export interface Response200 {
-	/**
-	 * example:
-	 * 10
-	 */
-	id?: number; // int64
-	/**
-	 * example:
-	 * 198772
-	 */
-	petId?: number; // int64
-	/**
-	 * example:
-	 * 7
-	 */
+	id?: string; // uuid
+	petId?: string; // uuid
 	quantity?: number; // int32
 	shipDate?: string; // date-time
 	/**
@@ -678,27 +738,19 @@ export interface Response200 {
 	 * example:
 	 * 10
 	 */
-	id?: number; // int64
+	id?: string; // uuid
 	/**
 	 * example:
 	 * doggie
 	 */
 	name: string;
 	category?: {
-		/**
-		 * example:
-		 * 1
-		 */
-		id?: number; // int64
-		/**
-		 * example:
-		 * Dogs
-		 */
+		id?: string; // uuid
 		name?: string;
 	};
-	photoUrls: string[];
+	photoUrls: string /* uri */[];
 	tags?: {
-		id?: number; // int64
+		id?: string; // uuid
 		name?: string;
 	}[];
 	/**
@@ -716,11 +768,7 @@ export type Response404 = void;
 }
 
 export interface Response200 {
-	/**
-	 * example:
-	 * 10
-	 */
-	id?: number; // int64
+	id?: string; // uuid
 	/**
 	 * example:
 	 * theUser
@@ -753,10 +801,8 @@ export interface Response200 {
 	phone?: string;
 	/**
 	 * User Status
-	 * example:
-	 * 1
 	 */
-	userStatus?: number; // int32
+	userStatus?: boolean;
 }
 
 export type Response400 = void;
@@ -775,20 +821,8 @@ export type Response400 = void;
   "logout-user.ts": "export type Response200 = void;
 ",
   "place-order.ts": "export interface RequestBody {
-	/**
-	 * example:
-	 * 10
-	 */
-	id?: number; // int64
-	/**
-	 * example:
-	 * 198772
-	 */
-	petId?: number; // int64
-	/**
-	 * example:
-	 * 7
-	 */
+	id?: string; // uuid
+	petId?: string; // uuid
 	quantity?: number; // int32
 	shipDate?: string; // date-time
 	/**
@@ -801,20 +835,8 @@ export type Response400 = void;
 }
 
 export interface Response200 {
-	/**
-	 * example:
-	 * 10
-	 */
-	id?: number; // int64
-	/**
-	 * example:
-	 * 198772
-	 */
-	petId?: number; // int64
-	/**
-	 * example:
-	 * 7
-	 */
+	id?: string; // uuid
+	petId?: string; // uuid
 	quantity?: number; // int32
 	shipDate?: string; // date-time
 	/**
@@ -844,27 +866,19 @@ export type Response405 = void;
 	 * example:
 	 * 10
 	 */
-	id?: number; // int64
+	id?: string; // uuid
 	/**
 	 * example:
 	 * doggie
 	 */
 	name: string;
 	category?: {
-		/**
-		 * example:
-		 * 1
-		 */
-		id?: number; // int64
-		/**
-		 * example:
-		 * Dogs
-		 */
+		id?: string; // uuid
 		name?: string;
 	};
-	photoUrls: string[];
+	photoUrls: string /* uri */[];
 	tags?: {
-		id?: number; // int64
+		id?: string; // uuid
 		name?: string;
 	}[];
 	/**
@@ -878,27 +892,19 @@ export interface Response200 {
 	 * example:
 	 * 10
 	 */
-	id?: number; // int64
+	id?: string; // uuid
 	/**
 	 * example:
 	 * doggie
 	 */
 	name: string;
 	category?: {
-		/**
-		 * example:
-		 * 1
-		 */
-		id?: number; // int64
-		/**
-		 * example:
-		 * Dogs
-		 */
+		id?: string; // uuid
 		name?: string;
 	};
-	photoUrls: string[];
+	photoUrls: string /* uri */[];
 	tags?: {
-		id?: number; // int64
+		id?: string; // uuid
 		name?: string;
 	}[];
 	/**
@@ -918,11 +924,7 @@ export type Response405 = void;
 }
 
 export interface RequestBody {
-	/**
-	 * example:
-	 * 10
-	 */
-	id?: number; // int64
+	id?: string; // uuid
 	/**
 	 * example:
 	 * theUser
@@ -955,10 +957,8 @@ export interface RequestBody {
 	phone?: string;
 	/**
 	 * User Status
-	 * example:
-	 * 1
 	 */
-	userStatus?: number; // int32
+	userStatus?: boolean;
 }
 
 export type Response200 = void;

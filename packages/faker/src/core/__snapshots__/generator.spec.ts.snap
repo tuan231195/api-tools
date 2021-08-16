@@ -1,0 +1,1096 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fakeOperation /v2/petstore.json 1`] = `
+Object {
+  "defaultResponse": null,
+  "headers": null,
+  "params": null,
+  "queries": null,
+  "requestBody": Object {
+    "complete": true,
+    "id": "66e1d636-6217-5015-82c1-1f56f2da6146",
+    "petId": "5c2cb363-15e8-5266-8f61-f5ffdde057b7",
+    "quantity": 5,
+    "shipDate": "1972-09-15T14:00:00.0Z",
+    "status": "placed",
+  },
+  "responseByStatuses": Object {
+    "200": null,
+    "400": null,
+  },
+}
+`;
+
+exports[`fakeOperation /v3/petstore.json 1`] = `
+Object {
+  "defaultResponse": Object {
+    "complete": true,
+    "id": "538cbf79-dcd2-54db-89c5-960a24e33cec",
+    "petId": "6bf3693d-1f98-586f-bade-113630af57a4",
+    "quantity": 8,
+    "shipDate": "1989-04-16T14:00:00.0Z",
+    "status": "approved",
+  },
+  "headers": null,
+  "params": null,
+  "queries": null,
+  "requestBody": Object {
+    "complete": true,
+    "id": "0d3147b2-874e-531f-aef1-6589e325e484",
+    "petId": "a1c2c1be-9179-5603-8244-bef21589eb22",
+    "quantity": 3,
+    "shipDate": "2020-03-29T13:00:00.0Z",
+    "status": "placed",
+  },
+  "responseByStatuses": Object {
+    "200": Object {
+      "complete": true,
+      "id": "a69ce17d-ff83-5a53-adc9-f25d8e388315",
+      "petId": "7f8c18af-2334-543e-a905-9fd3e23e9e04",
+      "quantity": 4,
+      "shipDate": "1967-06-18T14:00:00.0Z",
+      "status": "placed",
+    },
+    "405": null,
+  },
+}
+`;
+
+exports[`fakeOperationResponse should accept override objects 1`] = `
+Object {
+  "add-pet.ts": "export const requestBody = {
+	name: 'Inez Russell',
+	photoUrls: [
+		'https://njcLSVMJIQAHYuFpCrZFpNuufcMygHR.hihPcc0QUoh8sucvhBczakEC26uxj-2LbBpt,hyB3BD0q,R2ui,9i9pcIKBktAN2rx4zqh3Q-dZy,YzBF5x',
+		'https://dJJPQdsTRwTGcSLYHfTVKr.uwTZZZJuabCAspXqbGld0YSJXoi7WxmCWqDmKTbCQOJ0mRCqrtgmQqP6JlURGY-pQcxcCTS96z29Wp',
+	],
+	tags: [
+		{ id: '42c08a9c-ce70-5090-a701-7b3d9b991353', name: 'Amelia Gardner' },
+		{ id: 'ac52ce3f-3062-5e51-b30f-5fdcbd0f0b49', name: 'Leonard Fisher' },
+		{ name: 'Bernice Reid', id: '9d21f9e0-b4b5-5087-9c1d-e567572c809d' },
+	],
+	status: 'pending',
+	id: '64e44025-0463-5872-abad-0727f4ff731c',
+	category: {
+		id: '762d8ebf-2a21-5e80-a912-7b3d1e228fb7',
+		name: 'Carlos Cannon',
+	},
+};
+
+export const defaultResponse = {
+	name: 'Mable Nash',
+	photoUrls: [
+		'https://qudiNwMIVKRGwDiToZZrYWkzW.etn8LoXNNoxxm.Q4O-0LQNwazxvruYRgBsJ3EFLEXqYeK-j',
+		'https://beeaXPZijnEgjrazmQIWj.qoijOYlDEMNW62fUHP3Dxxh9yokrebUWP1vZXvtnfhUoGrJzJe0lo5Uc0',
+		'http://afNK.mxDSuIIdHUegIZoxxLJEqOGSd,7DeI1wmVTcSBg,DLEyaPeXETsU3C',
+		'http://cE.zoiiEDnqXbPU69uGR60E07',
+	],
+	tags: [
+		{
+			id: 'bd643840-4e96-5eaf-95b7-6c0f35d5454d',
+			name: 'Georgie Patterson',
+		},
+		{ name: 'Vera Mack', id: '42a354dd-a338-5868-abf5-e6fe700eab23' },
+		{ id: 'e63d7f94-f996-5cd3-b138-704a3a427f35', name: 'Sophie Roberson' },
+		{ name: 'Rosetta Russell', id: '7fd31cee-5ff7-57db-8784-8841b4035057' },
+	],
+	status: 'available',
+	id: '133c79ad-35a9-52d0-af88-8cf0e4cf0c8b',
+	category: {
+		name: 'Hulda Douglas',
+		id: 'abea4f79-60a8-50cb-b0db-dd5524ffb230',
+	},
+};
+
+export const response200 = {
+	name: 'Elijah Austin',
+	photoUrls: [
+		'https://NXaZpjFOJEBVYoxzXh.zxK3KdSG2De2zyGt-hRANoM7uLXXL,chmuLv+g,ESdg-KGTdpvbCWHyej1CEFdgFzQuk6pmuibRBEZwo',
+		'http://gIUrdffblvlYN.dfsuUtKMYHYobMRCRWjOLw.cSbg+8P+rv6If5V5o-JSLH+aF',
+	],
+	category: {
+		id: '3e81633a-2889-5d3d-bf07-1b6a6f19d107',
+		name: 'Bradley Burke',
+	},
+	tags: [
+		{ id: '4dfeb87f-1b1d-558f-92e6-57b06a109ce9', name: 'Amelia Hoffman' },
+	],
+	status: 'pending',
+	id: 'ef45ad0d-ad60-5424-9521-4149005dd6ae',
+};
+",
+  "create-user.ts": "export const requestBody = {
+	username: 'zxIXNYL',
+	id: 'd423f8a8-2afe-5595-83cb-b8b077d7d8c6',
+	email: 'pego@izadi.hm',
+	phone: '(427) 291-6403',
+	userStatus: false,
+	lastName: 'Aguilar',
+	password: 'YJCwvldnSGEHcyM',
+	firstName: 'Thomas',
+};
+
+export const defaultResponse = {
+	email: 'hunweal@bahukur.il',
+	username: 'bOpiXXfENOMIE',
+	id: 'f9a52098-c770-504a-b4bf-64361a0a921c',
+	lastName: 'Duval',
+	firstName: 'Rachel',
+	phone: '(617) 680-2249',
+	password: 'bQGQQmB',
+	userStatus: true,
+};
+
+export const response200 = {
+	password: 'WYRXqxpSHCdDqmGt',
+	username: 'luMZHXPgGFoAXG',
+	phone: '(714) 279-3291',
+	userStatus: true,
+	id: '770fbb47-4dd5-55ed-86cb-47da3f8b207e',
+	email: 'va@zo.pk',
+	firstName: 'Irene',
+	lastName: 'Poggiali',
+};
+",
+  "create-users-with-array-input.ts": "export const requestBody = [
+	{
+		firstName: 'Carlos',
+		id: '79a76e07-886f-5001-886f-29bc0058b8cb',
+		password: 'FoaCLeaDeslqTHssCL',
+		lastName: 'Heemskerk',
+		userStatus: false,
+		username: 'lYDoImpevUxbWzE',
+		email: 'ine@belosa.ba',
+		phone: '(264) 935-8714',
+	},
+	{
+		phone: '(904) 906-5621',
+		userStatus: true,
+		password: 'VBFEQRrssVuuNutumf',
+		firstName: 'Sophia',
+		username: 'VHspHUoykorvrvT',
+		id: '78662031-8d6b-53e6-afb3-44fb45d653d3',
+		lastName: 'Chiavacci',
+		email: 'sip@roriz.mk',
+	},
+	{
+		username: 'gmfMAOxkjQvyTON',
+		password: 'mhrjXCIDOwJskAyvQb',
+		userStatus: true,
+		email: 'bateod@joze.ar',
+		lastName: 'Michelozzi',
+		phone: '(713) 894-2409',
+		id: 'ed92f29b-a368-5212-8a7a-1f20747fc47d',
+		firstName: 'Brandon',
+	},
+];
+",
+  "create-users-with-list-input.ts": "export const requestBody = [
+	{
+		firstName: 'Isaiah',
+		phone: '(336) 498-6043',
+		userStatus: true,
+		id: '2fa13db2-92f0-5d1f-90cf-3c4f4a357fce',
+		email: 'fe@hicad.tt',
+		username: 'XJOxTCtWijkNALIf',
+		password: 'PfJLQPcbDxwwTd',
+		lastName: 'Post',
+	},
+	{
+		userStatus: false,
+		email: 'az@huzu.fo',
+		password: 'fHXXhxpVjjylqI',
+		phone: '(970) 339-6352',
+		firstName: 'Lulu',
+		id: '62710bf5-f8b3-58cf-bbac-9ed3964f0285',
+		username: 'avaTMVAhNQEKmyOt',
+		lastName: 'Powell',
+	},
+	{
+		password: 'ePoIUJFcTkkzpw',
+		userStatus: false,
+		lastName: 'Margheri',
+		firstName: 'Owen',
+		phone: '(449) 439-6695',
+		email: 'zocmi@ked.er',
+		username: 'DoXVtHMNkDDGHoNU',
+		id: '53e713fb-4ba2-5f14-9dc0-549f139fc9b5',
+	},
+	{
+		email: 'pi@zikac.th',
+		firstName: 'Mattie',
+		username: 'gUwXpENKrtYCYRCi',
+		password: 'JAGvJTWgtUAnfF',
+		lastName: 'Failli',
+		id: '1c90d03a-d67f-5e50-b9c2-cad07552f44b',
+		phone: '(814) 780-4028',
+		userStatus: false,
+	},
+	{
+		password: 'KXVlKkDVPyMVEg',
+		email: 'bal@we.mm',
+		username: 'AjtNAaokFSGRkwDb',
+		lastName: 'Pacini',
+		userStatus: true,
+		id: '80a62c69-f298-528d-a4dc-9973c8d644ea',
+		phone: '(389) 544-5674',
+		firstName: 'Wesley',
+	},
+];
+",
+  "delete-order.ts": "export const params = { orderId: -31581807 };
+",
+  "delete-pet.ts": "export const headers = { api_key: 'sint' };
+
+export const params = { petId: 17672402 };
+",
+  "delete-user.ts": "export const params = { username: 'dolor magna' };
+",
+  "find-pets-by-status.ts": "export const queries = { status: 'available' };
+
+export const defaultResponse = [
+	{
+		name: 'Cory Stanley',
+		photoUrls: [
+			'https://rWriizB.wogQrkwYvQv',
+			'http://V.jrxNLcBf0C,T',
+			'http://MtBYEdlVpemfZglKaUo.oaSzozX9jp',
+			'https://isaDC.uhrBvAulV.U2nweU+lzUqR2rKXQkRgNPJA45yBIEqDBpz+a+',
+		],
+		tags: [
+			{
+				name: 'Johnny Cannon',
+				id: '7d78b103-3848-5135-8875-e02618ea45c5',
+			},
+			{
+				id: 'fb78845b-94a2-5dd9-a4f9-4ffce1747461',
+				name: 'Duane Jensen',
+			},
+			{
+				id: 'a396198f-c1f6-5054-84f9-dbc8b9b48916',
+				name: 'Henry McCormick',
+			},
+		],
+		category: {
+			id: '0d7e8db0-bb56-5491-8c82-dc5b68238f66',
+			name: 'Loretta Goodwin',
+		},
+		status: 'sold',
+		id: 'a3d2f2ca-7381-51cf-a12c-af0d1e16a91e',
+	},
+	{
+		name: 'Trevor Martin',
+		photoUrls: [
+			'http://LWOoqAtCwpZHwEmuSfd.upLyVquCUFRSGInmVUSn9LfSqZa.jjp',
+			'https://NoHkHDC.slacu4TSg',
+			'https://vahWsYTqvINkMioJIuGNa.itkBRKxfqZzPuhoTP',
+			'https://HjADKKoRIOVzYKGKh.yjyUN0krbVeGb1R-,-3yAHzt1',
+		],
+		status: 'sold',
+		tags: [
+			{
+				id: 'bf58929a-8c86-5560-9df5-f276116340f2',
+				name: 'Wayne Murphy',
+			},
+			{
+				name: 'Dominic Swanson',
+				id: '2308f5d9-fbf2-552a-97f1-9132d2e28f52',
+			},
+		],
+		id: '2193c43d-5304-5aae-8ad7-1783f425a1e1',
+		category: {
+			id: '55ffd6e0-00bf-52ea-83fc-859e666f1abe',
+			name: 'Mabel Lowe',
+		},
+	},
+	{
+		name: 'Mike Holmes',
+		photoUrls: [
+			'http://k.thtPI8.yNZUCV3Qwltj7vclAl.BFUauQTZk',
+			'http://XUoDbEzMaeCdBVIlGPJy.hkhzVRbdimIQvtlHHmvfXGQgFajNOYWcVjm.OIucpMIf4Ta',
+			'http://ystXbV.lhgqFj2EWhwIV2wljs1NCfLaqp4NenJz6U-VyMDZrDg7aG7,6s',
+			'http://YKdPOZpHqcjpWY.toHSAnIW+s9QRIe9jLwIp5h3',
+		],
+		tags: [
+			{
+				id: '5542aadf-d224-56b7-88f1-c271bb9e612d',
+				name: 'Jesus Austin',
+			},
+			{ name: 'Sylvia Pope', id: '84461222-85f7-5b82-9011-7d2a1c0fb415' },
+		],
+		status: 'available',
+		category: {
+			name: 'Clara Glover',
+			id: '92deca34-5cee-551e-b969-5b2c368a68df',
+		},
+		id: 'e62a1deb-fcd1-512e-905a-63b2e10c3a70',
+	},
+	{
+		name: 'Jeremiah Roberts',
+		photoUrls: [
+			'http://RuYaKzoClnTZfkGrQDQgW.fwhcfM26ci1LphkLIyEFqdNYAw0a59NPLwzlbVD0S',
+			'http://jcNiH.rcaxiHW+1qcHVI.DOBmKdaoOWaw49ADIGCuK8uwWII-sme.',
+		],
+		id: '2b5ae91e-8046-53e8-988a-c1c953b640bd',
+		tags: [
+			{
+				id: 'd905214e-e82d-5c73-ba9a-552a831e5d44',
+				name: 'Caroline Hamilton',
+			},
+			{
+				id: '21c9c6b4-b63e-5717-b09c-0c826897c33c',
+				name: 'Virginia Nelson',
+			},
+			{ id: '67fcaf45-6c65-5cef-9111-9bb1b3a6a4a1', name: 'Cecilia May' },
+		],
+		category: {
+			id: '42058859-9b03-5d06-a9da-075b79142c8a',
+			name: 'Lewis Reese',
+		},
+		status: 'available',
+	},
+	{
+		name: 'Bobby Lloyd',
+		photoUrls: [
+			'https://pGJNgJtgBNJ.kyfgTCZ8i77aNkGjS7MG.bPqiOCP,yakHAbr4acDVa-40yQCCaImX-+qrzC5,7gnesV9u',
+			'http://keuqAtKJswEGDzPzTnUdexD.jen4avRjaoiozC',
+		],
+		category: {
+			name: 'Jennie Knight',
+			id: '8d158273-8d2e-567f-ba8d-8abfe23adad5',
+		},
+		id: '3b3bb2b6-80de-52b2-a4dd-b6aeeec8a1fb',
+		tags: [
+			{
+				name: 'Augusta Mills',
+				id: '56e60a20-fc96-5712-9b05-d28e3b005a4f',
+			},
+			{
+				id: 'd566e082-00ae-50ff-a2a9-c7ad7b68a658',
+				name: 'Bobby Horton',
+			},
+			{ name: 'Raymond Kim', id: '6f4f9677-5818-5973-b56d-039501ab44d9' },
+		],
+		status: 'available',
+	},
+];
+
+export const response200 = [
+	{
+		name: 'Philip Colon',
+		photoUrls: [
+			'http://baQCACHEeuMeqKaF.olwh1ftp+zaoPbCQnRe-aDNiqw0W1Fu,SZH,mIVOg,Znmm',
+			'http://RZQcDKovFWIZJGnbpciA.aoZ0ekEnPK.Fr0E.flwBMr5j+kaKJrdQwSvIvNQBPMx',
+			'https://PdvGFGBJkVJhrYX.mtelwsphG9DbaeQJnfKF9rkDiApjslFRH,dmT0I,cqAJeg-Je4jvox9fS81ruoDD1ptlT',
+		],
+		id: '178f538d-da49-5167-82a1-1213cbc9c245',
+		status: 'pending',
+		category: {
+			id: 'bbdd0ddb-794f-51e4-ac82-d0d1ad79d436',
+			name: 'Marion Evans',
+		},
+		tags: [
+			{
+				id: 'af780f63-7780-50ee-a2e3-2c92aef84f3b',
+				name: 'Elizabeth Miller',
+			},
+			{
+				name: 'Christina Nunez',
+				id: '198b41a1-d84e-5ce6-8fcd-506dccd26e71',
+			},
+		],
+	},
+	{
+		name: 'Lura Knight',
+		photoUrls: [
+			'https://lJzSEcBLQP.dpiqZJmyBt3vrCPFIXVKxVok1SwKBL1SUxHyFRWRjBEZJBjv55M-+fgkbo+LR-',
+			'https://KkPNAICbseilsOA.tpsLmB.uPGRu9eaOMMiYnS9Z,qQi32nlSQji3SwmB.J6BrFfz',
+		],
+		category: {
+			name: 'Bettie Jenkins',
+			id: 'c215eaf6-7175-565b-ae70-d2846a7396ea',
+		},
+		id: 'bbbfb01d-7a57-5986-8796-c6e3a04e954d',
+		tags: [
+			{
+				id: 'b16a5fca-8b92-51fe-a4f0-06677710585e',
+				name: 'Jose Salazar',
+			},
+			{ name: 'Louis Woods', id: '2d29000b-ab58-524a-a42f-b605cd7c0e6c' },
+			{ id: 'b444ca86-5800-5ce2-933b-e5a4ef1107ef', name: 'Polly Drake' },
+		],
+		status: 'sold',
+	},
+	{
+		name: 'Matilda Carter',
+		photoUrls: [
+			'https://IzxKSuOPAajGWlFyuMOLHMmWWlvDFHCGG.gzkxmfZKbf6p-yDKMjKART+LzBJnobKSq0qOp3BmokEHHp-nAiuFjor',
+			'http://bmG.dsrZ8jp6BX8QnH3hH-ehRmHrwFwsR+eQcZ',
+		],
+		status: 'pending',
+		category: {
+			id: 'c8657ad0-e888-5692-9cd0-97ab912b87e6',
+			name: 'Jean Blake',
+		},
+		id: 'bbb9f814-765f-5627-a72b-7334cf846da9',
+		tags: [
+			{
+				name: 'Bettie McBride',
+				id: '0391fba8-0a1f-59f8-952f-97b384413aef',
+			},
+			{
+				name: 'Kyle Kennedy',
+				id: 'd237c5d5-d92a-50d3-8f13-54946692c07c',
+			},
+			{
+				id: '6aafa2ab-317a-51aa-bc80-8d58ef2392bc',
+				name: 'Philip Young',
+			},
+			{
+				id: '0c4c2f36-ee44-565b-8ead-16b9d1554adc',
+				name: 'Bobby Gonzales',
+			},
+			{
+				name: 'Irene Keller',
+				id: 'cd8cc0cf-d2fb-5899-8337-16aad68845dc',
+			},
+		],
+	},
+	{
+		name: 'Duane Carroll',
+		photoUrls: [
+			'https://ttUitSOkDXhpTzOyHGGcNHC.ywvMjbPWAkVAPturwxVJv42N1ULatRNOnvdaI',
+		],
+		tags: [
+			{
+				name: 'Birdie Montgomery',
+				id: '37338686-876a-51ae-906a-84c8fe00a96d',
+			},
+		],
+		category: {
+			name: 'Willie Carpenter',
+			id: '99b2d74b-cf4a-5494-8ec8-20be489e0f27',
+		},
+		status: 'sold',
+		id: '8c7aa1cc-dbb4-5ecf-b169-b30ce2337ed4',
+	},
+	{
+		name: 'Jesse Graham',
+		photoUrls: ['http://ObVrIAQWi.xajA+ZXD'],
+		tags: [
+			{
+				name: 'Randy Briggs',
+				id: '6163c424-6467-55ed-983e-9f93b815962d',
+			},
+			{
+				name: 'Amanda Moore',
+				id: 'c36e0d61-b06e-518b-a066-e4a89f35026b',
+			},
+			{ name: 'Steve Bowen', id: '5628c7b5-5d8a-59d1-b028-11e15fdb8a8d' },
+			{
+				name: 'Nettie Collins',
+				id: '67c76365-28ba-5619-bf17-a65a0ae598c9',
+			},
+		],
+		id: 'cc34ee3d-1691-5c21-97dc-3386c349827d',
+		category: {
+			id: '9ea768d6-3c72-5176-a820-93cf21c88dc9',
+			name: 'Donald Myers',
+		},
+		status: 'pending',
+	},
+];
+",
+  "find-pets-by-tags.ts": "export const queries = {
+	tags: ['ipsum', 'velit cillum', 'est sunt commodo mollit', 'dolore'],
+};
+
+export const defaultResponse = [
+	{
+		name: 'Nina Bailey',
+		photoUrls: [
+			'https://NorfRGJZUAI.ycEbnvUQS,4.-d11.LhK8fh0Xyu2V6HSPRnuEg7VkVSvdGWLtYZnzHGmK',
+			'http://PPRZdSZa.owhsDOY9S5BgP5yZr',
+			'http://BNtDl.zlnHDhCvOXYr,cjXVNC5VV7zz,HTIxEaPjTIMAG0ozVFq-+YDqqQB8B2lTEzcXQcu',
+			'http://bPeiGIucpVDulSvUrfZCE.svacJTQSQBcjFA,OpRRac1qEBdxyOjn44',
+		],
+		id: '99b30300-b097-5050-81c4-2b15bdacae61',
+		category: {
+			name: 'Bryan Mendoza',
+			id: '4eb3ec1c-482a-5292-b89d-b9ff490cb77a',
+		},
+		status: 'sold',
+		tags: [
+			{
+				name: 'Cecilia Keller',
+				id: '00af7fc3-559e-596d-abd5-a56f007ccde2',
+			},
+			{
+				name: 'Cornelia Knight',
+				id: '810ea398-fdb3-5f59-afef-4485d3908017',
+			},
+			{
+				name: 'Minerva Alvarado',
+				id: 'cebb0bb9-72a5-5c11-9081-9c5c9580ea48',
+			},
+			{
+				name: 'Nathaniel Munoz',
+				id: 'c942684a-9850-51fe-818e-b11fd26b19a8',
+			},
+			{
+				name: 'Herbert Ford',
+				id: '9bf38fcd-091f-54cd-849d-78c9ecd396ef',
+			},
+		],
+	},
+	{
+		name: 'Martin Stanley',
+		photoUrls: [
+			'https://OehAyQzIfLgWEywX.glhD',
+			'https://ANQuXEoyLZYbHxWkRNCq.pnmlZosgWlRXWrXh-FVSeclfp.4Dn9wk+obE0LndxRkwlehWIkfAoFLLkhVFQVUD',
+			'https://hzTTtLme.mlbmwxClUF',
+		],
+		tags: [
+			{
+				name: 'Jesus Pierce',
+				id: 'c3a6bc57-cde7-55c8-8091-cd5636106b69',
+			},
+			{
+				id: 'fcf6707d-0607-59e9-98b5-dceeb9d076ea',
+				name: 'Hallie Peterson',
+			},
+			{ name: 'Ricky Reese', id: '4fdcbc6c-5023-5910-a610-8ccc303183e0' },
+			{
+				name: 'Elijah Chapman',
+				id: '8a6b8624-0bc1-571d-9457-66e2d90ce60e',
+			},
+			{ name: 'Jay Hodges', id: 'd4a97e8b-c071-5f24-8439-1498c1552d76' },
+		],
+		id: '79f175f3-fa09-5c77-b9bb-f832db80e8dd',
+		status: 'pending',
+		category: {
+			id: 'c0623a64-ee1f-59ff-b940-1aa2742a1f6a',
+			name: 'Troy Gomez',
+		},
+	},
+];
+
+export const response200 = [
+	{
+		name: 'Anthony Crawford',
+		photoUrls: [
+			'https://gSnfQPbNlc.umjJtCCOJCsZUCMzApRbz,oj3kUQ',
+			'https://Y.fxMZ36YP0HKrosVEOdeWB8HxurTjR-rnVIFECWtAd.WDCBWpD5RhyDcv0eR8VLx',
+			'http://dwl.yke,Pnmezm1oGj6PmB-j',
+		],
+		tags: [
+			{
+				id: '37d32fa9-c01c-5608-8f90-e6a9aa1cad20',
+				name: 'Caroline Barber',
+			},
+			{ name: 'Ola Patrick', id: '4401d792-0ea0-51b5-a410-e554b95938e1' },
+		],
+		status: 'available',
+		category: {
+			id: 'a6904d82-3724-557c-b4c2-2a55424ebc29',
+			name: 'Michael McGee',
+		},
+		id: '6304b43e-1be1-55eb-87d4-d0ffc5108386',
+	},
+	{
+		name: 'Phillip Payne',
+		photoUrls: [
+			'http://fDjcqIdTlggvrlfLAFjgdUi.uzlosApxYDjwFpTcPLSsB1CyxKYHig',
+		],
+		status: 'pending',
+		category: {
+			id: 'b48d7966-2dbb-52b0-a61a-7ec2a89dfaf5',
+			name: 'Bernice Oliver',
+		},
+		id: '1e565778-f7d6-52d0-8be3-60b31017a092',
+		tags: [
+			{
+				id: '5f7253fd-34c8-5c8f-9564-d7b355ea39c8',
+				name: 'Glen Jefferson',
+			},
+			{ name: 'Ian Brooks', id: '63a8f63e-b2cd-564e-8cba-5bbfaa86d02b' },
+		],
+	},
+	{
+		name: 'Nell Curry',
+		photoUrls: [
+			'https://bVLnaoMOxjcAebRrHJ.yjyoevr.fnZfSovxt,VJM.oOTvtjNZv,asxkfji7Pnglw9SEKi2hbCCWFX',
+		],
+		tags: [
+			{ name: 'Juan Brewer', id: '82d9234a-4cad-51e3-a268-56492decdd25' },
+			{ id: '0e85556b-c60f-5bdc-bd98-4d59d8f677f3', name: 'Ethel Hayes' },
+			{ name: 'Ola Rodgers', id: 'bc875b00-a5c9-5aea-b815-e5217a219cf9' },
+			{ id: '893e8aea-2318-56f5-8f8f-57a739cf711c', name: 'Craig Mills' },
+			{
+				id: 'dd8c4103-99c1-57fc-976e-ba6f02212c64',
+				name: 'Alexander Ruiz',
+			},
+		],
+		status: 'available',
+		category: {
+			id: '4f500cbc-c25e-578e-bd57-8fe4611fef90',
+			name: 'Jeanette Medina',
+		},
+		id: 'dc4945d0-9a5b-5099-b726-d3292e665079',
+	},
+	{
+		name: 'Susan Montgomery',
+		photoUrls: [
+			'http://fKnwsKvLGczIqclWBPFKewAeMSoBF.ddZN6vX1HiSD6uae5TazGGly',
+			'http://NQowcdpAFQVpWSjKvHiKhSjQpHhIaY.jbuobWiSX4qPUNCcBws3nSQD8JZADVGgPVM-Oieo.pollDuVT',
+			'http://lVhUisaTpSoGtiLfa.qpevsm2C.wJ+FZnqxoT4leX7lWopsJXDf+IXBc4bpaMjea5TLpCicrKYJqjOALpmJkKxY',
+			'https://AHrcNmWxuLRyCFvLp.mopfobhPWJf5HPtIHhWjcWOpC5Afgl4VjHFC',
+		],
+		id: '8e5f40b1-875b-5f14-b7cd-a7e673e78443',
+		category: {
+			id: '700453f2-e204-5673-add2-076065cad218',
+			name: 'Norman Hogan',
+		},
+		tags: [
+			{
+				name: 'Larry Ballard',
+				id: '644352c5-3264-5feb-a683-facbce10ea62',
+			},
+			{ id: 'f347c2c2-958e-5962-ab6e-b9b1af7e8302', name: 'Olive Reed' },
+			{
+				id: '1dead5dd-a800-50cb-bb91-77e8aa6e139c',
+				name: 'Madge Castro',
+			},
+			{
+				id: 'e03eb2f0-bd99-50d3-bf7f-19147147134d',
+				name: 'Ellen Spencer',
+			},
+		],
+		status: 'available',
+	},
+];
+",
+  "get-inventory.ts": "export const defaultResponse = { esse6: 35621984 };
+
+export const response200 = {
+	in7_f: 3589992,
+	nisi_8: 27521080,
+	dolore7: 35081406,
+};
+",
+  "get-order-by-id.ts": "export const params = { orderId: 33558478 };
+
+export const defaultResponse = {
+	shipDate: '1974-07-31T14:00:00.0Z',
+	status: 'approved',
+	id: 'a4e18658-f6a8-5c6c-a17e-d3bc9c49cf5f',
+	petId: 'f7c976bf-057a-56dd-971a-d37e388702d2',
+	quantity: 4,
+	complete: false,
+};
+
+export const response200 = {
+	quantity: 1,
+	petId: '3d465b77-903b-5d26-8e82-c3f48632c782',
+	complete: true,
+	shipDate: '1994-11-20T00:00:00.0Z',
+	status: 'approved',
+	id: '9f6e0b96-bc1a-54d6-a365-8bc12a456cd1',
+};
+",
+  "get-pet-by-id.ts": "export const params = { petId: -48369317 };
+
+export const defaultResponse = {
+	name: 'Jack Moore',
+	photoUrls: [
+		'https://XUToxOJAsEnAqNqAviYltLF.dsmYdW4LOh8nq-',
+		'http://snJsanAuDtXxUMuGPBIgReXaeXjCSsEV.htgQsRlIOq75Tp',
+		'http://hUHfDThSMSagZx.uslkLL5e0P5CnjcjYXG+W',
+		'https://TG.psvC0XoLgEzGOuYwREOPJwd4M5w,lsM,P3jN.FJU,179QN31JV2TN5',
+	],
+	status: 'pending',
+	category: {
+		id: '0e54d7fb-b012-5aa0-90e3-eb2ef5c5cc33',
+		name: 'Randall Dennis',
+	},
+	tags: [
+		{ name: 'Wayne Franklin', id: '06b2abe8-fb85-58c6-8816-88c26ee5df6b' },
+		{ name: 'Chris Nash', id: '88222eb2-ca77-58aa-a713-d162f69a8b58' },
+	],
+	id: '201d4116-8567-589a-be3a-c00971c46873',
+};
+
+export const response200 = {
+	name: 'Norman Fowler',
+	photoUrls: [
+		'https://EzTIxXJrzC.jqplI1iiShllWwS81+.ASn',
+		'https://ceMrRgNC.cyquIpsA0N3bzdv+zDGpQY4iUjN',
+		'https://ceqFWccvKZGPpX.nszmjsLbxJfZemq5GbyRC',
+		'https://WLOKuOXdGirfLwpdZOH.eigkqrbSR76uc8J7+tKgfAZA7ZJVmUKo+js68Hc5YQhbtF',
+		'https://ZvebnEyaVAnDqeBqfQauAXabqwI.xiFwL7IbadWrZppy,Qgbx2aVeRPHAvhkUmGu7wuA7OCFqI,7.m',
+	],
+	tags: [
+		{ id: '08bf0a4f-970b-59e7-96c8-1f3bca637d58', name: 'Mae Ward' },
+		{ name: 'James Boyd', id: 'ed89c374-9435-593d-a617-b2049b1e6bfd' },
+	],
+	id: '39da62b3-6ec7-5f41-a121-a5a261c909f4',
+	category: { name: 'Inez Reid', id: '51857579-2b03-5c4b-8b5e-f6a36eaa2660' },
+	status: 'sold',
+};
+",
+  "get-user-by-name.ts": "export const params = { username: 'cillum fugiat esse' };
+
+export const defaultResponse = {
+	email: 'fe@kujdu.ao',
+	userStatus: true,
+	username: 'yZBOkRIjVaBA',
+	phone: '(680) 946-9435',
+	id: 'caae2ee8-ff8d-5bbb-a221-7b9311e0cbdb',
+	password: 'iQqTIQ',
+	firstName: 'Alberta',
+	lastName: 'Prieto',
+};
+
+export const response200 = {
+	firstName: 'Theresa',
+	username: 'dIHYvkb',
+	password: 'QQBYwFLFSIWqrzj',
+	id: 'cfd0ebe0-84aa-5283-86ca-f58763f275e8',
+	lastName: 'Zingoni',
+	email: 'zirdocti@wopazi.mm',
+	phone: '(970) 976-2024',
+	userStatus: false,
+};
+",
+  "login-user.ts": "export const queries = {
+	username: 'cillum eiusmod nisi fugiat laborum',
+	password: 'laborum dolore in in adipisicing',
+};
+
+export const defaultResponse = 'nostrud proident dolore labore deserunt';
+
+export const response200 = 'aliquip dolor sunt aute et';
+",
+  "logout-user.ts": "",
+  "place-order.ts": "export const requestBody = {
+	quantity: 5,
+	complete: false,
+	shipDate: '2000-03-01T13:00:00.0Z',
+	id: '8976a067-fd06-5cd3-b6d7-2912934ffd40',
+	status: 'approved',
+	petId: 'fa8eb1dd-be8b-5e20-8ccf-59b5326c576f',
+};
+
+export const defaultResponse = {
+	status: 'placed',
+	shipDate: '2008-02-22T13:00:00.0Z',
+	complete: true,
+	id: '674464bf-cbe4-5364-824b-60add449c5e2',
+	quantity: 1,
+	petId: '7d1a78e4-33fa-5f82-ab70-d982cc3caa31',
+};
+
+export const response200 = {
+	quantity: 2,
+	complete: true,
+	status: 'approved',
+	petId: '876d6b5a-9415-569e-a516-cf31da12f167',
+	id: '691cd179-873a-5d57-af39-6e304187dd34',
+	shipDate: '1965-05-18T14:00:00.0Z',
+};
+",
+  "update-pet-with-form.ts": "export const queries = {
+	name: 'irure Lorem ut pariatur labore',
+	status: 'laboris',
+};
+
+export const params = { petId: -27896421 };
+",
+  "update-pet.ts": "export const requestBody = {
+	name: 'Minerva Butler',
+	photoUrls: [
+		'http://cZqkInjwyPRyfwqhBUQmi.hqw+iPVS3HECN-aiNGQVWzkowDkb8GjqnBU2W2A1hFdC9gPTXt-fEOX8Sv.NGlxtG6hwdreoq',
+		'https://QqBnaJ.wmzfJRGBtTDP+quXpN-fgZX6tu7CF',
+	],
+	tags: [
+		{ name: 'Noah Bryan', id: '67f7b4a8-51a7-5249-9896-e8b67a12eae3' },
+		{ name: 'Arthur Hardy', id: '22da89cc-faad-5e6a-a26a-51c4b933b3aa' },
+		{ id: 'bf716f29-014d-5374-98f3-8b60b2f08df8', name: 'Mabel Fernandez' },
+		{
+			name: 'Antonio Alvarado',
+			id: '1f4e3c85-0feb-5ccf-86ed-1f09b7e05b92',
+		},
+		{
+			id: '5922c6fc-0dd1-58f7-8782-fa7aef1aa5cb',
+			name: 'Herman Rodriquez',
+		},
+	],
+	category: {
+		id: '059a63f7-e3a2-5859-b44a-99806f87eb77',
+		name: 'Brent Jensen',
+	},
+	status: 'available',
+	id: 'e2daf433-f32a-55fd-b669-64141a62194d',
+};
+
+export const defaultResponse = {
+	name: 'Ivan Allen',
+	photoUrls: [
+		'http://vlLELoRMuhqB.hnEosiVdTiJz0-z4k1OjRiK.xfrC5cb,CpzQI',
+		'https://NtevTWylC.gnzK,w,PiPdktQ-MTv9KrZ4h.hVJdf1reu7XqJPUHWcBNGEnPoB',
+		'https://YJXexnpoAFvfu.thoktHTnMXOnq28CN+E4nD.p',
+	],
+	status: 'pending',
+	id: '9695db9a-6a5c-52db-911c-530b227e116c',
+	tags: [
+		{ name: 'Howard Moran', id: '6ac2b08c-1b5f-5bca-864c-3b08f02b2962' },
+		{ name: 'Herman Walton', id: '8ce00011-09e1-5236-8475-9b2a45433f60' },
+		{ id: 'eeb83111-3142-5f4e-a571-78a7f90bcc34', name: 'Manuel Silva' },
+		{ name: 'Alvin Jackson', id: '08a7296e-03e6-555e-ac36-0ad92c75ef1d' },
+		{ id: '6b2b098c-e9a9-5368-895b-2932e0573cd3', name: 'Herman Little' },
+	],
+	category: {
+		name: 'Ann Wilkins',
+		id: '2880f3b4-abf1-58f6-95f7-9cdf453dbef1',
+	},
+};
+
+export const response200 = {
+	name: 'Stella Pena',
+	photoUrls: [
+		'https://vKHoW.eenho-2Ign3tvt9HeBSdRLkVjrduca7AINhZlbrLzRHxR2FKk2izDSDLE6+ccp',
+	],
+	category: {
+		id: '283669bf-5d7b-518d-8968-be8745b72e49',
+		name: 'Ralph McGee',
+	},
+	id: 'c45818ca-b5c6-59c9-9c88-c39b5b747bca',
+	tags: [
+		{ id: 'b95af1e3-c58d-5438-a3ca-4d487d29ef11', name: 'Jared Wolfe' },
+		{ id: '7f788a37-fbdc-5034-a032-d1247098611a', name: 'Kathryn Bradley' },
+		{ id: '77a08be9-f697-5f72-b26f-8b81723dd852', name: 'Ellen Hughes' },
+	],
+	status: 'sold',
+};
+",
+  "update-user.ts": "export const params = { username: 'nostrud quis minim labore elit' };
+
+export const requestBody = {
+	userStatus: true,
+	lastName: 'Jennings',
+	id: '247246a0-4d86-5111-b4ec-f5bc2746ea20',
+	firstName: 'Edgar',
+	username: 'GEKXoBHFSBBrniS',
+	email: 'hu@baga.ma',
+	phone: '(705) 489-6666',
+	password: 'KKTRUctGEmujDqWKZuy',
+};
+",
+  "upload-file.ts": "export const queries = { additionalMetadata: 'veniam in irure tempor' };
+
+export const params = { petId: -98819784 };
+
+export const defaultResponse = {
+	code: 309,
+	message:
+		'De vep mezza hucewca ganoboh fadu ulemajho jaaduloj tegema zomkem tobdendas afi.',
+	type: 'Sophie Gregory',
+};
+
+export const response200 = {
+	message:
+		'Wi ew piivo vadan casaj wotsiz daab ralen du guvtuici mamtibi tauvu bacacimap egumezu maedoja doko povkev hopta.',
+	type: 'Keith Clayton',
+	code: 559,
+};
+",
+}
+`;
+
+exports[`fakeOperationResponse should accept override objects 2`] = `
+Object {
+  "email": "va@so.gn",
+  "firstName": "Carlos",
+  "id": 1,
+  "lastName": "Fournier",
+  "password": "glXawMqIolsGBGyWt",
+  "phone": "(231) 636-7897",
+  "userStatus": true,
+  "username": "yEtWtYA",
+}
+`;
+
+exports[`fakeOperationResponse should call override functions with fake data 1`] = `
+Object {
+  "email": "ivibjol@opkupu.bv",
+  "firstName": "Ronnie",
+  "id": "bcae1656-00a9-503c-9af5-3e34a7a1d39e",
+  "lastName": "Iglesias",
+  "password": "mmQCmsSWqqGGm",
+  "phone": "(561) 904-6542",
+  "userStatus": true,
+  "username": "HDduXldbACGxKFWJrQtp",
+}
+`;
+
+exports[`writeFake /v3/petstore.json 1`] = `
+Object {
+  "add-pet.ts": "export const requestBody = {
+	name: 'Leo Sutton',
+	photoUrls: [
+		'http://Rl.trbj59FRi4SQOpld5aNuPEWrAaTVuzb1dhJ',
+		'https://lrgJoJvtneMrMOrQaAEWsj.pdcwqa',
+		'https://BTLerbrCwMlBpOoBjDDLUtfgZDMgVmEMv.lgryM2+VPT3pJ,4',
+	],
+	id: '37f1568c-c408-5f08-ab1a-d9293dbae89d',
+	category: {
+		name: 'Cora Nguyen',
+		id: 'b7263a16-e81c-5777-b5e0-51bd5293612c',
+	},
+	tags: [
+		{ name: 'Matthew Swanson', id: '44eb9448-2fc9-5a7c-8f72-b58d8499cbb2' },
+		{ name: 'Barry Lawson', id: 'b1831b2d-27f2-5978-a532-9441de6e1658' },
+		{ id: 'a452a561-26b0-53bb-a540-77349be6250a', name: 'Brett Bryant' },
+	],
+	status: 'available',
+};
+",
+  "create-user.ts": "export const requestBody = {
+	email: 'kupioz@vet.vu',
+	userStatus: false,
+	username: 'ZevJIFvHnceunMohuD',
+	password: 'bXafyGR',
+	lastName: 'Olmi',
+	id: '91ef084e-bab9-5487-bc3f-b0b98f12540a',
+	phone: '(300) 701-7384',
+	firstName: 'Cecilia',
+};
+",
+  "create-users-with-array-input.ts": "export const requestBody = [
+	{
+		firstName: 'Carlos',
+		id: '79a76e07-886f-5001-886f-29bc0058b8cb',
+		password: 'FoaCLeaDeslqTHssCL',
+		lastName: 'Heemskerk',
+		userStatus: false,
+		username: 'lYDoImpevUxbWzE',
+		email: 'ine@belosa.ba',
+		phone: '(264) 935-8714',
+	},
+	{
+		phone: '(904) 906-5621',
+		userStatus: true,
+		password: 'VBFEQRrssVuuNutumf',
+		firstName: 'Sophia',
+		username: 'VHspHUoykorvrvT',
+		id: '78662031-8d6b-53e6-afb3-44fb45d653d3',
+		lastName: 'Chiavacci',
+		email: 'sip@roriz.mk',
+	},
+	{
+		username: 'gmfMAOxkjQvyTON',
+		password: 'mhrjXCIDOwJskAyvQb',
+		userStatus: true,
+		email: 'bateod@joze.ar',
+		lastName: 'Michelozzi',
+		phone: '(713) 894-2409',
+		id: 'ed92f29b-a368-5212-8a7a-1f20747fc47d',
+		firstName: 'Brandon',
+	},
+];
+",
+  "create-users-with-list-input.ts": "export const requestBody = [
+	{
+		phone: '(530) 214-5689',
+		firstName: 'Mildred',
+		id: 'ff7b74dd-246e-519d-8065-580a9ea31b40',
+		userStatus: false,
+		lastName: 'Glover',
+		username: 'DtqlZfDm',
+		email: 'mojij@ujriri.io',
+		password: 'pGubRUHaX',
+	},
+];
+",
+  "delete-order.ts": "export const params = { orderId: 18175979 };
+",
+  "delete-pet.ts": "export const headers = { api_key: 'elit' };
+
+export const params = { petId: -27111262 };
+",
+  "delete-user.ts": "export const params = { username: 'ut qui nulla proident' };
+",
+  "find-pets-by-status.ts": "export const queries = { status: ['available'] };
+",
+  "find-pets-by-tags.ts": "export const queries = {
+	tags: ['laboris', 'in dolore amet pariatur officia', 'non laborum'],
+};
+",
+  "get-inventory.ts": "",
+  "get-order-by-id.ts": "export const params = { orderId: 2 };
+",
+  "get-pet-by-id.ts": "export const params = { petId: -19990908 };
+",
+  "get-user-by-name.ts": "export const params = { username: 'ut incididunt dolore' };
+",
+  "login-user.ts": "export const queries = { username: 'in', password: 'aute cillum id culpa' };
+",
+  "logout-user.ts": "",
+  "place-order.ts": "export const requestBody = {
+	id: '3e1f751a-27c4-5f58-8c31-b02dc9593b52',
+	petId: 'f32f8acd-bb2d-5a7e-91af-ef083353ab27',
+	complete: false,
+	quantity: 10,
+	status: 'placed',
+	shipDate: '1944-06-06T14:00:00.0Z',
+};
+",
+  "update-pet-with-form.ts": "export const params = { petId: 6957507 };
+
+export const requestBody = {
+	name: 'nulla Lorem cillum',
+	status: 'Lorem ut officia Duis',
+};
+",
+  "update-pet.ts": "export const requestBody = {
+	name: 'Danny Lynch',
+	photoUrls: [
+		'http://iMDGLlCSpkueLsr.lplcSpkjnZuZEH-8D.c9ZwD1E7+n+2u+kL2OoImQCy3JzGSkJZUKXxkSPRBhfuYuz3',
+		'https://wzRuWCHgH.jhfqPNkcLJY,A.-kLHpiPH,.TirIowvBCwLna9ManzwJsHEaerMGP5R8',
+		'http://khtvzsiONKYXqO.inNOwfOXnR',
+	],
+	category: {
+		id: '1438825d-d17d-5c7c-a40d-e61f5e409a05',
+		name: 'Annie Armstrong',
+	},
+	tags: [
+		{ id: '74dfbb5a-6953-5ade-820e-d74c34a039ad', name: 'James Francis' },
+		{ name: 'Eliza French', id: 'e911464d-c1b8-56c7-9820-17e79938718e' },
+		{ id: '90e8f745-279e-5162-a431-d07b8dbf5c2e', name: 'Roxie Patton' },
+		{ id: '3fa90848-a951-51ec-84a6-a5adb363960f', name: 'Hulda Welch' },
+	],
+	status: 'pending',
+	id: '59ad368c-44ce-5387-bbe8-9cf3f17dd59a',
+};
+",
+  "update-user.ts": "export const params = { username: 'Duis anim enim' };
+
+export const requestBody = {
+	id: '97f3f9c3-8aec-577e-b328-f8e90f189457',
+	phone: '(838) 396-7281',
+	userStatus: true,
+	firstName: 'Jim',
+	password: 'MxFRLbLbccAMPMmIy',
+	email: 'ekdimnop@pakzo.com',
+	username: 'fXCTyygGWxOlstNf',
+	lastName: 'Marshall',
+};
+",
+  "upload-file.ts": "export const params = { petId: -1972472 };
+
+export const requestBody = {
+	additionalMetadata: 'aute non exercitation voluptate enim',
+};
+",
+}
+`;

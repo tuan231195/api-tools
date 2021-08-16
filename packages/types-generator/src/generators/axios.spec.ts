@@ -2,7 +2,7 @@ import path from 'path';
 import { generateAxiosTypes } from 'src/generators/axios';
 import { matchFsSnapshot } from '#test/utils';
 
-const testDir = path.resolve(__dirname, '..', '..', 'test');
+const testDir = path.resolve(__dirname, '..', '..', '..', '..', 'test');
 
 jest.mock('fs-extra', () => {
 	const { fs } = require('memfs');

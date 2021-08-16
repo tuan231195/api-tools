@@ -2,7 +2,7 @@ import path from 'path';
 import { matchFsSnapshot } from '#test/utils';
 import { generateExpressTypes } from 'src/generators/express';
 
-const testDir = path.resolve(__dirname, '..', '..', 'test');
+const testDir = path.resolve(__dirname, '..', '..', '..', '..', 'test');
 
 jest.mock('fs-extra', () => {
 	const { fs } = require('memfs');

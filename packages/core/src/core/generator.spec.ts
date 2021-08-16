@@ -4,7 +4,7 @@ import { parse } from './parser';
 import { generate } from './generator';
 import { promiseAll } from './utils';
 
-const testDir = path.resolve(__dirname, '..', '..', 'test');
+const testDir = path.resolve(__dirname, '..', '..', '..', '..', 'test');
 
 describe('generate', () => {
 	it.each([
