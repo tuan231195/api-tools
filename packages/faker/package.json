@@ -21,6 +21,7 @@
 		"fs-extra": "^10.0.0",
 		"json-schema-faker": "^0.5.0-rcv.38",
 		"lodash": "^4.17.21",
+		"seedrandom": "^3.0.5",
 		"prettier": "^2.3.2",
 		"yargs": "^17.1.1"
 	},
@@ -31,7 +32,6 @@
 		"@types/json-schema-faker": "^0.5.1",
 		"@types/lodash": "^4.14.172",
 		"@types/seedrandom": "^3.0.1",
-		"memfs": "^3.2.2",
-		"seedrandom": "^3.0.5"
+		"memfs": "^3.2.2"
 	}
 }

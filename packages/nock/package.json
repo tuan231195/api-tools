@@ -8,7 +8,8 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "rm -rf dist && ttsc -b tsconfig.build.json"
+		"build": "rm -rf dist && ttsc -b tsconfig.build.json",
+		"prepare": "generate-api-types axios -u ../../test/v3/petstore.json -o src/generated"
 	},
 	"license": "ISC",
 	"dependencies": {
@@ -17,5 +18,9 @@
 		"lodash": "^4.17.21",
 		"path-to-regexp": "^6.2.0",
 		"nock": "^13.1.1"
+	},
+	"devDependencies": {
+		"axios": "^0.21.1",
+		"@vdtn359/api-tools-types-generator": "workspace:*"
 	}
 }

@@ -53,8 +53,8 @@
 						"in": "path",
 						"description": "ID of pet to update",
 						"required": true,
-						"type": "integer",
-						"format": "int64"
+						"type": "string",
+						"format": "uuid"
 					},
 					{
 						"name": "additionalMetadata",
@@ -250,8 +250,8 @@
 						"in": "path",
 						"description": "ID of pet to return",
 						"required": true,
-						"type": "integer",
-						"format": "int64"
+						"type": "string",
+						"format": "uuid"
 					}
 				],
 				"responses": {
@@ -287,8 +287,8 @@
 						"in": "path",
 						"description": "ID of pet that needs to be updated",
 						"required": true,
-						"type": "integer",
-						"format": "int64"
+						"type": "string",
+						"format": "uuid"
 					},
 					{
 						"name": "name",
@@ -334,8 +334,8 @@
 						"in": "path",
 						"description": "Pet id to delete",
 						"required": true,
-						"type": "integer",
-						"format": "int64"
+						"type": "string",
+						"format": "uuid"
 					}
 				],
 				"responses": {
@@ -425,10 +425,8 @@
 						"in": "path",
 						"description": "ID of pet that needs to be fetched",
 						"required": true,
-						"type": "integer",
-						"maximum": 10,
-						"minimum": 1,
-						"format": "int64"
+						"type": "string",
+						"format": "uuid"
 					}
 				],
 				"responses": {
@@ -458,9 +456,8 @@
 						"in": "path",
 						"description": "ID of the order that needs to be deleted",
 						"required": true,
-						"type": "integer",
-						"minimum": 1,
-						"format": "int64"
+						"type": "string",
+						"format": "uuid"
 					}
 				],
 				"responses": {
@@ -627,7 +624,13 @@
 							"X-Rate-Limit": {
 								"type": "integer",
 								"format": "int32",
-								"description": "calls per hour allowed by the user"
+								"description": "calls per hour allowed by the user",
+								"x-chance": {
+									"integer": {
+										"min": 10,
+										"max": 20
+									}
+								}
 							}
 						},
 						"schema": {

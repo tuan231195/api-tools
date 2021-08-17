@@ -237,7 +237,7 @@ export interface Path {
 	/**
 	 * ID of the order that needs to be deleted
 	 */
-	orderId: number; // int64
+	orderId: string; // uuid
 }
 
 export type Response = Response400 | Response404;
@@ -275,7 +275,7 @@ export interface Path {
 	/**
 	 * Pet id to delete
 	 */
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export type Response = Response400 | Response404;
@@ -434,7 +434,7 @@ export interface Path {
 	/**
 	 * ID of pet that needs to be fetched
 	 */
-	orderId: number; // int64
+	orderId: string; // uuid
 }
 
 export type Response = Response200 | Response400 | Response404;
@@ -472,7 +472,7 @@ export interface Path {
 	/**
 	 * ID of pet to return
 	 */
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export type Response = Response200 | Response400 | Response404;
@@ -650,7 +650,7 @@ export interface Path {
 	/**
 	 * ID of pet that needs to be updated
 	 */
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export interface RequestBody {
@@ -816,7 +816,7 @@ export interface Path {
 	/**
 	 * ID of pet to update
 	 */
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export interface RequestBody {
@@ -1155,7 +1155,7 @@ export type Handler = (
 import * as express from 'express-serve-static-core';
 
 export interface Path {
-	orderId: number; // int64
+	orderId: string; // uuid
 }
 
 export type Response = Response400 | Response404;
@@ -1190,7 +1190,7 @@ export interface Header {
 }
 
 export interface Path {
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export type Response = Response400;
@@ -1383,7 +1383,7 @@ export type Handler = (
 import * as express from 'express-serve-static-core';
 
 export interface Path {
-	orderId: number; // int64
+	orderId: string; // uuid
 }
 
 export type Response = Response200 | Response400 | Response404;
@@ -1430,7 +1430,7 @@ export type Handler = (
 import * as express from 'express-serve-static-core';
 
 export interface Path {
-	petId: number; // int64
+	petId: string; // uri
 }
 
 export type Response = Response200 | Response400 | Response404;
@@ -1668,7 +1668,7 @@ export type Handler = (
 import * as express from 'express-serve-static-core';
 
 export interface Path {
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export interface Query {
@@ -1828,7 +1828,9 @@ export interface RequestBody {
 
 export type Response = Response200;
 
-export type Response200 = void;
+export interface Response200 {
+	id: string; // uuid
+}
 
 type StatusCodes = 200;
 type ExpressResponse = Omit<
@@ -1850,7 +1852,7 @@ export type Handler = (
 import * as express from 'express-serve-static-core';
 
 export interface Path {
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export interface Query {

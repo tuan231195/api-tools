@@ -1,13 +1,12 @@
 import path from 'path';
-import { parse, getOperation } from '@vdtn359/api-tools-core';
+import { getOperation, parse } from '@vdtn359/api-tools-core';
 import {
 	fakeOperation,
 	fakeOperationResponse,
 	writeFake,
 } from 'src/core/generator';
-import * as jsf from 'json-schema-faker';
-import seedrandom from 'seedrandom';
 import { matchFsSnapshot } from '#test/utils';
+import { initSeed } from 'src/core/jsf';
 
 jest.mock('fs-extra', () => {
 	const { fs } = require('memfs');
@@ -21,16 +20,7 @@ jest.mock('fs-extra', () => {
 	};
 });
 
-jsf.option({
-	random: seedrandom('123'),
-});
-
-jest.mock('chance', () => {
-	const Chance = jest.requireActual('chance');
-	return function () {
-		return new Chance(123);
-	};
-});
+initSeed('123');
 
 const testDir = path.resolve(__dirname, '..', '..', '..', '..', 'test');
 

@@ -6,6 +6,7 @@ module.exports = {
 		'!**/__tests__/**',
 		'!**/test/**',
 		'!**/node_modules/**',
+		'!**/generated/**',
 	],
 	//change this to allow more better coverage testing
 	coverageThreshold: {

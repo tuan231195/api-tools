@@ -150,7 +150,7 @@ export type Response200 = void;
 	/**
 	 * ID of the order that needs to be deleted
 	 */
-	orderId: number; // int64
+	orderId: string; // uuid
 }
 
 export type Response400 = void;
@@ -165,7 +165,7 @@ export interface Path {
 	/**
 	 * Pet id to delete
 	 */
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export type Response400 = void;
@@ -211,7 +211,7 @@ export type Response400 = void;
 	/**
 	 * ID of pet that needs to be fetched
 	 */
-	orderId: number; // int64
+	orderId: string; // uuid
 }
 
 export type Response200 = void;
@@ -224,7 +224,7 @@ export type Response404 = void;
 	/**
 	 * ID of pet to return
 	 */
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export type Response200 = void;
@@ -285,7 +285,7 @@ export type Response400 = void;
 	/**
 	 * ID of pet that needs to be updated
 	 */
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export interface RequestBody {
@@ -382,7 +382,7 @@ export type Response404 = void;
 	/**
 	 * ID of pet to update
 	 */
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export interface RequestBody {
@@ -614,7 +614,7 @@ export type Response200 = void;
 export type Response200 = void;
 ",
   "delete-order.ts": "export interface Path {
-	orderId: number; // int64
+	orderId: string; // uuid
 }
 
 export type Response400 = void;
@@ -626,7 +626,7 @@ export type Response404 = void;
 }
 
 export interface Path {
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export type Response400 = void;
@@ -708,7 +708,7 @@ export type Response400 = void;
 }
 ",
   "get-order-by-id.ts": "export interface Path {
-	orderId: number; // int64
+	orderId: string; // uuid
 }
 
 export interface Response200 {
@@ -730,7 +730,7 @@ export type Response400 = void;
 export type Response404 = void;
 ",
   "get-pet-by-id.ts": "export interface Path {
-	petId: number; // int64
+	petId: string; // uri
 }
 
 export interface Response200 {
@@ -851,7 +851,7 @@ export interface Response200 {
 export type Response405 = void;
 ",
   "update-pet-with-form.ts": "export interface Path {
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export interface Query {
@@ -961,10 +961,12 @@ export interface RequestBody {
 	userStatus?: boolean;
 }
 
-export type Response200 = void;
+export interface Response200 {
+	id: string; // uuid
+}
 ",
   "upload-file.ts": "export interface Path {
-	petId: number; // int64
+	petId: string; // uuid
 }
 
 export interface Query {

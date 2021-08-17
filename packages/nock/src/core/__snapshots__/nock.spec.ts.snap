@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`nock should mock the response 1`] = `
+Object {
+  "email": "maf@dabsin.af",
+  "firstName": "Jim",
+  "id": 1,
+  "lastName": "Goodwin",
+  "password": "qSjyddgrZgOujvoHPZ",
+  "phone": "(869) 380-3312",
+  "userStatus": false,
+  "username": "rAoRhZiENxHDXhz",
+}
+`;
