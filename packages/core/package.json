@@ -15,8 +15,9 @@
 		"@apidevtools/swagger-parser": "^10.0.2",
 		"debug": "^4.3.2",
 		"dtsgenerator": "^3.12.1",
+		"lodash": "^4.17.21",
 		"openapi-types": "^9.0.3",
-		"lodash": "^4.17.21"
+		"path-to-regexp": "^6.2.0"
 	},
 	"devDependencies": {
 		"@types/debug": "^4.1.7",

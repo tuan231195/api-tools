@@ -4,6 +4,9 @@ import {
 	parse,
 	ParsedDocument,
 	ParsedOperationSchemaWithInfo,
+	matchUri,
+	parseUri,
+	ramlToExpress,
 } from '@vdtn359/api-tools-core';
 import { mergeWith } from 'lodash';
 import nockBase, {
@@ -13,7 +16,7 @@ import nockBase, {
 	RequestBodyMatcher,
 	Scope,
 } from 'nock';
-import { matchUri, parseUri, ramlToExpress, wrap } from 'src/core/utils';
+import { wrap } from 'src/core/utils';
 import {
 	ExtendedInterceptor,
 	ExtendedNockInterceptor,

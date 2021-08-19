@@ -1,0 +1,16 @@
+{
+	"extends": "./tsconfig.json",
+	"include": ["./src"],
+	"exclude": ["./src/**/*.spec.ts", "./example"],
+	"references": [
+		{
+			"path": "../core/tsconfig.build.json"
+		},
+		{
+			"path": "../faker/tsconfig.build.json"
+		}
+	],
+	"compilerOptions": {
+		"rootDir": "./src"
+	}
+}
