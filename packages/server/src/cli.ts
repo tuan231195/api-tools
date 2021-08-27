@@ -3,8 +3,8 @@
 import yargs from 'yargs';
 
 yargs
-	.scriptName('fake-api-types')
-	.command(require('./cli/generator').default)
+	.scriptName('mock-swagger-server')
+	.command(require('./cli/index').default)
 	.strict(true)
 	.showHelpOnFail(false);
 

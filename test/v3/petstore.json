@@ -911,7 +911,8 @@
 					},
 					"shipDate": {
 						"type": "string",
-						"format": "date-time"
+						"format": "date-time",
+						"x-chance": "date"
 					},
 					"status": {
 						"type": "string",

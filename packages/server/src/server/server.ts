@@ -9,14 +9,18 @@ import {
 } from '@vdtn359/api-tools-core';
 import fs from 'fs';
 import requireDir from 'require-dir';
-import { fakeOperationResponse } from '@vdtn359/api-tools-faker';
+import { fakeOperationResponse, initSeed } from '@vdtn359/api-tools-faker';
 import { camelCase, mapKeys } from 'lodash';
 import { NextFunction, Request, Response } from 'express';
 import logger from 'src/logger';
 
-export const startServer = async (config: Config) => {
-	const express = require('express');
+export const setupServer = async (config: Config) => {
+	logger('Running with config', config);
+	if (config.seed != null) {
+		initSeed(config.seed);
+	}
 
+	const express = require('express');
 	const app = express();
 	const router = express.Router();
 	app.set('port', config.port || 3000);
@@ -41,7 +45,7 @@ export const startServer = async (config: Config) => {
 			requireDir(config.overrides, {
 				recurse: false,
 			}),
-			(key) => camelCase(key)
+			(value, key) => camelCase(key)
 		);
 	}
 
@@ -60,7 +64,7 @@ export const startServer = async (config: Config) => {
 
 			apiRouter[operation.info.method](
 				expressUrl,
-				getRouteHandler(operation, overrideFunction)
+				getRouteHandler(operation, config.seed, overrideFunction)
 			);
 		})
 	);
@@ -69,13 +73,12 @@ export const startServer = async (config: Config) => {
 
 	app.use(errorHandler());
 
-	app.listen(app.get('port'), function () {
-		logger(`Express server listening on port ${app.get('port')}`);
-	});
+	return app;
 };
 
 const getRouteHandler = (
 	operation: ParsedOperationSchemaWithInfo,
+	seed?: string,
 	overrideFunc?: Function
 ) => {
 	const defaultStatusStr = Object.keys(
@@ -88,13 +91,33 @@ const getRouteHandler = (
 		? parseInt(defaultStatusStr, 10)
 		: 200;
 
+	const defaultResponseGetter = (() => {
+		let cachedDefaultResponse: any;
+
+		return {
+			async get(): Promise<any> {
+				if (cachedDefaultResponse) {
+					return cachedDefaultResponse;
+				}
+				const defaultResponse = defaultStatusStr
+					? await fakeOperationResponse({
+							schema: operation.schema,
+							status: responseStatus,
+					  })
+					: undefined;
+				if (seed != null) {
+					cachedDefaultResponse = defaultResponse;
+					return cachedDefaultResponse;
+				} else {
+					return defaultResponse;
+				}
+			},
+		};
+	})();
+
 	return async (request: Request, response: Response, next: NextFunction) => {
-		const defaultResponse = defaultStatusStr
-			? await fakeOperationResponse({
-					schema: operation.schema,
-					status: responseStatus,
-			  })
-			: undefined;
+		const defaultResponse = await defaultResponseGetter.get();
+
 		try {
 			let finalResponse = defaultResponse;
 			if (overrideFunc) {

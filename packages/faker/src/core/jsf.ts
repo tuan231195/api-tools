@@ -1,10 +1,14 @@
 import * as jsf from 'json-schema-faker';
 import Chance from 'chance';
 import seedrandom from 'seedrandom';
+import logger from 'src/logger';
 
 let jsfInstance: typeof jsf;
 
 export const initSeed = (seed?: string) => {
+	if (seed) {
+		logger(`Use seed ${seed}`);
+	}
 	const chance = seed ? new Chance(seed) : new Chance();
 	chance.mixin({
 		currency_code: () => chance.currency().code.toLowerCase(),

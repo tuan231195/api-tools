@@ -130,6 +130,7 @@ importers:
   packages/server:
     specifiers:
       '@types/debug': ^4.1.7
+      '@types/errorhandler': ^1.5.0
       '@types/express': ^4.17.13
       '@types/morgan': ^1.9.3
       '@types/require-dir': ^1.0.2
@@ -145,6 +146,7 @@ importers:
       path-to-regexp: ^6.2.0
       require-dir: ^1.2.0
       ts-node: ^10.2.1
+      yargs: ^17.1.1
     dependencies:
       '@vdtn359/api-tools-core': link:../core
       '@vdtn359/api-tools-faker': link:../faker
@@ -157,8 +159,10 @@ importers:
       path-to-regexp: 6.2.0
       require-dir: 1.2.0
       ts-node: 10.2.1_typescript@4.3.5
+      yargs: 17.1.1
     devDependencies:
       '@types/debug': 4.1.7
+      '@types/errorhandler': 1.5.0
       '@types/express': 4.17.13
       '@types/morgan': 1.9.3
       '@types/require-dir': 1.0.2
@@ -1103,6 +1107,12 @@ packages:
     resolution: {integrity: sha1-fMDqdhUJEkcJuLLRCQ2PbBeq24I=}
     dependencies:
       '@types/ms': 0.7.31
+    dev: true
+
+  /@types/errorhandler/1.5.0:
+    resolution: {integrity: sha1-Lmvi5BnlBRMMY0LRGzmBhn223is=}
+    dependencies:
+      '@types/express': 4.17.13
     dev: true
 
   /@types/express-serve-static-core/4.17.24:

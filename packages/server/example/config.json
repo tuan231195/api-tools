@@ -3,5 +3,6 @@
 	"init": "./init.ts",
 	"baseUrl": "/api",
 	"overrides": "./overrides",
-	"routes": "./routes/index.ts"
+	"routes": "./routes/index.ts",
+	"uri": "../../../test/v3/petstore.json"
 }

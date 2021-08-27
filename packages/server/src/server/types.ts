@@ -5,4 +5,5 @@ export type Config = {
 	routes?: string;
 	init?: string;
 	uri: string;
+	seed?: string;
 };
