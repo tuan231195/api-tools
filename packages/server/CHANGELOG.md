@@ -1,3 +1,10 @@
+# [@vdtn359/api-tools-mock-server-v1.0.1](https://github.com/tuan231195/api-tools/compare/@vdtn359/api-tools-mock-server-v1.0.0...@vdtn359/api-tools-mock-server-v1.0.1) (2021-08-28)
+
+
+### Bug Fixes
+
+* **mock-api-server:** fix typescript transpilation ([ccf93a3](https://github.com/tuan231195/api-tools/commit/ccf93a387660832959246fb4481879e4f31ab954))
+
 # @vdtn359/api-tools-mock-server-v1.0.0 (2021-08-28)
 
 
