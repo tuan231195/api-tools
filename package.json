@@ -17,7 +17,6 @@
 		"test:coverage": "TZ=UTC jest -w 1 --coverage",
 		"publish:coverage": "codecov",
 		"lint": "eslint '**/*.{ts,js}'",
-		"prerelease": "npm run build",
 		"release": "pnpm recursive exec -- pnpx semantic-release",
 		"validate": "run-s test:coverage lint"
 	},

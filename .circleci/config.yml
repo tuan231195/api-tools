@@ -49,6 +49,7 @@ jobs:
                       printf "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
                       npm config set access public
                       mkdir -p ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+                      pnpm config set workspace-concurrency 1
                       npm run release
 workflows:
     version: 2

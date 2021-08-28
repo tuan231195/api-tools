@@ -1,7 +1,7 @@
 {
 	"name": "@vdtn359/api-tools-core",
 	"version": "1.0.0",
-	"description": "API core package",
+	"description": "API tools core package",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"files": [
