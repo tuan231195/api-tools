@@ -27,22 +27,22 @@ Object {
 export type Response405 = void;
 ",
   "create-user.ts": "export interface RequestBody {
-	id?: string; // uuid
+	id: string; // uuid
 	/**
 	 * example:
 	 * theUser
 	 */
-	username?: string;
+	username: string;
 	/**
 	 * example:
 	 * John
 	 */
-	firstName?: string;
+	firstName: string;
 	/**
 	 * example:
 	 * James
 	 */
-	lastName?: string;
+	lastName: string;
 	/**
 	 * example:
 	 * john@email.com
@@ -52,7 +52,7 @@ export type Response405 = void;
 	 * example:
 	 * 12345
 	 */
-	password?: string;
+	password: string;
 	/**
 	 * example:
 	 * 12345
@@ -67,22 +67,22 @@ export type Response405 = void;
 export type Response200 = void;
 ",
   "create-users-with-array-input.ts": "export type RequestBody = {
-	id?: string; // uuid
+	id: string; // uuid
 	/**
 	 * example:
 	 * theUser
 	 */
-	username?: string;
+	username: string;
 	/**
 	 * example:
 	 * John
 	 */
-	firstName?: string;
+	firstName: string;
 	/**
 	 * example:
 	 * James
 	 */
-	lastName?: string;
+	lastName: string;
 	/**
 	 * example:
 	 * john@email.com
@@ -92,7 +92,7 @@ export type Response200 = void;
 	 * example:
 	 * 12345
 	 */
-	password?: string;
+	password: string;
 	/**
 	 * example:
 	 * 12345
@@ -107,22 +107,22 @@ export type Response200 = void;
 export type Response200 = void;
 ",
   "create-users-with-list-input.ts": "export type RequestBody = {
-	id?: string; // uuid
+	id: string; // uuid
 	/**
 	 * example:
 	 * theUser
 	 */
-	username?: string;
+	username: string;
 	/**
 	 * example:
 	 * John
 	 */
-	firstName?: string;
+	firstName: string;
 	/**
 	 * example:
 	 * James
 	 */
-	lastName?: string;
+	lastName: string;
 	/**
 	 * example:
 	 * john@email.com
@@ -132,7 +132,7 @@ export type Response200 = void;
 	 * example:
 	 * 12345
 	 */
-	password?: string;
+	password: string;
 	/**
 	 * example:
 	 * 12345
@@ -190,7 +190,27 @@ export type Response404 = void;
 	status: ('available' | 'pending' | 'sold')[];
 }
 
-export type Response200 = void;
+export type Response200 = {
+	id?: string; // uuid
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		id?: string; // uuid
+		name?: string;
+	};
+	photoUrls: string /* uri */[];
+	tags?: {
+		id?: string; // uuid
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}[];
 
 export type Response400 = void;
 ",
@@ -201,11 +221,33 @@ export type Response400 = void;
 	tags: string[];
 }
 
-export type Response200 = void;
+export type Response200 = {
+	id?: string; // uuid
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		id?: string; // uuid
+		name?: string;
+	};
+	photoUrls: string /* uri */[];
+	tags?: {
+		id?: string; // uuid
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}[];
 
 export type Response400 = void;
 ",
-  "get-inventory.ts": "export type Response200 = void;
+  "get-inventory.ts": "export interface Response200 {
+	[name: string]: number; // int32
+}
 ",
   "get-order-by-id.ts": "export interface Path {
 	/**
@@ -214,7 +256,19 @@ export type Response400 = void;
 	orderId: string; // uuid
 }
 
-export type Response200 = void;
+export interface Response200 {
+	id?: string; // uuid
+	petId?: string; // uuid
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 * example:
+	 * approved
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
 
 export type Response400 = void;
 
@@ -227,7 +281,27 @@ export type Response404 = void;
 	petId: string; // uuid
 }
 
-export type Response200 = void;
+export interface Response200 {
+	id?: string; // uuid
+	/**
+	 * example:
+	 * doggie
+	 */
+	name: string;
+	category?: {
+		id?: string; // uuid
+		name?: string;
+	};
+	photoUrls: string /* uri */[];
+	tags?: {
+		id?: string; // uuid
+		name?: string;
+	}[];
+	/**
+	 * pet status in the store
+	 */
+	status?: 'available' | 'pending' | 'sold';
+}
 
 export type Response400 = void;
 
@@ -240,7 +314,43 @@ export type Response404 = void;
 	username: string;
 }
 
-export type Response200 = void;
+export interface Response200 {
+	id: string; // uuid
+	/**
+	 * example:
+	 * theUser
+	 */
+	username: string;
+	/**
+	 * example:
+	 * John
+	 */
+	firstName: string;
+	/**
+	 * example:
+	 * James
+	 */
+	lastName: string;
+	/**
+	 * example:
+	 * john@email.com
+	 */
+	email?: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	password: string;
+	/**
+	 * example:
+	 * 12345
+	 */
+	phone?: string;
+	/**
+	 * User Status
+	 */
+	userStatus?: boolean;
+}
 
 export type Response400 = void;
 
@@ -257,7 +367,7 @@ export type Response404 = void;
 	password: string;
 }
 
-export type Response200 = void;
+export type Response200 = string;
 
 export type Response400 = void;
 ",
@@ -277,7 +387,19 @@ export type Response400 = void;
 	complete?: boolean;
 }
 
-export type Response200 = void;
+export interface Response200 {
+	id?: string; // uuid
+	petId?: string; // uuid
+	quantity?: number; // int32
+	shipDate?: string; // date-time
+	/**
+	 * Order Status
+	 * example:
+	 * approved
+	 */
+	status?: 'placed' | 'approved' | 'delivered';
+	complete?: boolean;
+}
 
 export type Response400 = void;
 ",
@@ -337,22 +459,22 @@ export type Response405 = void;
 }
 
 export interface RequestBody {
-	id?: string; // uuid
+	id: string; // uuid
 	/**
 	 * example:
 	 * theUser
 	 */
-	username?: string;
+	username: string;
 	/**
 	 * example:
 	 * John
 	 */
-	firstName?: string;
+	firstName: string;
 	/**
 	 * example:
 	 * James
 	 */
-	lastName?: string;
+	lastName: string;
 	/**
 	 * example:
 	 * john@email.com
@@ -362,7 +484,7 @@ export interface RequestBody {
 	 * example:
 	 * 12345
 	 */
-	password?: string;
+	password: string;
 	/**
 	 * example:
 	 * 12345
@@ -396,7 +518,11 @@ export interface RequestBody {
 	file?: unknown;
 }
 
-export type Response200 = void;
+export interface Response200 {
+	code?: number; // int32
+	type?: string;
+	message?: string;
+}
 ",
 }
 `;
@@ -458,22 +584,22 @@ export interface Response200 {
 export type Response405 = void;
 ",
   "create-user.ts": "export interface RequestBody {
-	id?: string; // uuid
+	id: string; // uuid
 	/**
 	 * example:
 	 * theUser
 	 */
-	username?: string;
+	username: string;
 	/**
 	 * example:
 	 * John
 	 */
-	firstName?: string;
+	firstName: string;
 	/**
 	 * example:
 	 * James
 	 */
-	lastName?: string;
+	lastName: string;
 	/**
 	 * example:
 	 * john@email.com
@@ -483,7 +609,7 @@ export type Response405 = void;
 	 * example:
 	 * 12345
 	 */
-	password?: string;
+	password: string;
 	/**
 	 * example:
 	 * 12345
@@ -496,22 +622,22 @@ export type Response405 = void;
 }
 
 export interface Response200 {
-	id?: string; // uuid
+	id: string; // uuid
 	/**
 	 * example:
 	 * theUser
 	 */
-	username?: string;
+	username: string;
 	/**
 	 * example:
 	 * John
 	 */
-	firstName?: string;
+	firstName: string;
 	/**
 	 * example:
 	 * James
 	 */
-	lastName?: string;
+	lastName: string;
 	/**
 	 * example:
 	 * john@email.com
@@ -521,7 +647,7 @@ export interface Response200 {
 	 * example:
 	 * 12345
 	 */
-	password?: string;
+	password: string;
 	/**
 	 * example:
 	 * 12345
@@ -534,22 +660,22 @@ export interface Response200 {
 }
 ",
   "create-users-with-array-input.ts": "export type RequestBody = {
-	id?: string; // uuid
+	id: string; // uuid
 	/**
 	 * example:
 	 * theUser
 	 */
-	username?: string;
+	username: string;
 	/**
 	 * example:
 	 * John
 	 */
-	firstName?: string;
+	firstName: string;
 	/**
 	 * example:
 	 * James
 	 */
-	lastName?: string;
+	lastName: string;
 	/**
 	 * example:
 	 * john@email.com
@@ -559,7 +685,7 @@ export interface Response200 {
 	 * example:
 	 * 12345
 	 */
-	password?: string;
+	password: string;
 	/**
 	 * example:
 	 * 12345
@@ -574,22 +700,22 @@ export interface Response200 {
 export type Response200 = void;
 ",
   "create-users-with-list-input.ts": "export type RequestBody = {
-	id?: string; // uuid
+	id: string; // uuid
 	/**
 	 * example:
 	 * theUser
 	 */
-	username?: string;
+	username: string;
 	/**
 	 * example:
 	 * John
 	 */
-	firstName?: string;
+	firstName: string;
 	/**
 	 * example:
 	 * James
 	 */
-	lastName?: string;
+	lastName: string;
 	/**
 	 * example:
 	 * john@email.com
@@ -599,7 +725,7 @@ export type Response200 = void;
 	 * example:
 	 * 12345
 	 */
-	password?: string;
+	password: string;
 	/**
 	 * example:
 	 * 12345
@@ -768,22 +894,22 @@ export type Response404 = void;
 }
 
 export interface Response200 {
-	id?: string; // uuid
+	id: string; // uuid
 	/**
 	 * example:
 	 * theUser
 	 */
-	username?: string;
+	username: string;
 	/**
 	 * example:
 	 * John
 	 */
-	firstName?: string;
+	firstName: string;
 	/**
 	 * example:
 	 * James
 	 */
-	lastName?: string;
+	lastName: string;
 	/**
 	 * example:
 	 * john@email.com
@@ -793,7 +919,7 @@ export interface Response200 {
 	 * example:
 	 * 12345
 	 */
-	password?: string;
+	password: string;
 	/**
 	 * example:
 	 * 12345
@@ -924,22 +1050,22 @@ export type Response405 = void;
 }
 
 export interface RequestBody {
-	id?: string; // uuid
+	id: string; // uuid
 	/**
 	 * example:
 	 * theUser
 	 */
-	username?: string;
+	username: string;
 	/**
 	 * example:
 	 * John
 	 */
-	firstName?: string;
+	firstName: string;
 	/**
 	 * example:
 	 * James
 	 */
-	lastName?: string;
+	lastName: string;
 	/**
 	 * example:
 	 * john@email.com
@@ -949,7 +1075,7 @@ export interface RequestBody {
 	 * example:
 	 * 12345
 	 */
-	password?: string;
+	password: string;
 	/**
 	 * example:
 	 * 12345

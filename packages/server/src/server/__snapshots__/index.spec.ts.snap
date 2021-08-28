@@ -1,0 +1,309 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`initServer config.v2.json should allow customised response 1`] = `
+Array [
+  Object {
+    "category": Object {
+      "id": "502063d8-dee7-56f0-b3db-23265defdd72",
+      "name": "Walter Simon",
+    },
+    "id": "d6211c27-716a-50d2-bd43-a69d9a3b9993",
+    "name": "Pet 0 (Query available)",
+    "photoUrls": Array [
+      "http://iDAlgGHlXZTjgoIFlrrvwrLtkaWEayktr.hqeVNDhHTOPNiD-8,A.",
+      "http://CEzGTIVnwzRu.oqdqg",
+      "http://XqOorATjnNtIrsxOYOaDdDolIRtxEzAf.neloDlNOwfOXnRuiyvwkZYU",
+      "https://qymEgnnquJXjvzoHQgxONi.wirneD+qGTf8frTZBeKoPpYDmW9I3H7mWuRk7wOC3,0I+F6rXEVX-3MxAwT1A0HCWwe20N1oxIzHWV3nowlUt0z",
+    ],
+    "status": "sold",
+    "tags": Array [
+      Object {
+        "id": "7b34fc0c-45d0-59e0-a099-a2c3205267aa",
+        "name": "Isaac McDonald",
+      },
+      Object {
+        "id": "16c59251-6457-55ef-96e2-2af5e2a55b39",
+        "name": "Steve Ortega",
+      },
+      Object {
+        "id": "72aec4e8-4bac-52cc-818e-02001a33ca75",
+        "name": "Katharine Kennedy",
+      },
+      Object {
+        "id": "43b526a4-ddd6-5ae2-9477-6b43e0ac3e00",
+        "name": "Florence Wise",
+      },
+      Object {
+        "id": "81b89e2c-e652-510b-b507-913127275db6",
+        "name": "Loretta Dean",
+      },
+    ],
+  },
+  Object {
+    "category": Object {
+      "id": "584e99be-3faf-5b33-9337-15e51ab1894f",
+      "name": "Norman Allen",
+    },
+    "id": "3843bf31-d60c-5215-8aa1-5c1cdb1c6152",
+    "name": "Pet 1 (Query available)",
+    "photoUrls": Array [
+      "http://Plt.lduwckBB8YSAhvlavdPtnENKuNsVMRvgFk.qyxFDe1+V4RMG",
+    ],
+    "status": "sold",
+    "tags": Array [
+      Object {
+        "id": "af415e5a-c7cb-5660-b4b0-71c98c0ec208",
+        "name": "Josie Rice",
+      },
+    ],
+  },
+  Object {
+    "category": Object {
+      "id": "c925c626-3ace-59b3-99cd-3a59fb11d2da",
+      "name": "Josie Barber",
+    },
+    "id": "74d4049f-39a3-59d8-9256-f8cd36c98ec5",
+    "name": "Pet 2 (Query available)",
+    "photoUrls": Array [
+      "https://fswiLEUgeBKDJWjfYbKtZJApZOTJgt.lsieLAaUFLZ.ZNyK-Sz,8lXQ7ccZOXrR,qA3Qe+W2UnnR1y-2kIbypWwJftDcPbr8xEA",
+      "https://UVPYcbPH.fdxhx4JY3qxpiF0Q5,vxpEYUoX-",
+      "http://aiENwRTqshYQL.akghbNhBc",
+      "https://qiZYWhWmcBCvitFvFQnsSzXnfRHY.ujt3JTDP,R",
+    ],
+    "status": "sold",
+    "tags": Array [
+      Object {
+        "id": "0f73ffc8-a597-5d6c-9d2e-09612127442a",
+        "name": "Eunice Gutierrez",
+      },
+      Object {
+        "id": "58f07066-bd93-5321-9a8f-c4afed5315cf",
+        "name": "Dorothy Mendez",
+      },
+      Object {
+        "id": "173baf8a-d4cb-54fc-9bb3-9792426ad885",
+        "name": "Mike Summers",
+      },
+      Object {
+        "id": "a751e0ae-4cc8-5651-83fd-5b612c5aee3a",
+        "name": "Owen Lowe",
+      },
+    ],
+  },
+]
+`;
+
+exports[`initServer config.v2.json should allow valid request and return mock response 1`] = `Object {}`;
+
+exports[`initServer config.v2.json should perform request validation 1`] = `
+Object {
+  "errors": Array [
+    Object {
+      "code": "InvalidRequestError",
+      "message": "should have required property 'id'",
+      "path": ".id",
+    },
+    Object {
+      "code": "InvalidRequestError",
+      "message": "should have required property 'username'",
+      "path": ".username",
+    },
+    Object {
+      "code": "InvalidRequestError",
+      "message": "should have required property 'firstName'",
+      "path": ".firstName",
+    },
+    Object {
+      "code": "InvalidRequestError",
+      "message": "should have required property 'lastName'",
+      "path": ".lastName",
+    },
+    Object {
+      "code": "InvalidRequestError",
+      "message": "should have required property 'password'",
+      "path": ".password",
+    },
+  ],
+}
+`;
+
+exports[`initServer config.v3.json should allow customised response 1`] = `
+Array [
+  Object {
+    "category": Object {
+      "id": "a2a637dc-6055-5b6b-8783-b814be3ff241",
+      "name": "Lena Schwartz",
+    },
+    "id": "402314d7-a4b6-54ca-a564-ac4c7f4b4c73",
+    "name": "Pet 0 (Query available)",
+    "photoUrls": Array [
+      "https://jawv.huirPVG0sa",
+      "http://OnPBPdViEFQiampArlmArMtSd.ltfqEygBdOw6B64T1MBfPR790m9rbwo2HZirV.HyLemuihRMxvgeXQ3f6fEfiIN+uUn9rH+UbphRTjA52y",
+    ],
+    "status": "available",
+    "tags": Array [
+      Object {
+        "id": "ba73c070-96cd-5d38-a902-d3bf738537ac",
+        "name": "Lettie Carter",
+      },
+      Object {
+        "id": "fe2a84c0-1dc1-556d-a372-0d258b3508f9",
+        "name": "Thomas Salazar",
+      },
+    ],
+  },
+  Object {
+    "category": Object {
+      "id": "c4e84bac-2cc3-518e-9200-1a33ca7555e4",
+      "name": "Hattie Keller",
+    },
+    "id": "92516457-5ef9-56e2-baf5-e2a55b3972ae",
+    "name": "Pet 1 (Query available)",
+    "photoUrls": Array [
+      "http://seGNFkXNslFlBZRInlIcTDAcl.brjTgFn0reV07Nhhobep-JZcTEP0t-5VL52qvcfYerVlfov8rSy5nu+K",
+      "https://pOxAYVDwZbWOwNwPxUXkXRuyXi.vqhO59VCpybh0RxAZoD7RU3k2nfYiI1HpQhPticx3HC,4opiZn",
+    ],
+    "status": "available",
+    "tags": Array [
+      Object {
+        "id": "9fc1199b-eaf3-5a74-88d7-6e033a9a0a8b",
+        "name": "Travis McDaniel",
+      },
+      Object {
+        "id": "50b30172-59af-5bdb-894e-5b49db32fe34",
+        "name": "Jonathan Moore",
+      },
+      Object {
+        "id": "7aec3eac-dd46-542c-a10c-37a1abb07b34",
+        "name": "Eric Bryan",
+      },
+      Object {
+        "id": "d09e0a09-9a2c-5320-8267-aaa4dc3716c5",
+        "name": "Dustin Salazar",
+      },
+    ],
+  },
+  Object {
+    "category": Object {
+      "id": "8dee76f0-23db-5232-85de-fdd72e593843",
+      "name": "Bettie Ford",
+    },
+    "id": "4ddd6ae2-9477-56b4-8e0a-c3e007a881b8",
+    "name": "Pet 2 (Query available)",
+    "photoUrls": Array [
+      "https://lgGHlXZTjgoIFlrrv.isjGoK4unAfLv8CNxHTOPNiD-8,A.YL",
+    ],
+    "status": "pending",
+    "tags": Array [
+      Object {
+        "id": "ce65210b-f507-5913-b272-75db6002d621",
+        "name": "Maud Burke",
+      },
+      Object {
+        "id": "1c27716a-0d2f-5d43-a69d-9a3b9993ad85",
+        "name": "Estella Clarke",
+      },
+    ],
+  },
+  Object {
+    "category": Object {
+      "id": "ac7cb660-e4b0-571c-98c0-ec208abd74d4",
+      "name": "Katie Guzman",
+    },
+    "id": "1d60c215-6aa1-55c1-adb1-c615223a584e",
+    "name": "Pet 3 (Query available)",
+    "photoUrls": Array [
+      "http://erxXmGvKeVdrVKOvdDlGmOxmVMWBSAUjL.rfuKQiQGysnDlNOwfOXnRuiyvwkZYUYvZswH5mrXyIxDZYaLeLsoR3tMGHhwBDI",
+      "https://qJAJRumDGVGWRfYCXGRwMEECjMvjPK.gzjzrC3,0R.X6rXEVN3WgxITwT1APC+SweRN1oD9IzHM3nowl7upzQuEpMiqnAT+jGrQ1gZXl4",
+      "http://cGpnTyECpFo.prkcxPMZLgfrPiJcq8Y4ouBCa",
+    ],
+    "status": "pending",
+    "tags": Array [
+      Object {
+        "id": "99be3faf-b337-5337-b5e5-1ab1894f72ea",
+        "name": "Ricky Peters",
+      },
+    ],
+  },
+  Object {
+    "category": Object {
+      "id": "ffc8a597-d6c9-5d2e-9961-2127442a7345",
+      "name": "Addie Allison",
+    },
+    "id": "f39a39d8-8256-5f8c-a36c-98ec56610f73",
+    "name": "Pet 4 (Query available)",
+    "photoUrls": Array [
+      "http://pxb.amgxZT2He74dCZhBEzGZe8CoOXV2AaUFLOZNFqK-45z,VXHcc.LOXrR,nj32OeX2UnqSR1yYkIc8ypWwJ",
+      "https://HlxYSB.vgjgx7hxCiM7hfIULJlg-bUy.THtZ5TiyVEUv",
+    ],
+    "status": "available",
+    "tags": Array [
+      Object {
+        "id": "6bd93321-0a8f-5c4a-bed5-315cf173baf8",
+        "name": "Mabelle Cannon",
+      },
+      Object {
+        "id": "ad4cb4fc-9bb3-5979-b426-ad885f40a751",
+        "name": "Jorge Harris",
+      },
+      Object {
+        "id": "e4cc8651-53fd-55b6-b2c5-aee3ac93c925",
+        "name": "Don Burton",
+      },
+      Object {
+        "id": "63ace9b3-79cd-53a5-9fb1-1d2da9254119",
+        "name": "Verna Christensen",
+      },
+      Object {
+        "id": "7ee7372e-2bf4-582f-af2d-c5d51154d687",
+        "name": "Mitchell Casey",
+      },
+    ],
+  },
+]
+`;
+
+exports[`initServer config.v3.json should allow valid request and return mock response 1`] = `
+Object {
+  "email": "dasinih@nadedok.ch",
+  "firstName": "Jerry",
+  "id": "8f5ff6a9-ad24-5798-bd11-f95c5eeb758e",
+  "lastName": "Simoni",
+  "password": "RNVhUantPjOu",
+  "phone": "(526) 893-4707",
+  "userStatus": true,
+  "username": "ZBwiHHrAoRhZiENxHDXh",
+}
+`;
+
+exports[`initServer config.v3.json should perform request validation 1`] = `
+Object {
+  "errors": Array [
+    Object {
+      "code": "InvalidRequestError",
+      "message": "should have required property 'id'",
+      "path": ".body.id",
+    },
+    Object {
+      "code": "InvalidRequestError",
+      "message": "should have required property 'username'",
+      "path": ".body.username",
+    },
+    Object {
+      "code": "InvalidRequestError",
+      "message": "should have required property 'firstName'",
+      "path": ".body.firstName",
+    },
+    Object {
+      "code": "InvalidRequestError",
+      "message": "should have required property 'lastName'",
+      "path": ".body.lastName",
+    },
+    Object {
+      "code": "InvalidRequestError",
+      "message": "should have required property 'password'",
+      "path": ".body.password",
+    },
+  ],
+}
+`;

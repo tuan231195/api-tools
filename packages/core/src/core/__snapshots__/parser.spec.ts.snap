@@ -41,7 +41,7 @@ Array [
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"$id":"Response200","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"object","properties":{"code":{"type":"integer","format":"int32","x-chance":{"integer":{"min":200,"max":"599"}}},"type":{"type":"string","x-chance":"name"},"message":{"type":"string","x-chance":"sentence"}},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
         },
         "success": {"$id":"ResponseOk","oneOf":[{"$ref":"Response200"}],"$schema":"http://json-schema.org/draft-07/schema#"},
       },
@@ -77,7 +77,7 @@ Array [
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"},{"$ref":"Response400"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"$id":"Response200","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"array","items":{"required":["name","photoUrls"],"type":"object","properties":{"id":{"type":"string","format":"uuid"},"name":{"type":"string","example":"doggie","x-chance":"name"},"category":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"name":{"type":"string","x-chance":"name"}},"xml":{"name":"category"}},"photoUrls":{"type":"array","xml":{"wrapped":true},"items":{"type":"string","format":"uri","xml":{"name":"photoUrl"}}},"tags":{"type":"array","xml":{"wrapped":true},"items":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"name":{"type":"string","x-chance":"name"}},"xml":{"name":"Tag"}}},"status":{"type":"string","description":"pet status in the store","enum":["available","pending","sold"]}},"xml":{"name":"pet"}},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
           "400": {"$id":"Response400","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
         },
         "success": {"$id":"ResponseOk","oneOf":[{"$ref":"Response200"}],"$schema":"http://json-schema.org/draft-07/schema#"},
@@ -94,7 +94,7 @@ Array [
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"},{"$ref":"Response400"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"$id":"Response200","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"array","items":{"required":["name","photoUrls"],"type":"object","properties":{"id":{"type":"string","format":"uuid"},"name":{"type":"string","example":"doggie","x-chance":"name"},"category":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"name":{"type":"string","x-chance":"name"}},"xml":{"name":"category"}},"photoUrls":{"type":"array","xml":{"wrapped":true},"items":{"type":"string","format":"uri","xml":{"name":"photoUrl"}}},"tags":{"type":"array","xml":{"wrapped":true},"items":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"name":{"type":"string","x-chance":"name"}},"xml":{"name":"Tag"}}},"status":{"type":"string","description":"pet status in the store","enum":["available","pending","sold"]}},"xml":{"name":"pet"}},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
           "400": {"$id":"Response400","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
         },
         "success": {"$id":"ResponseOk","oneOf":[{"$ref":"Response200"}],"$schema":"http://json-schema.org/draft-07/schema#"},
@@ -111,7 +111,7 @@ Array [
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"},{"$ref":"Response400"},{"$ref":"Response404"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"$id":"Response200","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"required":["name","photoUrls"],"type":"object","properties":{"id":{"type":"string","format":"uuid"},"name":{"type":"string","example":"doggie","x-chance":"name"},"category":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"name":{"type":"string","x-chance":"name"}},"xml":{"name":"category"}},"photoUrls":{"type":"array","xml":{"wrapped":true},"items":{"type":"string","format":"uri","xml":{"name":"photoUrl"}}},"tags":{"type":"array","xml":{"wrapped":true},"items":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"name":{"type":"string","x-chance":"name"}},"xml":{"name":"Tag"}}},"status":{"type":"string","description":"pet status in the store","enum":["available","pending","sold"]}},"xml":{"name":"pet"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
           "400": {"$id":"Response400","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
           "404": {"$id":"Response404","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
         },
@@ -129,7 +129,7 @@ Array [
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"$id":"Response200","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"object","additionalProperties":{"type":"integer","format":"int32"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
         },
         "success": {"$id":"ResponseOk","oneOf":[{"$ref":"Response200"}],"$schema":"http://json-schema.org/draft-07/schema#"},
       },
@@ -149,7 +149,7 @@ Array [
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"},{"$ref":"Response400"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"$id":"Response200","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"Order"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
           "400": {"$id":"Response400","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
         },
         "success": {"$id":"ResponseOk","oneOf":[{"$ref":"Response200"}],"$schema":"http://json-schema.org/draft-07/schema#"},
@@ -166,7 +166,7 @@ Array [
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"},{"$ref":"Response400"},{"$ref":"Response404"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"$id":"Response200","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"Order"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
           "400": {"$id":"Response400","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
           "404": {"$id":"Response404","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
         },
@@ -182,7 +182,7 @@ Array [
       "queries": null,
       "requestBody": Object {
         "contentType": "application/json",
-        "schema": {"type":"array","items":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"xml":{"name":"User"}},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
+        "schema": {"type":"array","items":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"required":["id","username","password","firstName","lastName"],"xml":{"name":"User"}},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
         "type": "json",
       },
       "responseBody": Object {
@@ -204,7 +204,7 @@ Array [
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"},{"$ref":"Response400"},{"$ref":"Response404"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"$id":"Response200","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"required":["id","username","password","firstName","lastName"],"xml":{"name":"User"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
           "400": {"$id":"Response400","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
           "404": {"$id":"Response404","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
         },
@@ -222,7 +222,7 @@ Array [
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"},{"$ref":"Response400"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"$id":"Response200","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"string","$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
           "400": {"$id":"Response400","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
         },
         "success": {"$id":"ResponseOk","oneOf":[{"$ref":"Response200"}],"$schema":"http://json-schema.org/draft-07/schema#"},
@@ -253,7 +253,7 @@ Array [
       "queries": null,
       "requestBody": Object {
         "contentType": "application/json",
-        "schema": {"type":"array","items":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"xml":{"name":"User"}},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
+        "schema": {"type":"array","items":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"required":["id","username","password","firstName","lastName"],"xml":{"name":"User"}},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
         "type": "json",
       },
       "responseBody": Object {
@@ -273,7 +273,7 @@ Array [
       "queries": null,
       "requestBody": Object {
         "contentType": "application/json",
-        "schema": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"xml":{"name":"User"},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
+        "schema": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"required":["id","username","password","firstName","lastName"],"xml":{"name":"User"},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
         "type": "json",
       },
       "responseBody": Object {
@@ -352,7 +352,7 @@ Array [
       "queries": null,
       "requestBody": Object {
         "contentType": "application/json",
-        "schema": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"xml":{"name":"User"},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
+        "schema": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"required":["id","username","password","firstName","lastName"],"xml":{"name":"User"},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
         "type": "json",
       },
       "responseBody": Object {
@@ -580,13 +580,13 @@ Array [
       "queries": null,
       "requestBody": Object {
         "contentType": "application/json",
-        "schema": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"xml":{"name":"user"},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
+        "schema": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"required":["id","username","password","firstName","lastName"],"xml":{"name":"user"},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
         "type": "json",
       },
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"xml":{"name":"user"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"required":["id","username","password","firstName","lastName"],"xml":{"name":"user"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
         },
         "success": {"$id":"ResponseOk","oneOf":[{"$ref":"Response200"}],"$schema":"http://json-schema.org/draft-07/schema#"},
       },
@@ -600,7 +600,7 @@ Array [
       "queries": null,
       "requestBody": Object {
         "contentType": "application/json",
-        "schema": {"type":"array","items":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"xml":{"name":"user"}},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
+        "schema": {"type":"array","items":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"required":["id","username","password","firstName","lastName"],"xml":{"name":"user"}},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
         "type": "json",
       },
       "responseBody": Object {
@@ -655,7 +655,7 @@ Array [
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"},{"$ref":"Response400"},{"$ref":"Response404"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"xml":{"name":"user"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"required":["id","username","password","firstName","lastName"],"xml":{"name":"user"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
           "400": {"$id":"Response400","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
           "404": {"$id":"Response404","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
         },
@@ -727,7 +727,7 @@ Array [
       "queries": null,
       "requestBody": Object {
         "contentType": "application/json",
-        "schema": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"xml":{"name":"user"},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
+        "schema": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"username":{"type":"string","example":"theUser","x-chance":{"string":{"alpha":true}}},"firstName":{"type":"string","example":"John","x-chance":"first"},"lastName":{"type":"string","example":"James","x-chance":"last"},"email":{"type":"string","example":"john@email.com","x-chance":"email"},"password":{"type":"string","example":"12345","x-chance":{"string":{"alpha":true}}},"phone":{"type":"string","example":"12345","x-chance":"phone"},"userStatus":{"type":"boolean","description":"User Status"}},"required":["id","username","password","firstName","lastName"],"xml":{"name":"user"},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
         "type": "json",
       },
       "responseBody": Object {

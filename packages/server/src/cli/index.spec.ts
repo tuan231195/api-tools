@@ -8,10 +8,11 @@ describe('server module', () => {
 			.spyOn(mockServer, 'startServer')
 			.mockImplementation(jest.fn());
 
-		await yargs.parse('--config-file config.json');
+		await yargs.parse('--config-file config.json --seed 123');
 
 		expect(startServerSpy).toHaveBeenCalledWith(
-			path.resolve(process.cwd(), 'config.json')
+			path.resolve(process.cwd(), 'config.json'),
+			'123'
 		);
 	});
 });

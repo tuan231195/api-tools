@@ -149,8 +149,12 @@ export const getAllStatusSchema = (
 			const statusCode =
 				status === 'default' ? 200 : parseInt(status, 10);
 			const id = `Response${statusCode}`;
-			const jsonBody =
-				response.content && response.content['application/json'];
+			let jsonBody: any;
+			if (response.content && response.content['application/json']) {
+				jsonBody = response.content['application/json'];
+			} else if (response.schema) {
+				jsonBody = response;
+			}
 
 			const schema = jsonBody
 				? toSchema({

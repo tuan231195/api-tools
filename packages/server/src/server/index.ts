@@ -72,3 +72,5 @@ export function isValidHttpUrl(string: string) {
 
 	return url.protocol === 'http:' || url.protocol === 'https:';
 }
+
+export * from './types';

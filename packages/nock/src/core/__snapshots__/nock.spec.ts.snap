@@ -2,13 +2,13 @@
 
 exports[`nock should mock the response 1`] = `
 Object {
-  "email": "maf@dabsin.af",
-  "firstName": "Jim",
+  "email": "dasinih@nadedok.ch",
+  "firstName": "Jerry",
   "id": 1,
-  "lastName": "Goodwin",
-  "password": "qSjyddgrZgOujvoHPZ",
-  "phone": "(869) 380-3312",
-  "userStatus": false,
-  "username": "rAoRhZiENxHDXhz",
+  "lastName": "Simoni",
+  "password": "RNVhUantPjOu",
+  "phone": "(526) 893-4707",
+  "userStatus": true,
+  "username": "ZBwiHHrAoRhZiENxHDXh",
 }
 `;

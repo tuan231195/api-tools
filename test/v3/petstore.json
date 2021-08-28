@@ -1058,6 +1058,13 @@
 						"description": "User Status"
 					}
 				},
+				"required": [
+					"id",
+					"username",
+					"password",
+					"firstName",
+					"lastName"
+				],
 				"xml": {
 					"name": "user"
 				}

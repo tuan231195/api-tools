@@ -1,8 +1,15 @@
-import { Config } from 'src/server/types';
+import {
+	Config,
+	defaultValidateOptions,
+	InvalidRequestError,
+	InvalidResponseError,
+	ValidateOptions,
+} from 'src/server/types';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import errorHandler from 'errorhandler';
 import {
+	OpenAPI,
 	parse,
 	ParsedOperationSchemaWithInfo,
 	ramlToExpress,
@@ -11,8 +18,9 @@ import fs from 'fs';
 import requireDir from 'require-dir';
 import { fakeOperationResponse, initSeed } from '@vdtn359/api-tools-faker';
 import { camelCase, mapKeys } from 'lodash';
-import { NextFunction, Request, Response } from 'express';
+import { Express, NextFunction, Request, Response } from 'express';
 import logger from 'src/logger';
+import { ValidationErrorItem } from 'express-openapi-validator/dist/framework/types';
 
 export const setupServer = async (config: Config) => {
 	logger('Running with config', config);
@@ -28,10 +36,26 @@ export const setupServer = async (config: Config) => {
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: true }));
 
+	let cleanupFunction: Function | null = null;
 	if (config.init && fs.existsSync(config.init)) {
 		const init = require(config.init).default;
 		logger('Call custom init');
-		await init(app);
+		cleanupFunction = await init(app);
+	}
+
+	const { schema: parsedSchema, document } = await parse(config.uri);
+	if (config.validate) {
+		let validateOptions: ValidateOptions;
+		if (typeof config.validate === 'boolean') {
+			validateOptions = defaultValidateOptions;
+		} else {
+			validateOptions = {
+				...defaultValidateOptions,
+				...config.validate,
+			};
+		}
+		logger('Init swagger validator middleware');
+		initSwaggerMiddleware({ app, document, validateOptions, config });
 	}
 
 	if (config.routes && fs.existsSync(config.routes)) {
@@ -44,12 +68,11 @@ export const setupServer = async (config: Config) => {
 		overrides = mapKeys(
 			requireDir(config.overrides, {
 				recurse: false,
+				extensions: ['.js', '.ts'],
 			}),
 			(value, key) => camelCase(key)
 		);
 	}
-
-	const { schema: parsedSchema } = await parse(config.uri);
 
 	const apiRouter = express.Router();
 	await Promise.all(
@@ -71,6 +94,9 @@ export const setupServer = async (config: Config) => {
 	router.use(config.baseUrl, apiRouter);
 	app.use(router);
 
+	if (cleanupFunction) {
+		cleanupFunction();
+	}
 	app.use(errorHandler());
 
 	return app;
@@ -116,7 +142,12 @@ const getRouteHandler = (
 	})();
 
 	return async (request: Request, response: Response, next: NextFunction) => {
-		const defaultResponse = await defaultResponseGetter.get();
+		let defaultResponse: any;
+		try {
+			defaultResponse = await defaultResponseGetter.get();
+		} catch (e) {
+			defaultResponse = null;
+		}
 
 		try {
 			let finalResponse = defaultResponse;
@@ -131,7 +162,7 @@ const getRouteHandler = (
 				});
 			}
 			if (!response.headersSent) {
-				if (finalResponse !== undefined) {
+				if (finalResponse != undefined) {
 					if (finalResponse && typeof finalResponse === 'object') {
 						response.status(responseStatus).json(finalResponse);
 					} else {
@@ -147,3 +178,98 @@ const getRouteHandler = (
 		}
 	};
 };
+
+function initSwaggerMiddleware({
+	app,
+	document,
+	validateOptions,
+	config,
+}: {
+	app: Express;
+	document: OpenAPI.Document;
+	validateOptions: ValidateOptions;
+	config: Config;
+}) {
+	if ('swagger' in document) {
+		const validator = require('swagger-express-validator');
+		const schema = {
+			...document,
+			basePath: config.baseUrl,
+		};
+		delete schema.definitions;
+		// swagger v2
+		app.use(
+			validator({
+				...validateOptions,
+				returnRequestErrors: validateOptions.validateRequests,
+				returnResponseErrors: validateOptions.validateResponses,
+				schema,
+				requestValidationFn: (
+					req: Request,
+					data: any,
+					errors: any[]
+				) => {
+					throw new InvalidRequestError(
+						ajvErrorsToValidatorError(errors)
+					);
+				},
+				responseValidationFn: (
+					req: Request,
+					data: any,
+					errors: any[]
+				) => {
+					throw new InvalidResponseError(
+						ajvErrorsToValidatorError(errors)
+					);
+				},
+			})
+		);
+	} else {
+		// swagger v3
+		const OpenApiValidator = require('express-openapi-validator');
+		app.use(
+			OpenApiValidator.middleware({
+				...validateOptions,
+				apiSpec: {
+					...document,
+					servers: [
+						{
+							url: config.baseUrl,
+						},
+					],
+				},
+			})
+		);
+
+		app.use(
+			(err: Error, req: Request, res: Response, next: NextFunction) => {
+				if (err instanceof OpenApiValidator.error.BadRequest) {
+					return next(new InvalidRequestError((err as any).errors));
+				}
+				if (err instanceof OpenApiValidator.error.InternalServerError) {
+					return next(new InvalidResponseError((err as any).errors));
+				}
+				next(err);
+			}
+		);
+	}
+}
+
+function ajvErrorsToValidatorError(errors: any[]): ValidationErrorItem[] {
+	return errors.map((e) => {
+		const params: any = e.params;
+		const required =
+			params?.missingProperty &&
+			e.dataPath + '.' + params.missingProperty;
+		const additionalProperty =
+			params?.additionalProperty &&
+			e.dataPath + '.' + params.additionalProperty;
+		const path =
+			required ?? additionalProperty ?? e.dataPath ?? e.schemaPath;
+		return {
+			path,
+			message: e.message,
+			error_code: `${e.keyword}.openapi.validation`,
+		};
+	});
+}
