@@ -11,6 +11,7 @@
 		"mock-swagger-server": "./dist/cli.js"
 	},
 	"scripts": {
+		"setup": "mkdir -p dist && touch dist/cli.js",
 		"build": "rm -rf dist && ttsc -b tsconfig.build.json",
 		"mock-server-v2": "ts-node -r tsconfig-paths/register -T src/cli.ts -c example/config.v2.json -s 123",
 		"mock-server-v2:debug": "DEBUG=swagger-express-validator,api-tools:*  ts-node -r tsconfig-paths/register -T src/cli.ts -c example/config.v2.json -s 123",

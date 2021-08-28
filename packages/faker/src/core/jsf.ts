@@ -12,6 +12,7 @@ export const initSeed = (seed?: string) => {
 	const chance = seed ? new Chance(seed) : new Chance();
 	chance.mixin({
 		currency_code: () => chance.currency().code.toLowerCase(),
+		date_time: () => new Date(chance.timestamp() * 1000).toJSON(),
 	});
 
 	jsf.option({

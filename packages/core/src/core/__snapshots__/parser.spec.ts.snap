@@ -143,13 +143,13 @@ Array [
       "queries": null,
       "requestBody": Object {
         "contentType": "application/json",
-        "schema": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"Order"},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
+        "schema": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date_time"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"Order"},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
         "type": "json",
       },
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"},{"$ref":"Response400"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"Order"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date_time"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"Order"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
           "400": {"$id":"Response400","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
         },
         "success": {"$id":"ResponseOk","oneOf":[{"$ref":"Response200"}],"$schema":"http://json-schema.org/draft-07/schema#"},
@@ -166,7 +166,7 @@ Array [
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"},{"$ref":"Response400"},{"$ref":"Response404"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"Order"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date_time"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"Order"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
           "400": {"$id":"Response400","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
           "404": {"$id":"Response404","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
         },
@@ -541,13 +541,13 @@ Array [
       "queries": null,
       "requestBody": Object {
         "contentType": "application/json",
-        "schema": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"order"},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
+        "schema": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date_time"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"order"},"$id":"RequestBody","$schema":"http://json-schema.org/draft-07/schema#"},
         "type": "json",
       },
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"},{"$ref":"Response405"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"order"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date_time"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"order"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
           "405": {"$id":"Response405","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
         },
         "success": {"$id":"ResponseOk","oneOf":[{"$ref":"Response200"}],"$schema":"http://json-schema.org/draft-07/schema#"},
@@ -564,7 +564,7 @@ Array [
       "responseBody": Object {
         "all": {"$id":"Response","oneOf":[{"$ref":"Response200"},{"$ref":"Response400"},{"$ref":"Response404"}],"$schema":"http://json-schema.org/draft-07/schema#"},
         "statuses": Object {
-          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"order"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
+          "200": {"type":"object","properties":{"id":{"type":"string","format":"uuid"},"petId":{"type":"string","format":"uuid"},"quantity":{"type":"integer","format":"int32","x-chance":{"integer":{"min":1,"max":10}}},"shipDate":{"type":"string","format":"date-time","x-chance":"date_time"},"status":{"type":"string","description":"Order Status","example":"approved","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"order"},"$id":"Response200","$schema":"http://json-schema.org/draft-07/schema#"},
           "400": {"$id":"Response400","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
           "404": {"$id":"Response404","type":"boolean","not":true,"$schema":"http://json-schema.org/draft-07/schema#"},
         },

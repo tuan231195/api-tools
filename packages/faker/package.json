@@ -8,6 +8,7 @@
 		"dist"
 	],
 	"scripts": {
+		"setup": "mkdir -p dist && touch dist/cli.js",
 		"build": "rm -rf dist && ttsc -b tsconfig.build.json"
 	},
 	"license": "ISC",

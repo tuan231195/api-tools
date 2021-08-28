@@ -11,6 +11,7 @@
 		"generate-api-types": "./dist/cli.js"
 	},
 	"scripts": {
+		"setup": "mkdir -p dist && touch dist/cli.js",
 		"build": "rm -rf dist && ttsc -b tsconfig.build.json",
 		"postbuild": "copyfiles -u 2 src/templates/**/*.hbs dist/templates"
 	},

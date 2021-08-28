@@ -9,7 +9,7 @@
 	],
 	"scripts": {
 		"build": "rm -rf dist && ttsc -b tsconfig.build.json",
-		"prepare": "generate-api-types axios -u ../../test/v3/petstore.json -o src/generated"
+		"postinstall": "generate-api-types axios -u ../../test/v3/petstore.json -o src/generated"
 	},
 	"license": "ISC",
 	"dependencies": {

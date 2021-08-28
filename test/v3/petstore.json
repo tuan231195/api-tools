@@ -912,7 +912,7 @@
 					"shipDate": {
 						"type": "string",
 						"format": "date-time",
-						"x-chance": "date"
+						"x-chance": "date_time"
 					},
 					"status": {
 						"type": "string",

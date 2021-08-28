@@ -38,7 +38,7 @@ describe('nock', () => {
 		const response = await client.createUser({
 			body: {
 				id: '1',
-			},
+			} as any,
 		});
 		expect(response).toMatchSnapshot();
 	});
