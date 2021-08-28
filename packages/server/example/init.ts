@@ -1,5 +1,4 @@
 import { Express, NextFunction, Request, Response } from 'express';
-import { InvalidRequestError, InvalidResponseError } from '../src';
 
 export default function setup(app: Express) {
 	app.use(function (req, res, next) {
@@ -10,24 +9,25 @@ export default function setup(app: Express) {
 	return () => {
 		app.use(
 			(err: Error, req: Request, res: Response, next: NextFunction) => {
-				if (err instanceof InvalidRequestError) {
-					res.status(400).json({
-						errors: err.errors.map((error) => ({
+				if (err.name === 'InvalidRequestError') {
+					return res.status(400).json({
+						errors: (err as any).errors.map((error: any) => ({
 							code: 'InvalidRequestError',
 							message: error.message,
 							path: error.path,
 						})),
 					});
 				}
-				if (err instanceof InvalidResponseError) {
-					res.status(500).json({
-						errors: err.errors.map((error) => ({
+				if (err.name === 'InvalidResponseError') {
+					return res.status(500).json({
+						errors: (err as any).errors.map((error: any) => ({
 							code: 'InvalidResponseError',
 							message: error.message,
 							path: error.path,
 						})),
 					});
 				}
+				console.error(err);
 				next(err);
 			}
 		);

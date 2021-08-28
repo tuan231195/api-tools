@@ -1,3 +1,4 @@
+require('ts-node/register/transpile-only');
 import { setupServer } from 'src/server/server';
 import path from 'path';
 import { Config } from 'src/server/types';

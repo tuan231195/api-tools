@@ -4,6 +4,7 @@ import {
 	InvalidRequestError,
 	InvalidResponseError,
 	ValidateOptions,
+	ValidationErrorItem,
 } from 'src/server/types';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
@@ -20,7 +21,6 @@ import { fakeOperationResponse, initSeed } from '@vdtn359/api-tools-faker';
 import { camelCase, mapKeys } from 'lodash';
 import { Express, NextFunction, Request, Response } from 'express';
 import logger from 'src/logger';
-import { ValidationErrorItem } from 'express-openapi-validator/dist/framework/types';
 
 export const setupServer = async (config: Config) => {
 	logger('Running with config', config);

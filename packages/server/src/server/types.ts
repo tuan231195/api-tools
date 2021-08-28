@@ -22,16 +22,18 @@ export const defaultValidateOptions: ValidateOptions = {
 export class InvalidRequestError extends Error {
 	constructor(public readonly errors: ValidationErrorItem[]) {
 		super('Invalid Request Error');
+		this.name = 'InvalidRequestError';
 	}
 }
 
 export class InvalidResponseError extends Error {
 	constructor(public readonly errors: ValidationErrorItem[]) {
 		super('Invalid Response Error');
+		this.name = 'InvalidResponseError';
 	}
 }
 
-interface ValidationErrorItem {
+export interface ValidationErrorItem {
 	message: string;
 	error_code?: string;
 	path?: string;
