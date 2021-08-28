@@ -1,3 +1,10 @@
+# [@vdtn359/api-tools-core-v1.0.1](https://github.com/tuan231195/api-tools/compare/@vdtn359/api-tools-core-v1.0.0...@vdtn359/api-tools-core-v1.0.1) (2021-08-28)
+
+
+### Bug Fixes
+
+* **release:** fix package publish ([5b6c3fb](https://github.com/tuan231195/api-tools/commit/5b6c3fbb3882e8ad99a7c1dacd5f4ca69104ad76))
+
 # @vdtn359/api-tools-core-v1.0.0 (2021-08-28)
 
 
