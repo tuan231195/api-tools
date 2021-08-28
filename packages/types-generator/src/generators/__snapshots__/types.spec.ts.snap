@@ -856,7 +856,7 @@ export type Response400 = void;
 export type Response404 = void;
 ",
   "get-pet-by-id.ts": "export interface Path {
-	petId: string; // uri
+	petId: string; // uuid
 }
 
 export interface Response200 {

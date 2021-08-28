@@ -1556,7 +1556,7 @@ export type Handler = (
 import * as express from 'express-serve-static-core';
 
 export interface Path {
-	petId: string; // uri
+	petId: string; // uuid
 }
 
 export type Response = Response200 | Response400 | Response404;

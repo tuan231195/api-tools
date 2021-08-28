@@ -487,7 +487,7 @@ Array [
     "info": {"operationId":"getPetById","path":"/pet/{petId}","method":"get"},
     "schema": Object {
       "headers": null,
-      "params": {"type":"object","$id":"Path","properties":{"petId":{"type":"string","format":"uri"}},"additionalProperties":false,"required":["petId"],"$schema":"http://json-schema.org/draft-07/schema#"},
+      "params": {"type":"object","$id":"Path","properties":{"petId":{"type":"string","format":"uuid"}},"additionalProperties":false,"required":["petId"],"$schema":"http://json-schema.org/draft-07/schema#"},
       "queries": null,
       "requestBody": null,
       "responseBody": Object {

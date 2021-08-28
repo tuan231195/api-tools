@@ -1858,7 +1858,7 @@ export const operation = async (
 };
 
 export interface Path {
-	petId: string; // uri
+	petId: string; // uuid
 }
 
 export type Request = {

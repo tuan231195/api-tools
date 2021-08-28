@@ -761,7 +761,7 @@ declare type Response400 = void;
 declare type Response404 = void;
 ",
   "getPetById": "declare interface Path {
-    petId: string; // uri
+    petId: string; // uuid
 }
 declare interface Response200 {
     /**
