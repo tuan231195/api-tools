@@ -1,3 +1,10 @@
+# [@vdtn359/api-tools-types-generator-v1.0.1](https://github.com/tuan231195/api-tools/compare/@vdtn359/api-tools-types-generator-v1.0.0...@vdtn359/api-tools-types-generator-v1.0.1) (2022-03-28)
+
+
+### Bug Fixes
+
+* **types-generator:** fixed types generator ([18f3aad](https://github.com/tuan231195/api-tools/commit/18f3aad162e331e86cc24ed97b6137e83241af51))
+
 # @vdtn359/api-tools-types-generator-v1.0.0 (2021-08-28)
 
 
