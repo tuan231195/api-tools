@@ -7,7 +7,7 @@ Object {
     "id": "ece651cd-5964-5a0c-a423-de79940a3289",
     "petId": "a47e5251-40f8-57ec-917f-cb9cb639d94b",
     "quantity": 7,
-    "shipDate": "2003-05-24T00:00:00.0Z",
+    "shipDate": "2003-10-08T00:00:00.0Z",
     "status": "placed",
   },
   "headers": null,
@@ -18,7 +18,7 @@ Object {
     "id": "17920a8a-19a9-5c05-b52f-6ffbba8d8807",
     "petId": "7e483f3e-3109-5ff0-acc1-3b92dc6dc92e",
     "quantity": 7,
-    "shipDate": "1984-08-15T00:00:00.0Z",
+    "shipDate": "1984-10-14T00:00:00.0Z",
     "status": "placed",
   },
   "responseByStatuses": Object {
@@ -27,7 +27,7 @@ Object {
       "id": "01cbc681-8f5f-5f6a-9ad2-4798ed11f95c",
       "petId": "e65bdd22-3b63-5319-a2f9-a19cac2c0204",
       "quantity": 6,
-      "shipDate": "1987-01-17T00:00:00.0Z",
+      "shipDate": "1987-03-28T00:00:00.0Z",
       "status": "delivered",
     },
     "400": null,
@@ -42,7 +42,7 @@ Object {
     "id": "1d1e5701-1d57-5545-91ee-d4aaf55525dc",
     "petId": "f66c5b4d-873d-5166-924e-cef90450ecbd",
     "quantity": 8,
-    "shipDate": "1976-05-10T00:00:00.0Z",
+    "shipDate": "1976-06-05T00:00:00.0Z",
     "status": "approved",
   },
   "headers": null,
@@ -53,7 +53,7 @@ Object {
     "id": "eeb758e0-031c-555f-8e8c-0c472540c287",
     "petId": "9c9ae17c-71ad-530b-aa34-34a8f8c2bbbf",
     "quantity": 7,
-    "shipDate": "2021-04-01T00:00:00.0Z",
+    "shipDate": "2021-10-29T00:00:00.0Z",
     "status": "placed",
   },
   "responseByStatuses": Object {
@@ -62,7 +62,7 @@ Object {
       "id": "e5024af5-dd32-50b5-9018-9f37afba104e",
       "petId": "2dd3c9fa-2521-5ca3-a2e5-3d0b0e30deb4",
       "quantity": 1,
-      "shipDate": "1993-01-04T00:00:00.0Z",
+      "shipDate": "1993-04-09T00:00:00.0Z",
       "status": "placed",
     },
     "405": null,
@@ -794,7 +794,7 @@ export const response200 = {
   "get-order-by-id.ts": "export const params = { orderId: '9679329b-f4d7-5592-a712-941c22b646d8' };
 
 export const defaultResponse = {
-	shipDate: '1970-04-05T00:00:00.0Z',
+	shipDate: '1970-04-06T00:00:00.0Z',
 	petId: 'e0f72685-cce2-5548-b6b4-db737a4e07d8',
 	id: '325036e4-94eb-5f40-9563-e36635e95db3',
 	complete: true,
@@ -805,7 +805,7 @@ export const defaultResponse = {
 export const response200 = {
 	quantity: 5,
 	status: 'approved',
-	shipDate: '1994-01-24T00:00:00.0Z',
+	shipDate: '1994-05-03T00:00:00.0Z',
 	petId: '8b692eea-363c-5a5e-afc2-8dab3be95749',
 	id: '6076da83-2167-5f2b-acd7-f7804effc18f',
 	complete: true,
@@ -901,7 +901,7 @@ export const response200 = 'nisi proident sit id sed';
   "logout-user.ts": "",
   "place-order.ts": "export const requestBody = {
 	quantity: 8,
-	shipDate: '1986-11-21T00:00:00.0Z',
+	shipDate: '1987-01-29T00:00:00.0Z',
 	complete: false,
 	petId: '7ca55c3f-4380-5249-90da-0010bdd05fc0',
 	id: '870e3687-5e7e-5de3-ab52-7c24b441de88',
@@ -911,7 +911,7 @@ export const response200 = 'nisi proident sit id sed';
 export const defaultResponse = {
 	petId: 'd6b8ef91-55d8-508f-9c31-3d3d5c8f4b50',
 	quantity: 2,
-	shipDate: '1999-05-19T00:00:00.0Z',
+	shipDate: '1999-09-17T00:00:00.0Z',
 	id: '3b36c4e2-7afc-5c39-a289-5e3d22a800d8',
 	complete: false,
 	status: 'approved',
@@ -921,7 +921,7 @@ export const response200 = {
 	petId: 'd9f9f717-d0d0-5f32-ae76-73a42909e5b6',
 	complete: false,
 	status: 'approved',
-	shipDate: '1990-05-09T00:00:00.0Z',
+	shipDate: '1990-07-31T00:00:00.0Z',
 	id: 'c9d9f6a6-028d-5a16-9c13-2909218345e7',
 	quantity: 9,
 };
@@ -1392,7 +1392,7 @@ export const response200 = { dolore_91: -46329031 };
 
 export const defaultResponse = {
 	quantity: 10,
-	shipDate: '2021-05-02T00:00:00.0Z',
+	shipDate: '2021-11-29T00:00:00.0Z',
 	complete: true,
 	status: 'approved',
 	id: '1de7a977-3148-5319-929c-9ee59f89f266',
@@ -1401,7 +1401,7 @@ export const defaultResponse = {
 
 export const response200 = {
 	status: 'approved',
-	shipDate: '2015-11-22T00:00:00.0Z',
+	shipDate: '2016-05-29T00:00:00.0Z',
 	petId: 'd4e6fb31-8b88-53fb-b56f-8b7db35b2550',
 	id: '879778f5-7138-5a42-b40c-c5586e634c42',
 	quantity: 4,
@@ -1490,7 +1490,7 @@ export const response200 = 'dolor laboris pariatur ut';
 ",
   "logout-user.ts": "",
   "place-order.ts": "export const requestBody = {
-	shipDate: '1991-05-13T00:00:00.0Z',
+	shipDate: '1991-08-09T00:00:00.0Z',
 	id: 'bf1a22f2-fb0f-53eb-8998-4baef45da531',
 	status: 'delivered',
 	petId: '616bb2cb-25ad-58e9-bcf5-65ce5766cf53',
@@ -1501,14 +1501,14 @@ export const response200 = 'dolor laboris pariatur ut';
 export const defaultResponse = {
 	complete: false,
 	petId: '9c21e52c-e64c-5866-8fca-fbf2d2ac539a',
-	shipDate: '1997-12-19T00:00:00.0Z',
+	shipDate: '1998-04-13T00:00:00.0Z',
 	id: '0118fa88-059a-5bb8-a10e-bb99c12d2e09',
 	status: 'approved',
 	quantity: 1,
 };
 
 export const response200 = {
-	shipDate: '2009-06-14T00:00:00.0Z',
+	shipDate: '2009-11-23T00:00:00.0Z',
 	quantity: 2,
 	petId: '36bd4e31-b353-5228-96a1-5e99bd5a6973',
 	id: 'a12a140e-9893-5ab6-a507-fe5407263815',

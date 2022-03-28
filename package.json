@@ -12,6 +12,7 @@
 		"build": "pnpm recursive run build",
 		"setup": "pnpm recursive run setup",
 		"prepare": "husky install",
+		"preinstall": "pnpm recursive run setup",
 		"postinstall": "link-parent-bin && npm run build",
 		"test": "TZ=UTC jest ",
 		"test:coverage": "TZ=UTC jest -w 1 --coverage",
